@@ -2,51 +2,61 @@
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 
-List<ContactInfo> CallLog = new List<ContactInfo>();
+List<ContactInfo> Contacts = new List<ContactInfo>();
 List<ContactInfo> Recents = new List<ContactInfo>();
 while (true)
 {
     UserInteraction.PrintMenu();
     try
     {
+        bool CloseApp = false;
         int UserChoice = int.Parse(Console.ReadLine());
-        if (UserChoice == 1) // create contact
+        switch (UserChoice)
         {
-            CallLog.Add(UserInteraction.GetDetails());
+            case 1:
+                Contacts.Add(UserInteraction.GetDetails());
+                Console.WriteLine("New Contact Added to your Contacts");
+                break;
+
+            case 2:
+                Console.Clear();
+                Console.Write("Enter Name          :");
+                string? name = Console.ReadLine();
+                Recents.AddRange(UserInteraction.FindContact(name, Contacts));
+                break;
+
+            case 3:
+                UserInteraction.OperateInContact(0, Contacts);
+                break;
+            case 4:
+                UserInteraction.OperateInContact(0, Recents);
+                break;
+            case 5:
+                UserInteraction.OperateInContact(1, Contacts);
+                break;
+            case 6:
+                CloseApp = true;
+                break;
+            default:
+                Console.Clear();
+                Console.WriteLine("Invalid Input, Enter a valid Option");
+                break;
+
         }
-        else if (UserChoice == 2)// Search contact
-        {
-            Console.Write("Enter Name          :");
-            string? name = Console.ReadLine();
-            Recents.AddRange(UserInteraction.FindContact(name, CallLog));
-        }
-        else if (UserChoice == 3)// View Dierectory
-        {
-            UserInteraction.OperateInContact(0, CallLog);
-        }
-        else if (UserChoice == 4)//Recent Searches
-        {
-            UserInteraction.OperateInContact(0, Recents);
-        }
-        else if (UserChoice == 5) //Favourites
-        {
-            UserInteraction.OperateInContact(1, CallLog);
-        }
-        else if (UserChoice == 6)
+        Console.WriteLine("-------------------------------------------------");
+        if(CloseApp)
         {
             break;
         }
-        else
-        {
-            Console.WriteLine("Invalid Input, Enter a valid Option");
-        }
-        Console.WriteLine("-------------------------------------------------");
     }
-
 
     catch
     {
+
+        Console.Clear();
         Console.WriteLine("Invalid Input, Enter a valid Option/n");
+        Console.WriteLine("----");
+        Console.WriteLine("----");
     }
 
 }
