@@ -51,6 +51,7 @@ while (true)
     }
     catch (InvalidCastException e)
     {
+        Console.WriteLine(e.Message);
         Console.WriteLine("Enter 1/0 for Favorites");
     }
     catch

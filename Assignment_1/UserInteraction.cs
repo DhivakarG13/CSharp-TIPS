@@ -92,7 +92,7 @@ public class UserInteraction
             }
             if(countOfMatches==0)
             {
-                Console.WriteLine("Your Contact List is Empty");
+                Console.WriteLine("Your Search Doesn't match any contacts");
             }
             return recents;
         }
@@ -125,7 +125,7 @@ public class UserInteraction
             Console.WriteLine("Your List is Empty");
         }
         /// <summary>
-        /// 
+        /// Validates whether you are searching for favorites or recents
         /// </summary>
         /// <param name="choice">  </param>
         /// <param name="contact"></param>
