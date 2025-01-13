@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8F5D0742-F7C1-474F-8CFB-34D7078F4E8E}|ContactManager.csproj|c:\\users\\dhivakar.gopi\\desktop\\csharp-tips\\assignment_1\\contactinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F5D0742-F7C1-474F-8CFB-34D7078F4E8E}|ContactManager.csproj|solutionrelative:contactinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F5D0742-F7C1-474F-8CFB-34D7078F4E8E}|ContactManager.csproj|c:\\users\\dhivakar.gopi\\desktop\\csharp-tips\\assignment_1\\contactmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F5D0742-F7C1-474F-8CFB-34D7078F4E8E}|ContactManager.csproj|solutionrelative:contactmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F5D0742-F7C1-474F-8CFB-34D7078F4E8E}|ContactManager.csproj|c:\\users\\dhivakar.gopi\\desktop\\csharp-tips\\assignment_1\\userinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8F5D0742-F7C1-474F-8CFB-34D7078F4E8E}|ContactManager.csproj|solutionrelative:userinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ContactInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\ContactInfo.cs",
+              "RelativeDocumentMoniker": "ContactInfo.cs",
+              "ToolTip": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\ContactInfo.cs",
+              "RelativeToolTip": "ContactInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T12:42:34.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ContactManager.cs",
+              "DocumentMoniker": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\ContactManager.cs",
+              "RelativeDocumentMoniker": "ContactManager.cs",
+              "ToolTip": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\ContactManager.cs",
+              "RelativeToolTip": "ContactManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T12:42:32.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserInteraction.cs",
+              "DocumentMoniker": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\UserInteraction.cs",
+              "RelativeDocumentMoniker": "UserInteraction.cs",
+              "ToolTip": "C:\\Users\\Dhivakar.gopi\\Desktop\\CSharp-TIPS\\Assignment_1\\UserInteraction.cs",
+              "RelativeToolTip": "UserInteraction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T12:31:19.926Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

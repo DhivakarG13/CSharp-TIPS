@@ -1,0 +1,15 @@
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.AssemblyInfoInputs.cache
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.AssemblyInfo.cs
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.csproj.CoreCompileInputs.cache
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.sourcelink.json
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\bin\Debug\net8.0\ContactManager.exe
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\bin\Debug\net8.0\ContactManager.deps.json
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\bin\Debug\net8.0\ContactManager.runtimeconfig.json
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\bin\Debug\net8.0\ContactManager.dll
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\bin\Debug\net8.0\ContactManager.pdb
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.dll
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\refint\ContactManager.dll
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.pdb
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ContactManager.genruntimeconfig.cache
+C:\Users\Dhivakar.gopi\Desktop\CSharp-TIPS\Assignment_1\obj\Debug\net8.0\ref\ContactManager.dll
