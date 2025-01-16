@@ -24,25 +24,50 @@ public class UserInteraction
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.Write("Enter Name:");
+            Console.Write("Enter Name: ");
             string name = Console.ReadLine();
             Console.WriteLine(name);
 
-            Console.Write("Enter Mobile Number :");
-            string? mobileNumber = Console.ReadLine();
-            Console.WriteLine(mobileNumber);
+            string mobileNumber;
+            while (true)
+            {
+                Console.Write("Enter Mobile Number (10 digits): ");
+                string? mobileInput = Console.ReadLine();
 
-            Console.Write("Enter EmailID       :");
+                // Validate mobile number
+                if (!string.IsNullOrEmpty(mobileInput) &&
+                    mobileInput.Length == 10 &&
+                    long.TryParse(mobileInput, out _))
+                {
+                    mobileNumber = mobileInput;
+                    break; // Exit loop if valid
+                }
+
+                Console.WriteLine("Invalid input. Please enter a 10-digit number.");
+            }
+
+            Console.Write("Enter Email ID: ");
             string? email = Console.ReadLine();
             Console.WriteLine(email);
 
-            Console.Write("Enter a Note        :");
+            Console.Write("Enter a Note: ");
             string? note = Console.ReadLine();
             Console.WriteLine(note);
 
-            Console.WriteLine("Add toFavourites(1/0):");
-            int fav = int.Parse(Console.ReadLine());
-            Console.WriteLine();
+            int fav;
+            while (true)
+            {
+                Console.Write("Add to Favorites (1 for Yes, 0 for No): ");
+                string favInput = Console.ReadLine();
+
+                // Validate input
+                if (int.TryParse(favInput, out fav) && (fav == 1 || fav == 0))
+                {
+                    break; // Exit loop if input is valid
+                }
+
+                Console.WriteLine("Invalid input. Please enter 1 for Yes or 0 for No.");
+            }
 
             ContactInfo contact = new ContactInfo
             {
@@ -50,27 +75,22 @@ public class UserInteraction
                 MobileNumber = mobileNumber,
                 EmailId = email,
                 Notes = note,
-                FavouriteStats = fav,
+                FavoriteStats = fav,
             };
             return contact;
         }
-        catch (InvalidCastException e)
+        catch (Exception ex)
         {
-            Console.WriteLine("Enter 1/0 for Favorites");
-            return null;
-        }
-        catch
-        {
-            Console.WriteLine("Invalid Input, Enter a valid Option/n");
+            Console.WriteLine($"An error occurred: {ex.Message}");
             return null;
         }
     }
-        /// <summary>
-        /// Search for the Contact in List
-        /// </summary>
-        /// <param name="name">Contact Name</param>
-        /// <param name="Contacts">List of Contacts</param>
-        public static List<ContactInfo> FindContact(string name, List<ContactInfo> Contacts)
+    /// <summary>
+    /// Search for the Contact in List
+    /// </summary>
+    /// <param name="name">Contact Name</param>
+    /// <param name="Contacts">List of Contacts</param>
+    public static List<ContactInfo> FindContact(string name, List<ContactInfo> Contacts)
         {
             int countOfMatches = 0;
             List<ContactInfo> recents = new List<ContactInfo>();
@@ -125,13 +145,13 @@ public class UserInteraction
             Console.WriteLine("Your List is Empty");
         }
         /// <summary>
-        /// Validates whether you are searching for favorites or recents
+        /// Validates whether you are searching for favorite or recent.
         /// </summary>
         /// <param name="choice">  </param>
         /// <param name="contact"></param>
         bool CommandValidation(int choice, ContactInfo contact)
         {
-            if (choice == 0 || contact.FavouriteStats == 1)
+            if (choice == 0 || contact.FavoriteStats == 1)
             {
                 return true;
             }
