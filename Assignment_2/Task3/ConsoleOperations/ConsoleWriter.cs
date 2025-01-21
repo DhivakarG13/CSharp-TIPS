@@ -23,26 +23,26 @@ public class ConsoleWriter
         Console.Write($"Enter Your {TypeOfData} : ");
     }
 
-    internal static void PrintAccountTypeDialouge()
+    internal static void PrintAccountTypeDialog()
     {
         Console.WriteLine("Choose Account To Handle");
         Console.WriteLine("[1]SavingsAccount [2]CheckingAccount ");
     }
 
-    internal static void PrintSearchDialouge()
+    internal static void PrintSearchDialog()
     {
         Console.WriteLine("Search by [1]Name  [2]AccountNumber");
     }
 
     internal static void PrintUserData(CustomerData customer, int index = 0)
     {
-        Console.WriteLine("---------------");
-        Console.WriteLine($"Index:{index}");
-        Console.WriteLine("------");
-        Console.WriteLine($"Customer Name: {customer.CustomerName}");
-        Console.WriteLine($"AccountNumber: {customer.AccountNumber}");
-        Console.WriteLine($"Available amount in savings Account: {customer.SavingsAccountBalance}");
-        Console.WriteLine($"Available amount in Checking Account {customer.CheckingAccountBalance}");
+        Console.WriteLine(":--------------------------");
+        Console.WriteLine($":Index:{index}");
+        Console.WriteLine(":--------------------------");
+        Console.WriteLine($": Customer Name: {customer.GetCustomerName()}");
+        Console.WriteLine($": AccountNumber: {customer.GetAccountNumber()}");
+        Console.WriteLine($": Available amount in savings Account: {customer.GetSavingsAccountBalance()}");
+        Console.WriteLine($": Available amount in Checking Account {customer.GetCheckingAccountBalance()}");
         Console.WriteLine();
 
     }

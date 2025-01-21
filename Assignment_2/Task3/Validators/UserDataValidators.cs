@@ -133,7 +133,7 @@ public class UserDataValidators
     {
         foreach (CustomerData customer in customerList)
         {
-            if (customer.AccountNumber == accountNumber)
+            if (customer.GetAccountNumber() == accountNumber)
             {
             Console.WriteLine("Account number Already Exists");
             return false;

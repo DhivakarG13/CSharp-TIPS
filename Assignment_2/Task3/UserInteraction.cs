@@ -82,7 +82,7 @@ public static class UserInteraction
     /// <returns>User's Choice ( 1/2 )</returns>
     internal static int SearchAccountDialog(List<CustomerData> customerList)
     {
-        ConsoleWriter.PrintSearchDialouge();
+        ConsoleWriter.PrintSearchDialog();
         Console.WriteLine("Enter Your Choice:");
         bool IsValidInput = false;
         string? Choice = "0";
@@ -161,7 +161,7 @@ public static class UserInteraction
     /// <returns>User chosen Account type ( 1/2) </returns>
     internal static int GetAccountType()
     {
-        ConsoleWriter.PrintAccountTypeDialouge();
+        ConsoleWriter.PrintAccountTypeDialog();
         ConsoleWriter.PrintUserDetailsFetcher("Choice");
         bool IsValidInput = false;
         string? Choice = "0";

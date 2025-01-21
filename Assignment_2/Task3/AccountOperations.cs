@@ -6,7 +6,7 @@
         List<int> foundList = new List<int>();
         foreach (CustomerData customer in customerList)
         {
-            if (customer.CustomerName.Contains(CustomerName))
+            if (customer.GetCustomerName().Contains(CustomerName))
             {
                 foundList.Add(index);
                 //ConsoleWriter.PrintUserData(customer, index);
@@ -31,7 +31,7 @@
         List<int> foundList = new List<int>();
         foreach (CustomerData customer in customerList)
         {
-            if(customer.AccountNumber == AccountNumber)
+            if(customer.GetAccountNumber() == AccountNumber)
             {
                 foundList.Add(index);
                 ConsoleWriter.PrintUserData(customer, index);

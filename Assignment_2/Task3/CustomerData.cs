@@ -1,9 +1,9 @@
 ﻿public class CustomerData: IBankAccount
 {
-    public string? CustomerName = string.Empty; 
-    public int AccountNumber = default(int);
-    public int SavingsAccountBalance = default(int);
-    public int CheckingAccountBalance = default(int);
+    private string? CustomerName = string.Empty; 
+    private int AccountNumber = default(int);
+    private int SavingsAccountBalance = default(int);
+    private int CheckingAccountBalance = default(int);
     public CustomerData(string? customerName, int accountNumber, int savingsAccountDeposit,int checkingAccountDeposit)
     {
         CustomerName = customerName;
@@ -11,6 +11,11 @@
         SavingsAccountBalance = savingsAccountDeposit;
         CheckingAccountBalance = checkingAccountDeposit;
     }
+
+    public string? GetCustomerName() => CustomerName;
+    public int GetAccountNumber() => AccountNumber;
+    public int GetSavingsAccountBalance() => SavingsAccountBalance;
+    public int GetCheckingAccountBalance() => CheckingAccountBalance;   
     public void SavingsAccountWithDrawl(int Amount ,int MinimumBalance)
     {
         if (SavingsAccountBalance - Amount >= MinimumBalance)
