@@ -38,8 +38,8 @@ public class ExpenseTracker
                     break;
                 case UserOptions.Search:
                 case UserOptions.Edit_Activity:
-                    FoundIndeces.AddRange( _data.SearchActivity());
-                    if(FoundIndeces.Count ==0 || FoundIndeces[0] == -1)
+                    FoundIndeces.AddRange(_data.SearchActivity());
+                    if (FoundIndeces.Count == 0 || FoundIndeces[0] == -1)
                     {
                         Console.WriteLine("Search Failed");
                         Console.WriteLine("Press a key to continue");
@@ -47,14 +47,14 @@ public class ExpenseTracker
                         break;
                     }
                     _data.PrintRecord(FoundIndeces);
-                    if(MainDialogChoice == UserOptions.Edit_Activity)
+                    if (MainDialogChoice == UserOptions.Edit_Activity)
                     {
                         int indexToDelete = GetUserChoice.GetChoice(FoundIndeces);
                         _data.DeleteAt(indexToDelete);
                     }
                     break;
                 case UserOptions.View_Summary:
-                    for(int index =0;index< _data.GetFinancialRecord().Count;index++ )
+                    for (int index = 0; index < _data.GetFinancialRecord().Count; index++)
                     {
                         FoundIndeces.Add(index);
                     }
