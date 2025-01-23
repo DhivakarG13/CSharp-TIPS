@@ -1,12 +1,7 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
 
-
-// Ignore Spelling: Validators
-
-
-using System.Linq;
-
-public static class UserChoiceValidators
+public static class ValidateUserChoice
 {
     internal static bool ChoiceValidate(string? Choice,int range)
     {
