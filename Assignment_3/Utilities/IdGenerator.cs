@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Inventory.Helpers
 {
     internal static class IdGenerator
     {
-        public static  int ProductIdGenerator(List<Product> ExistingProducts)
+        public static int ProductIdGenerator(List<Product> ExistingProducts)
         {
             bool IsValid = false;
             Random NewRandom = new Random();
