@@ -99,7 +99,7 @@ public static class UserDataValidators
             }
             foreach (IFinance Action in financialRecord)
             {
-                if (Action.GetTransactionId() == newId)
+                if (Action.TransactionId == newId)
                 {
                     return false;
                 }

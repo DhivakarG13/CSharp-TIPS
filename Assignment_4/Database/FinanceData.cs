@@ -1,24 +1,27 @@
-﻿
-
-public class FinaceData
+﻿public class FinanceData
 {
     private List<IFinance> FinancialRecord;
+
     private List<DateTime> ActivityTime;
+
     private int _balance = 0;
-    public FinaceData()
+
+    public FinanceData()
     {
         FinancialRecord = new List<IFinance>();
         ActivityTime = new List<DateTime>();
 
     }
+
     public List<IFinance> GetFinancialRecord() => FinancialRecord;
+    public int GetBalance() => _balance;
+
     internal void AddAction(IFinance newAction)
     {
         FinancialRecord.Add(newAction);
         ActivityTime.Add(DateTime.Now);
-        _balance += newAction.GetAmount();
+        _balance += newAction.Amount;
     }
-    public int GetBalance() =>_balance;
 
     internal List<int> SearchActivity()
     {

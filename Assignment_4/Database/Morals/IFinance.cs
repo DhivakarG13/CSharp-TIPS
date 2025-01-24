@@ -1,9 +1,11 @@
-﻿
-public interface IFinance
+﻿public interface IFinance
 {
-
-    public int GetAmount();
+    public int Amount
+    {
+        get { return Amount; }
+        private set { Amount = value; }
+    }
+    public int TransactionId { get; }
     public void PrintData();
 
-    public int GetTransactionId();
 }

@@ -1,32 +1,29 @@
-﻿
-public class Expense : IFinance
+﻿public class Expense : IFinance
 {
-    private string? _expenceType;
-    public int Amount { get; set; }
-    private int transactionId;
-    public Expense(string? ExpenceType, int amount, int transactionId)
-    {
-        _expenceType = ExpenceType;
-        Amount = amount;
-        this.transactionId = transactionId;
+    public string? ExpenseType { get; }
+
+    public int Amount 
+    { 
+        get { return -Amount; } 
+        private set { Amount = value; }
     }
+
+    public int TransactionId { get; }
+
+    public Expense(string? ExpenseType, int amount, int transactionId)
+    {
+        this.ExpenseType = ExpenseType;
+        Amount = amount;
+        this.TransactionId = transactionId;
+    }
+
     public int GetAmount() => -1 * Amount;
-    public int GetTransactionId() => transactionId;
+
+    public int GetTransactionId() => TransactionId;
+
     public void PrintData()
     {
-        ConsoleWriter.ActionWriter("Expense Type :" + _expenceType, Amount, transactionId);
+        ConsoleWriter.ActionWriter("Expense Type :" + ExpenseType, Amount, TransactionId);
     }
-}
 
-//public static int UserIdGenerator(List<StorageSlot> inventory)
-//{
-//    bool IsValid = false;
-//    Random NewRandom = new Random();
-//    int NewId = 0;
-//    while (!IsValid)
-//    {
-//        NewId = NewRandom.Next(10000, 100000);
-//        IsValid = UserDataValidators.ValidateNewUserId(NewId, inventory);
-//    }
-//    return NewId;
-//}
+}

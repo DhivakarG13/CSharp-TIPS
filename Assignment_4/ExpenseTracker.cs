@@ -1,20 +1,17 @@
-﻿
-
-
-
-public class ExpenseTracker
+﻿public class ExpenseTracker
 {
     private string? _userName;
-    private FinaceData? _data;
+    private FinanceData _data;
 
     public ExpenseTracker()
     {
-        _data = new FinaceData();
+        _data = new FinanceData();
     }
-    internal void Run()
+    public void Run()
     {
         _userName = GetUserData.GetNameValue("User Name");
         bool CloseAppFlag = false;
+
         while (!CloseAppFlag)
         {
 

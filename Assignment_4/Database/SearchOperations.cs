@@ -24,7 +24,7 @@ public static class SearchOperations
         int index = 0;
         foreach(IFinance action in FinancialRecord)
         {
-            if(action.GetTransactionId() == transactionId)
+            if(action.TransactionId == transactionId)
             {
                 return index;
             }
