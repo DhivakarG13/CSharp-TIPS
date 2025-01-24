@@ -28,7 +28,7 @@ public static class AccountOperations
         }
         else if(foundList.Count == 1)
         {
-            CustomerData.PrintUserData(customerList[foundList[0]], 0);
+            CustomerData.PrintUserData(customerList[foundList[0]]);
         }
         return foundList;
     }
@@ -41,7 +41,7 @@ public static class AccountOperations
             if(customer.AccountNumber == AccountNumber)
             {
                 foundList.Add(index);
-                CustomerData.PrintUserData(customer, index);
+                CustomerData.PrintUserData(customer);
             }
             index++;
         }

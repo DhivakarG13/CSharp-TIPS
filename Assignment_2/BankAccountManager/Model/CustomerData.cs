@@ -18,10 +18,10 @@ public class CustomerData
         CheckingAccount = new CheckingAccount(checkingAccountDeposit);
     }
 
-    public static void PrintUserData(CustomerData customer, int index = 0)
+    public static void PrintUserData(CustomerData customer)
     {
         Console.WriteLine(":--------------------------");
-        Console.WriteLine($":Index:{index}");
+        Console.WriteLine("---- YOUR ACCOUNT INFO ----");
         Console.WriteLine(":--------------------------");
         Console.WriteLine($": Customer Name: {customer.CustomerName}");
         Console.WriteLine($": AccountNumber: {customer.AccountNumber}");

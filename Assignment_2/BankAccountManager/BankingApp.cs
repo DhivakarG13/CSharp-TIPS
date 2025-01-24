@@ -39,16 +39,22 @@ while (true)
                         {
                             MatchingIndexes.AddRange(AccountOperations.SearchByName(CustomerList));
                             Console.WriteLine("---------------------------");
-                            Console.WriteLine("Press any key to continue");
-                            Console.ReadKey();
+                            if (MainPageChoice == 2)
+                            {
+                                Console.WriteLine("Press any key to continue");
+                                Console.ReadKey();
+                            }
                             break;
                         }
                     case 2:
                         {
                             MatchingIndexes.AddRange(AccountOperations.SearchByAccountNumber(CustomerList));
                             Console.WriteLine("---------------------------");
-                            Console.WriteLine("Press any key to continue");
-                            Console.ReadKey();
+                            if (MainPageChoice == 2)
+                            {
+                                Console.WriteLine("Press any key to continue");
+                                Console.ReadKey();
+                            }
                             break;
                         }
                 }
@@ -67,8 +73,7 @@ while (true)
                         {
                             Console.WriteLine("-----Initiating Cash Deposit-----");
 
-                            int IndexToOperate = UserInteraction.GetIndexToOperate(MatchingIndexes);
-                            Console.WriteLine("--------------------------------");
+                            int IndexToOperate = MatchingIndexes[0];
 
                             int accountTypeChoice = UserInteraction.GetAccountType();
                             Console.WriteLine("--------------------------------");
@@ -98,8 +103,7 @@ while (true)
                         {
                             Console.WriteLine("-----Initiating Cash Withdraw-----");
 
-                            int IndexToOperate = UserInteraction.GetIndexToOperate(MatchingIndexes);
-                            Console.WriteLine("--------------------------------");
+                            int IndexToOperate = MatchingIndexes[0];
 
                             int accountTypeChoice = UserInteraction.GetAccountType();
                             Console.WriteLine("--------------------------------");
@@ -127,7 +131,7 @@ while (true)
                     case 5: //Deleting Account
                         {
                             Console.WriteLine("------ Deleting Account -----");
-                            int IndexToDelete = UserInteraction.GetIndexToOperate(MatchingIndexes);
+                            int IndexToDelete = MatchingIndexes[0];
                             CustomerList.RemoveAt(IndexToDelete);
                             Console.WriteLine("---------------------------");
                             Console.ForegroundColor = ConsoleColor.Green;

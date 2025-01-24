@@ -58,27 +58,6 @@ public static class UserInteraction
         return int.Parse(Choice);
     }
     /// <summary>
-    /// Prints the Matching Indexes and gets a Index from User and validates.
-    /// </summary>
-    /// <param name="matchingIndexes">List of Indexes of all matching values in the search Operation</param>
-    /// <returns> Index(Integer) Chosen by user to operate.</returns>
-    internal static int GetIndexToOperate(List<int> matchingIndexes)
-    {
-        Console.WriteLine("Choose an Index To Edit:");
-        foreach (int index in matchingIndexes)
-        {
-            Console.Write($"[{index}]  ");
-        }
-        bool IsValidInput = false;
-        string? ChosenIndex = "-1";
-        while (!IsValidInput)
-        {
-            ChosenIndex = Console.ReadLine();
-            IsValidInput = ValidateUserChoice.ChoiceValidateInList(ChosenIndex, matchingIndexes);
-        }
-        return int.Parse(ChosenIndex);
-    }
-    /// <summary>
     /// Prints the dialog of Type of Account [1]Savings Account [2]Checking Account.
     /// Gets the choice and validates it.
     /// </summary>
