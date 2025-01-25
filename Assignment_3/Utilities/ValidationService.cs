@@ -1,5 +1,4 @@
-﻿
-public static class ValidationService
+﻿public static class ValidationService
 {
     public static bool ValidateChoice(string? Choice, List<int> Range)
     {
@@ -25,10 +24,9 @@ public static class ValidationService
         }
 
         MessageService.PrintWarning("Choose a valid Option to Continue");
-
         return false;
-
     }
+
     public static bool ValidateUserName(string? userName)
     {
 
@@ -55,7 +53,6 @@ public static class ValidationService
         }
 
         return true;
-
     }
 
     public static bool ValidateNumericalInputs(string? productQuantity)
@@ -83,7 +80,6 @@ public static class ValidationService
         }
 
         return true;
-
     }
 
     public static bool ValidateProductName(string? productName)
@@ -112,7 +108,6 @@ public static class ValidationService
         }
 
         return true;
-
     }
 
     public static bool IsExistingProduct(string? newProductName, List<Product>? products)
@@ -133,7 +128,6 @@ public static class ValidationService
         }
 
         return true;
-
     }
 
     public static bool ValidateNewProductId(int NewId, List<Product> existingProducts)
@@ -149,7 +143,6 @@ public static class ValidationService
                 return false;
             }
         }
-
         return true;
 
     }
@@ -171,7 +164,5 @@ public static class ValidationService
             }
         }
         return true;
-
     }
-
 }

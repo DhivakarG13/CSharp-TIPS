@@ -1,7 +1,7 @@
 ﻿
 namespace Inventory.Helpers
 {
-    internal static class IdGenerator
+    public static class IdGenerator
     {
         public static int ProductIdGenerator(List<Product> ExistingProducts)
         {
@@ -15,6 +15,7 @@ namespace Inventory.Helpers
             }
             return NewId;
         }
+
         public static int UserIdGenerator(List<StorageSlot> inventory)
         {
             bool IsValid = false;

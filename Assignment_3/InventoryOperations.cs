@@ -1,11 +1,8 @@
-﻿
-
-public class InventoryOperations
+﻿public static class InventoryOperations
 {
-    public int GetUserChoice(List<int> Range)
+    public static int GetUserChoice(List<int> Range)
     {
         Console.Write("Enter your Choice:");
-
         bool IsValid = false;
         string? Choice = null;
 
@@ -14,7 +11,6 @@ public class InventoryOperations
             Choice = Console.ReadLine();
             IsValid = ValidationService.ValidateChoice(Choice, Range);
         }
-
         // Preventing Warnings
         int ParsedChoice = -1;
 
@@ -22,15 +18,12 @@ public class InventoryOperations
         {
             ParsedChoice = int.Parse(Choice);
         }
-
         return ParsedChoice;
-
     }
 
-    public StorageSlot CreateNewStorageSlot(List<StorageSlot> inventory)
+    public static StorageSlot CreateNewStorageSlot(List<StorageSlot> inventory)
     {
         Console.Clear();
-
         Console.WriteLine("-------------------------------");
         Console.WriteLine("---Creating New Slot For You---");
         Console.WriteLine("-------------------------------");
@@ -43,19 +36,16 @@ public class InventoryOperations
         int productQuantity = UserInputService.GetProductQuantity();
 
         StorageSlot storageSlot = new StorageSlot(userName, productName, productQuantity, inventory);
+
         Console.Clear();
-
         storageSlot.PrintStorageSlotDetails();
-
         MessageService.PrintActionComplete("New Storage space created");
 
         return storageSlot;
-
     }
 
-    public int SearchInventory(List<StorageSlot> Inventory)
+    public static int SearchInventory(List<StorageSlot> Inventory)
     {
-
         Console.Clear();
         MessageService.PrintSearchDialog();
         int SearchDialogChoice = GetUserChoice(new List<int> { 1, 2, 3 });
@@ -72,14 +62,11 @@ public class InventoryOperations
         {
             FoundIndex = SearchByProductId(Inventory);
         }
-
         return FoundIndex;
-
     }
 
-    private int SearchByName(List<StorageSlot> inventory)
+    public static int SearchByName(List<StorageSlot> inventory)
     {
-
         string? userName = UserInputService.GetUserName();
         List<int> foundIndexes = new List<int>();
         int index = 0;
@@ -115,14 +102,11 @@ public class InventoryOperations
             Console.WriteLine($"Total Sub Slots : {inventory[foundIndexes[0]].Products.Count}");
             return foundIndexes[0];
         }
-
         return -1;
-
     }
 
-    private int SearchByUserId(List<StorageSlot> inventory)
+    public static int SearchByUserId(List<StorageSlot> inventory)
     {
-
         int UserId = UserInputService.GetId();
         int index = 0;
 
@@ -140,15 +124,13 @@ public class InventoryOperations
             }
             index++;
         }
-
         Console.Clear();
         MessageService.PrintError("\n\nNo results Match Your Search\n\n");
         MessageService.PrintActionFailed("Search Failed");
         return -1;
-
     }
 
-    public int SearchByProductId(List<StorageSlot> inventory)
+    public static int SearchByProductId(List<StorageSlot> inventory)
     {
         int productId = UserInputService.GetId();
         int index = 0;
@@ -167,7 +149,6 @@ public class InventoryOperations
             }
             index++;
         }
-
         Console.Clear();
         MessageService.PrintError("\n\nNo results Match Your Search\n\n");
         MessageService.PrintActionFailed("Search Failed");

@@ -1,5 +1,4 @@
-﻿
-InventoryManager inventoryManagerApp = new
+﻿InventoryManager inventoryManagerApp = new
     InventoryManager();
 
 //Booting the Application

@@ -1,11 +1,8 @@
 ﻿public class StorageSlot
 {
     public UserDetails? UserInfo { get; }
-
     public List<Product>? Products { get; }
-
     public DateTime TimeCreated { get; }
-
     public DateTime TimeLastAccessed { get; private set; }
 
     public StorageSlot(string? userName, string? productName,

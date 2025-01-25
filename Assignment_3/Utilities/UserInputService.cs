@@ -1,5 +1,4 @@
-﻿
-public static class UserInputService
+﻿public static class UserInputService
 {
     public static string? GetUserName()
     {
@@ -14,6 +13,7 @@ public static class UserInputService
         }
         return UserName;
     }
+
     public static int GetProductQuantity()
     {
         MessageService.GetUserInfoWriter("Enter Quantity : ");
@@ -49,6 +49,7 @@ public static class UserInputService
         }
         return ProductName;
     }
+
     /// <summary>
     /// Gets user Id || product Id.
     /// </summary>

@@ -2,9 +2,6 @@
 {
     private List<StorageSlot> Inventory = new List<StorageSlot>();
 
-
-    InventoryOperations inventoryOperation = new InventoryOperations();
-
     public void Run()
     {
         bool CloseFlag = false;
@@ -17,20 +14,19 @@
         while (true)
         {
             MessageService.PrintMainDialog();
-            int MainDialogChoice = inventoryOperation.GetUserChoice(new
+            int MainDialogChoice = InventoryOperations.GetUserChoice(new
                     List<int> { 1, 2, 3, 4, 5, 6, 7 });
 
             switch (MainDialogChoice)
             {
                 case 1://Create new Storage space
 
-                    Inventory.Add(inventoryOperation.CreateNewStorageSlot(Inventory));
+                    Inventory.Add(InventoryOperations.CreateNewStorageSlot(Inventory));
                     break;
 
                 case 2://Check Your Storage slot
                     {
-
-                        StorageSlotIndex = inventoryOperation.SearchInventory(Inventory);
+                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
                         if (StorageSlotIndex == -1)
                         {
                             break;
@@ -42,7 +38,7 @@
                     }
                 case 3://Add New Product slot
                     {
-                        StorageSlotIndex = inventoryOperation.SearchInventory(Inventory);
+                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
 
                         if (StorageSlotIndex == -1)
                         {
@@ -69,7 +65,7 @@
                     }
                 case 4://Add Products to your Slot
                     {
-                        StorageSlotIndex = inventoryOperation.SearchInventory(Inventory);
+                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
 
                         if (StorageSlotIndex == -1)
                         {
@@ -94,7 +90,7 @@
                     }
                 case 5://Fetch Product from your Slot
                     {
-                        StorageSlotIndex = inventoryOperation.SearchInventory(Inventory);
+                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
 
                         if (StorageSlotIndex == -1)
                         {
@@ -117,7 +113,7 @@
                     }
                 case 6://Delete your Storage
                     {
-                        int SlotIndexToDelete = inventoryOperation.SearchInventory(Inventory);
+                        int SlotIndexToDelete = InventoryOperations.SearchInventory(Inventory);
 
                         if (SlotIndexToDelete == -1)
                         {
