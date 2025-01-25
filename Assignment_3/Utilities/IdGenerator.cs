@@ -11,7 +11,7 @@ namespace Inventory.Helpers
             while (!IsValid)
             {
                 NewId = NewRandom.Next(10000, 100000);
-                IsValid = UserDataValidators.ValidateNewProductId(NewId, ExistingProducts);
+                IsValid = ValidationService.ValidateNewProductId(NewId, ExistingProducts);
             }
             return NewId;
         }
@@ -23,7 +23,7 @@ namespace Inventory.Helpers
             while (!IsValid)
             {
                 NewId = NewRandom.Next(10000, 100000);
-                IsValid = UserDataValidators.ValidateNewUserId(NewId, inventory);
+                IsValid = ValidationService.ValidateNewUserId(NewId, inventory);
             }
             return NewId;
         }

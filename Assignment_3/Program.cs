@@ -1,6 +1,6 @@
 ﻿
-InventoryManager inventoryManager = new
+InventoryManager inventoryManagerApp = new
     InventoryManager();
 
 //Booting the Application
-inventoryManager.Run();
+inventoryManagerApp.Run();

@@ -1,6 +1,6 @@
 ﻿public class StorageSlot
 {
-    public UserData? UserInfo { get; }
+    public UserDetails? UserInfo { get; }
 
     public List<Product>? Products { get; }
 
@@ -13,7 +13,7 @@
     {
         if (userName != null)
         {
-            UserInfo = new UserData(userName, inventory);
+            UserInfo = new UserDetails(userName, inventory);
             Products = new List<Product>();
             CreateNewProductSpace(productName, productQuantity);
             TimeCreated = DateTime.Now;
@@ -25,20 +25,49 @@
     {
         if (UserInfo != null && Products != null)
         {
-            UserInfo.PrintUserData();
+            UserInfo.PrintUserDetails();
 
             foreach (Product product in Products)
             {
-                product.PrintProductData();
+                product.PrintProductDetails();
             }
-
-            Console.WriteLine($"TIME CREATED       : {TimeCreated}");
-            Console.WriteLine($"TIME LAST ACCESSED : {TimeLastAccessed}");
-
+            PrintTimingDetails();
             TimeLastAccessed = DateTime.Now;
         }
     }
+    public void ViewAllProducts()
+    {
+        Console.WriteLine("Press [V] to view all your product Details or [C] to continue");
+        while (true)
+        {
+            ConsoleKeyInfo InputKey = Console.ReadKey();
+            if (InputKey.Key == ConsoleKey.V)
+            {
+                if (Products != null)
+                {
+                    foreach (Product product in Products)
+                    {
+                        product.PrintProductDetails();
+                    }
+                }
+                break;
+            }
+            else if (InputKey.Key == ConsoleKey.C)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Press an valid Key");
+            }
+        }
+    }
 
+    public void PrintTimingDetails()
+    {
+        Console.WriteLine($"TIME CREATED       : {TimeCreated}");
+        Console.WriteLine($"TIME LAST ACCESSED : {TimeLastAccessed}");
+    }
     public void ResetLastAccessTime()
     {
         TimeLastAccessed = DateTime.Now;
@@ -91,9 +120,9 @@
         {
             if (Products[FoundIndex].Quantity < productQuantity)
             {
-                DialogAndEventWriterUtility.PrintError("\nExceeded Limit\n");
-                Products[FoundIndex].PrintProductData();
-                DialogAndEventWriterUtility.PrintActionFailed("Fetch Failed");
+                MessageService.PrintError("\nExceeded Limit\n");
+                Products[FoundIndex].PrintProductDetails();
+                MessageService.PrintActionFailed("Fetch Failed");
             }
             if (FoundIndex != -1)
             {

@@ -1,4 +1,4 @@
-﻿public static class DialogAndEventWriterUtility
+﻿public static class MessageService
 {
     public static void PrintMainDialog()
     {
@@ -20,7 +20,8 @@
         Console.WriteLine("Search By :");
         Console.WriteLine("--------------------------------");
         Console.WriteLine("[1] Name");
-        Console.WriteLine("[2] User Id\n\n");
+        Console.WriteLine("[2] User Id");
+        Console.WriteLine("[3] Product Id\n\n");
     }
 
     public static void GetUserInfoWriter(string? TypeOfData)

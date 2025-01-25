@@ -14,7 +14,7 @@ public class Product
         AddProducts(productQuantity);
     }
 
-    internal void PrintProductData()
+    internal void PrintProductDetails()
     {
         Console.WriteLine($"\nPRODUCT NAME       : {ProductName}");
         Console.WriteLine($"PRODUCT ID         : {ProductId}");
