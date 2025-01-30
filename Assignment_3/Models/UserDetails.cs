@@ -8,7 +8,7 @@ public class UserDetails
     public UserDetails(string userName, List<StorageSlot> inventory)
     {
         UserName = userName;
-        UserId = IdGenerator.UserIdGenerator(inventory);
+        UserId = IdGenerateService.UserIdGenerator(inventory);
     }
 
     public void PrintUserDetails()

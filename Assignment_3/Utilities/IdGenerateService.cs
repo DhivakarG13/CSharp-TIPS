@@ -1,7 +1,7 @@
 ﻿
 namespace Inventory.Helpers
 {
-    public static class IdGenerator
+    public static class IdGenerateService
     {
         public static int ProductIdGenerator(List<Product> ExistingProducts)
         {

@@ -10,7 +10,7 @@ public class Product
               List<Product> existingProducts)
     {
         ProductName = productName;
-        ProductId = IdGenerator.ProductIdGenerator(existingProducts); ;
+        ProductId = IdGenerateService.ProductIdGenerator(existingProducts); ;
         AddProducts(productQuantity);
     }
 
