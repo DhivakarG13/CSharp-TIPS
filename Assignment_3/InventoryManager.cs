@@ -4,8 +4,8 @@
 
     public void Run()
     {
-        bool CloseFlag = false;
-        int StorageSlotIndex = -1;
+        bool closeFlag = false;
+        int storageSlotIndex = -1;
 
         //Add Description For Actions
         //Go Back To Prev Page
@@ -14,10 +14,10 @@
         while (true)
         {
             MessageService.PrintMainDialog();
-            int MainDialogChoice = InventoryOperations.GetUserChoice(new
+            int mainDialogChoice = InventoryOperations.GetUserChoice(new
                     List<int> { 1, 2, 3, 4, 5, 6, 7 });
 
-            switch (MainDialogChoice)
+            switch (mainDialogChoice)
             {
                 case 1://Create new Storage space
 
@@ -26,59 +26,59 @@
 
                 case 2://Check Your Storage slot
                     {
-                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
-                        if (StorageSlotIndex == -1)
+                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
+                        if (storageSlotIndex == -1)
                         {
                             break;
                         }
-                        Inventory[StorageSlotIndex].ViewAllProducts();
-                        Inventory[StorageSlotIndex].ResetLastAccessTime();
+                        Inventory[storageSlotIndex].ViewAllProducts();
+                        Inventory[storageSlotIndex].ResetLastAccessTime();
                         MessageService.PrintActionComplete("Search Done");
                         break;
                     }
                 case 3://Add New Product slot
                     {
-                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
+                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
 
-                        if (StorageSlotIndex == -1)
+                        if (storageSlotIndex == -1)
                         {
                             break;
                         }
 
-                        string? NewProductName = UserInputService.GetProductName();
-                        bool IsProductAlreadyExists = ValidationService.IsExistingProduct(NewProductName, Inventory[StorageSlotIndex].Products);
-                        if (IsProductAlreadyExists)
+                        string? newProductName = UserInputService.GetProductName();
+                        bool isProductAlreadyExists = ValidationService.IsExistingProduct(newProductName, Inventory[storageSlotIndex].Products);
+                        if (isProductAlreadyExists)//Adding to existing slot as the name search Matches the existing product
                         {
-                            int ProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[StorageSlotIndex].AddProducts(NewProductName, ProductQuantity);
+                            int productQuantity = UserInputService.GetProductQuantity();
+                            Inventory[storageSlotIndex].AddProducts(newProductName, productQuantity);
                             MessageService.PrintActionComplete("Adding to existing slot as the name search Matches the existing product");
                         }
-                        else //Adding to existing slot as the name search Matches the existing product
+                        else 
                         {
-                            int NewProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[StorageSlotIndex].CreateNewProductSpace(NewProductName, NewProductQuantity);
+                            int newProductQuantity = UserInputService.GetProductQuantity();
+                            Inventory[storageSlotIndex].CreateNewProductSpace(newProductName, newProductQuantity);
                             MessageService.PrintActionComplete("New product added");
                         }
-                        Inventory[StorageSlotIndex].ResetLastAccessTime();
+                        Inventory[storageSlotIndex].ResetLastAccessTime();
 
                         break;
                     }
                 case 4://Add Products to your Slot
                     {
-                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
+                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
 
-                        if (StorageSlotIndex == -1)
+                        if (storageSlotIndex == -1)
                         {
                             break;
                         }
-                        string? ProductName = UserInputService.GetProductName();
-                        bool IsProductFound = ValidationService.IsExistingProduct(ProductName, Inventory[StorageSlotIndex].Products);
-                        if (IsProductFound)
+                        string? productName = UserInputService.GetProductName();
+                        bool isProductFound = ValidationService.IsExistingProduct(productName, Inventory[storageSlotIndex].Products);
+                        if (isProductFound)
                         {
                             int ProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[StorageSlotIndex].AddProducts(ProductName, ProductQuantity);
+                            Inventory[storageSlotIndex].AddProducts(productName, ProductQuantity);
                             MessageService.PrintActionComplete("Products Added :)");
-                            Inventory[StorageSlotIndex].ResetLastAccessTime();
+                            Inventory[storageSlotIndex].ResetLastAccessTime();
                         }
                         else
                         {
@@ -90,20 +90,19 @@
                     }
                 case 5://Fetch Product from your Slot
                     {
-                        StorageSlotIndex = InventoryOperations.SearchInventory(Inventory);
+                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
 
-                        if (StorageSlotIndex == -1)
+                        if (storageSlotIndex == -1)
                         {
                             break;
                         }
-                        string? ProductName = UserInputService.GetProductName();
-                        bool IsProductFound = ValidationService.IsExistingProduct(ProductName, Inventory[StorageSlotIndex].Products);
-                        if (IsProductFound)
+                        string? productName = UserInputService.GetProductName();
+                        bool isProductFound = ValidationService.IsExistingProduct(productName, Inventory[storageSlotIndex].Products);
+                        if (isProductFound)
                         {
                             int ProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[StorageSlotIndex].FetchProducts(ProductName, ProductQuantity);
-                            MessageService.PrintActionComplete("Fetch Successful:)");
-                            Inventory[StorageSlotIndex].ResetLastAccessTime();
+                            Inventory[storageSlotIndex].FetchProducts(productName, ProductQuantity);
+                            Inventory[storageSlotIndex].ResetLastAccessTime();
                         }
                         else
                         {
@@ -113,27 +112,27 @@
                     }
                 case 6://Delete your Storage
                     {
-                        int SlotIndexToDelete = InventoryOperations.SearchInventory(Inventory);
+                        int slotIndexToDelete = InventoryOperations.SearchInventory(Inventory);
 
-                        if (SlotIndexToDelete == -1)
+                        if (slotIndexToDelete == -1)
                         {
                             break;
                         }
-                        Inventory.RemoveAt(SlotIndexToDelete);
+                        Inventory.RemoveAt(slotIndexToDelete);
                         MessageService.PrintActionComplete("Your Slot Deleted and Items are Retrieved :)");
                         break;
                     }
 
                 case 7://Closes the Application
                     {
-                        CloseFlag = true;
+                        closeFlag = true;
                         break;
                     }
             }
 
             Console.Clear();
 
-            if (CloseFlag)
+            if (closeFlag)
             {
                 break;
             }

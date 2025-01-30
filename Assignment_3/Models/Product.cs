@@ -7,10 +7,10 @@ public class Product
     public int Quantity { get; private set; }
 
     public Product(string? productName, int productQuantity,
-              List<Product> ExistingProducts)
+              List<Product> existingProducts)
     {
         ProductName = productName;
-        ProductId = IdGenerator.ProductIdGenerator(ExistingProducts); ;
+        ProductId = IdGenerator.ProductIdGenerator(existingProducts); ;
         AddProducts(productQuantity);
     }
 

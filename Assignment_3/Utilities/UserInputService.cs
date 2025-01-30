@@ -3,51 +3,51 @@
     public static string? GetUserName()
     {
         MessageService.GetUserInfoWriter("\nEnter User Name : ");
-        bool IsValidUserName = false;
-        string? UserName = null;
+        bool isValidUserName = false;
+        string? userName = null;
 
-        while (!IsValidUserName)
+        while (!isValidUserName)
         {
-            UserName = Console.ReadLine();
-            IsValidUserName = ValidationService.ValidateUserName(UserName);
+            userName = Console.ReadLine();
+            isValidUserName = ValidationService.ValidateUserName(userName);
         }
-        return UserName;
+        return userName;
     }
 
     public static int GetProductQuantity()
     {
         MessageService.GetUserInfoWriter("Enter Quantity : ");
-        bool IsValidQuantity = false;
-        string? ProductQuantity = null;
+        bool isValidQuantity = false;
+        string? productQuantity = null;
 
-        while (!IsValidQuantity)
+        while (!isValidQuantity)
         {
-            ProductQuantity = Console.ReadLine();
-            IsValidQuantity = ValidationService.ValidateNumericalInputs(ProductQuantity);
+            productQuantity = Console.ReadLine();
+            isValidQuantity = ValidationService.ValidateNumericalInputs(productQuantity);
         }
 
-        int ParsedProductQuantity = default;
+        int parsedProductQuantity = default;
 
-        if (ProductQuantity != null)
+        if (productQuantity != null)
         {
-            IsValidQuantity = int.TryParse(ProductQuantity, out ParsedProductQuantity);
+            isValidQuantity = int.TryParse(productQuantity, out parsedProductQuantity);
         }
 
-        return ParsedProductQuantity;
+        return parsedProductQuantity;
     }
 
     public static string? GetProductName()
     {
         MessageService.GetUserInfoWriter("Enter Product Name : ");
-        bool IsValidProductName = false;
-        string? ProductName = null;
+        bool isValidProductName = false;
+        string? productName = null;
 
-        while (!IsValidProductName)
+        while (!isValidProductName)
         {
-            ProductName = Console.ReadLine();
-            IsValidProductName = ValidationService.ValidateProductName(ProductName);
+            productName = Console.ReadLine();
+            isValidProductName = ValidationService.ValidateProductName(productName);
         }
-        return ProductName;
+        return productName;
     }
 
     /// <summary>
@@ -57,22 +57,22 @@
     public static int GetId()
     {
         MessageService.GetUserInfoWriter("Enter Id : ");
-        bool IsValidId = false;
-        string? UserId = null;
+        bool isValidId = false;
+        string? userId = null;
 
-        while (!IsValidId)
+        while (!isValidId)
         {
-            UserId = Console.ReadLine();
-            IsValidId = ValidationService.ValidateNumericalInputs(UserId);
+            userId = Console.ReadLine();
+            isValidId = ValidationService.ValidateNumericalInputs(userId);
         }
 
-        int ParsedUserId = default;
+        int parsedUserId = default;
 
-        if (UserId != null)
+        if (userId != null)
         {
-            IsValidId = int.TryParse(UserId, out ParsedUserId);
+            isValidId = int.TryParse(userId, out parsedUserId);
         }
 
-        return ParsedUserId;
+        return parsedUserId;
     }
 }

@@ -81,12 +81,12 @@
 
     public void AddProducts(string? productName, int productQuantity)
     {
-        int FoundIndex = this.FindProduct(productName);
+        int foundIndex = this.FindProduct(productName);
         if (Products != null)
         {
-            if (FoundIndex != -1)
+            if (foundIndex != -1)
             {
-                Products[FoundIndex].AddProducts(productQuantity);
+                Products[foundIndex].AddProducts(productQuantity);
             }
         }
     }
@@ -111,20 +111,22 @@
 
     public void FetchProducts(string? productName, int productQuantity)
     {
-        int FoundIndex = this.FindProduct(productName);
+        int foundIndex = this.FindProduct(productName);
 
         if (Products != null)
         {
-            if (Products[FoundIndex].Quantity < productQuantity)
+            if (Products[foundIndex].Quantity < productQuantity)
             {
                 MessageService.PrintError("\nExceeded Limit\n");
-                Products[FoundIndex].PrintProductDetails();
+                Products[foundIndex].PrintProductDetails();
                 MessageService.PrintActionFailed("Fetch Failed");
             }
-            if (FoundIndex != -1)
+            else if (foundIndex != -1)
             {
-                Products[FoundIndex].FetchProducts(productQuantity);
+                Products[foundIndex].FetchProducts(productQuantity);
+                MessageService.PrintActionComplete("Fetch Successful:)");
             }
         }
     }
 }
+S

@@ -5,28 +5,28 @@ namespace Inventory.Helpers
     {
         public static int ProductIdGenerator(List<Product> ExistingProducts)
         {
-            bool IsValid = false;
-            Random NewRandom = new Random();
-            int NewId = 0;
-            while (!IsValid)
+            bool isValidId = false;
+            Random newRandom = new Random();
+            int newId = 0;
+            while (!isValidId)
             {
-                NewId = NewRandom.Next(10000, 100000);
-                IsValid = ValidationService.ValidateNewProductId(NewId, ExistingProducts);
+                newId = newRandom.Next(10000, 100000);
+                isValidId = ValidationService.ValidateNewProductId(newId, ExistingProducts);
             }
-            return NewId;
+            return newId;
         }
 
         public static int UserIdGenerator(List<StorageSlot> inventory)
         {
-            bool IsValid = false;
-            Random NewRandom = new Random();
-            int NewId = 0;
-            while (!IsValid)
+            bool isValidUserId = false;
+            Random newRandom = new Random();
+            int newId = 0;
+            while (!isValidUserId)
             {
-                NewId = NewRandom.Next(10000, 100000);
-                IsValid = ValidationService.ValidateNewUserId(NewId, inventory);
+                newId = newRandom.Next(10000, 100000);
+                isValidUserId = ValidationService.ValidateNewUserId(newId, inventory);
             }
-            return NewId;
+            return newId;
         }
     }
 }

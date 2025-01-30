@@ -1,24 +1,24 @@
 ﻿public static class ValidationService
 {
-    public static bool ValidateChoice(string? Choice, List<int> Range)
+    public static bool ValidateChoice(string? choice, List<int> Range)
     {
 
-        if (Choice == null)
+        if (choice == null)
         {
             MessageService.PrintWarning("Choose a Option to continue");
             return false;
         }
 
-        int ParsedChoice = default;
-        bool IsParsable = false;
-        IsParsable = int.TryParse(Choice, out ParsedChoice);
+        int parsedChoice = default;
+        bool isParse_Able = false;
+        isParse_Able = int.TryParse(choice, out parsedChoice);
 
-        if (!IsParsable)
+        if (!isParse_Able)
         {
             MessageService.PrintWarning("Enter a Valid Number to Continue");
             return false;
         }
-        if (Range.Contains(ParsedChoice))
+        if (Range.Contains(parsedChoice))
         {
             return true;
         }
@@ -66,9 +66,9 @@
 
         int parsedQuantity;
 
-        bool IsInteger = int.TryParse(productQuantity, out parsedQuantity);
+        bool isInteger = int.TryParse(productQuantity, out parsedQuantity);
 
-        if (IsInteger == false)
+        if (isInteger == false)
         {
             MessageService.PrintWarning("Numerical values Expected");
             return false;
@@ -127,7 +127,7 @@
             }
         }
 
-        return true;
+        return false;
     }
 
     public static bool ValidateNewProductId(int NewId, List<Product> existingProducts)
