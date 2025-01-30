@@ -3,17 +3,18 @@
 
 public static class GetUserChoice
 {
-    internal static int GetChoice(List<int> Range)
+    public static int GetChoice(List<int> Range)
     {
         string? Choice = null;
-        bool IsValid = false;
-        while (!IsValid)
+        bool IsValidChoice = false;
+        while (!IsValidChoice)
         {
             Console.Write("Enter Your Choice:");
             Choice = ConsoleReader.GetInput();
-            IsValid = ChoiceValidators.ChoiceValidator(Choice, Range);
+            IsValidChoice = ChoiceValidateUtility.ValidateChoice(Choice, Range);
             Console.WriteLine();
         }
-        return int.Parse(Choice); 
+        IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
+        return ParsedChoice; 
     }
 }

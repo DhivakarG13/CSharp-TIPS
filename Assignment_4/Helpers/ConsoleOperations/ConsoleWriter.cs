@@ -4,7 +4,7 @@ using System;
 
 public static class ConsoleWriter
 {
-    internal static void PrintMainDialog()
+    public static void PrintMainDialog()
     {
         Console.WriteLine("---------------------------");
         Console.WriteLine("------Expense Tracker------");
@@ -13,64 +13,98 @@ public static class ConsoleWriter
         int index = 1;
         foreach (string value in Enum.GetNames(typeof(UserOptions)))
         {
-            Console.WriteLine($":   [{index}] {value}      :");
+            Console.WriteLine($":   [{index}] {value}      ");
             index++;
         }
         Console.WriteLine("\n\n");
     }
-    internal static void PrintIncomeDialog()
+
+    public static void PrintIncomeDialog(Enum a)
     {
         Console.WriteLine("Available Options:");
         int index = 1;
-        foreach (string value in Enum.GetNames(typeof(IncomeOption)))
+        foreach (string value in Enum.GetNames(a.GetType()))
         {
-            Console.WriteLine($"[{index}] {value}   ");
+            Console.WriteLine($":     [{index}] {value}   ");
             index++;
         }
+        Console.WriteLine("\n\n");
     }
-    internal static void PrintExpenseDialog()
+
+    public static void PrintSetTimeDialog()
+    {
+        Console.WriteLine("\n - - Add Time For Your Task - - \n");
+        Console.WriteLine("Available Options:");
+        int index = 1;
+        foreach (string value in Enum.GetNames(typeof(SetTimeOption)))
+        {
+            Console.WriteLine($":     [{index}] {value}   ");
+            index++;
+        }
+        Console.WriteLine("\n\n");
+    }
+
+    public static void PrintExpenseDialog()
     {
         Console.WriteLine("Available Options:");
         int index = 1;
         foreach (string value in Enum.GetNames(typeof(ExpenseOption)))
         {
-            Console.WriteLine($"[{index}] {value}   ");
+            Console.WriteLine($":     [{index}] {value}   ");
             index++;
         }
+        Console.WriteLine("\n\n");
     }
-    internal static void PrintSearchDialog()
+
+    public static void PrintSearchDialog()
     {
         Console.WriteLine("Available Options:");
         int index = 1;
         foreach (string value in Enum.GetNames(typeof(SearchOption)))
         {
-            Console.WriteLine($"[{index}] {value}   ");
+            Console.WriteLine($":     [{index}] {value}   ");
             index++;
         }
+        Console.WriteLine("\n\n");
     }
-    internal static void PrintSearchByActionDialog()
+
+    public static void PrintSearchByActionDialog()
     {
         Console.WriteLine("Available Options:");
         int index = 1;
         foreach (string value in Enum.GetNames(typeof(Actions)))
         {
-            Console.WriteLine($"[{index}] {value}   ");
+            Console.WriteLine($":     [{index}] {value}   ");
             index++;
         }
+        Console.WriteLine("\n\n");
     }
-    internal static void GetUserInfoWriter(string? TypeOfData)
+    public static void PrintEditChoiceDialog()
     {
-        Console.ForegroundColor = ConsoleColor.DarkBlue;
+        Console.WriteLine("Available Options:");
+        int index = 1;
+        foreach (string value in Enum.GetNames(typeof(EditOptions)))
+        {
+            Console.WriteLine($":     [{index}] {value}   ");
+            index++;
+        }
+        Console.WriteLine("\n\n");
+    }
+    public static void GetActionInfoWriter(string? TypeOfData)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.Write($"{TypeOfData}");
         Console.ResetColor();
     }
-    internal static void PrintError(string? ErrorMessage)
+
+    public static void PrintError(string? ErrorMessage)
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"{ErrorMessage}");
         Console.ResetColor();
     }
-    internal static void PrintBalance(int Balance)
+
+    public static void PrintBalance(int Balance)
     {
         if(Balance < 0)
         {
@@ -82,14 +116,19 @@ public static class ConsoleWriter
             Console.WriteLine($"Available Balance : {Balance}");
             Console.ResetColor();
         }
+        Console.WriteLine("---------------------------\n\n\n");
+        Console.WriteLine("Press Any Key to continue");
+        Console.ReadKey();
     }
-    internal static void PrintWarning(string? WarningMessage)
+
+    public static void PrintWarning(string? WarningMessage)
     {
         Console.ForegroundColor = ConsoleColor.DarkGray;
         Console.WriteLine($"{WarningMessage}");
         Console.ResetColor();
     }
-    internal static void PrintActionComplete(string? Message)
+
+    public static void PrintActionComplete(string? Message)
     {
         Console.WriteLine("---------------------------");
         Console.ForegroundColor = ConsoleColor.Green;
@@ -100,10 +139,4 @@ public static class ConsoleWriter
         Console.ReadKey();
     }
 
-    internal static void ActionWriter(string? action, int amount, int transactionId)
-    {
-        Console.WriteLine(action);
-        Console.WriteLine($"Amount : {amount}");
-        Console.WriteLine($"Transaction Id :{transactionId}");
-    }
 }

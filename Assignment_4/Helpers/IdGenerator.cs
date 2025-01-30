@@ -9,7 +9,7 @@ internal static class IdGenerator
         while (!IsValid)
         {
             NewId = NewRandom.Next(10000, 100000);
-            IsValid = UserDataValidators.ValidateNewTransactionId(NewId, FinancialRecord);
+            IsValid = UserDataValidateUtility.ValidateNewTransactionId(NewId, FinancialRecord);
         }
         return NewId;
     }

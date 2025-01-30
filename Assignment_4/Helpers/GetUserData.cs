@@ -1,112 +1,155 @@
 ﻿
+using System;
 using System.Transactions;
 
 public static class GetUserData
 {
-    public static string? GetNameValue(string? TypeOfData)
+
+    public static string? GetSource(string Action)
+    {
+        bool IsValidSource = false;
+        string? Source = "";
+
+        while (!IsValidSource)
+        {
+            ConsoleWriter.GetActionInfoWriter(Action + " Source :");
+            Source = ConsoleReader.GetInput();
+            IsValidSource = UserDataValidateUtility.ValidateSource(Source);
+        }
+        return Source;
+    }
+
+    public static (ExpenseOption,string?) GetExpenseSource()
+    {
+        ConsoleWriter.PrintExpenseDialog();
+        int ExpenseChoice = GetUserChoice.GetChoice(
+            new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
+        string? source = "";
+        if (ExpenseChoice == 11)
+        {
+            source = GetUserData.GetSource("Source");
+        }
+        (ExpenseOption, string?) ExpenseSource = ((ExpenseOption)ExpenseChoice,source);
+        return ExpenseSource;
+    }
+
+    public static (IncomeOption, string?) GetIncomeSource()
+    {
+        ConsoleWriter.PrintIncomeDialog(new IncomeOption());
+        int IncomeChoice = GetUserChoice.GetChoice(
+            new List<int> { 1, 2, 3, 4 });
+        string? source = "";
+        if (IncomeChoice == 4)
+        {
+            source = GetUserData.GetSource("Source");
+        }
+        (IncomeOption, string ?) IncomeSource = ((IncomeOption)IncomeChoice, source);
+
+        return IncomeSource;
+    }
+
+    public static int GetAmount()
     {
         bool IsValid = false;
-        string? UserName = null;
+        string? Amount = null;
 
         while (!IsValid)
         {
-            ConsoleWriter.GetUserInfoWriter($"Enter {TypeOfData} : ");
-            UserName = ConsoleReader.GetInput();
-            IsValid = UserDataValidators.ValidateUserName(UserName);
+            ConsoleWriter.GetActionInfoWriter("Amount :");
+            Amount = ConsoleReader.GetInput();
+            IsValid = UserDataValidateUtility.ValidateNumericalInputs(Amount);
         }
-        Console.Clear();
-        return UserName;
+
+        int ParsedAmount = default;
+        int.TryParse(Amount, out ParsedAmount);
+
+        return ParsedAmount;
     }
 
-    internal static Income GetIncome(List<IFinance> FinancialRecord)
+    public static int GetActionId()
     {
-        string? source = null;
-        int Amount = 0;
-        int transactionId = 0;
-        ConsoleWriter.PrintIncomeDialog();
-        source = GetIncomeSource();
-        Amount = GetAmount();
-        transactionId = IdGenerator.TransactionIdGenerator(FinancialRecord);
-        return new Income(source , Amount, transactionId);
-    }
-    internal static Expense? GetExpense(List<IFinance> FinancialRecord)
-    {
-        string? source = null;
-        int Amount = 0;
-        int transactionId = 0;
-        ConsoleWriter.PrintExpenseDialog();
-        source = GetExpenseSource();
-        Amount = GetAmount();
-        transactionId = IdGenerator.TransactionIdGenerator(FinancialRecord);
-        return new Expense(source, Amount, transactionId);
-    }
+        bool IsValidActionId = false;
+        string? ActionId = null;
 
-    private static string? GetExpenseSource()
-    {
-        int ExpenseChoice = GetUserChoice.GetChoice(
-            new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
-        if (ExpenseChoice == 11)
+        while (!IsValidActionId)
         {
-            string? source = GetUserData.GetNameValue("Source");
-            return source;
+            ConsoleWriter.GetActionInfoWriter("ActionId :");
+            ActionId = ConsoleReader.GetInput();
+            IsValidActionId = UserDataValidateUtility.ValidateNumericalInputs(ActionId);
         }
-        return Enum.GetName(typeof(ExpenseOption), ExpenseChoice);
+        int ParsedActionId = default;
+        int.TryParse(ActionId, out ParsedActionId);
+
+        return ParsedActionId;
     }
 
-    private static string? GetIncomeSource()
+    public static DateOnly GetActivityTime()
     {
-        int IncomeChoice = GetUserChoice.GetChoice(
-            new List<int> { 1, 2, 3, 4 });
-        if (IncomeChoice == 4)
+        bool IsValidDate = false;
+        string? ActionDate = null;
+
+        while (!IsValidDate)
         {
-            string? source = GetUserData.GetNameValue("Source");
-            return source;
+            ConsoleWriter.GetActionInfoWriter("Action Date :");
+            ActionDate = ConsoleReader.GetInput();
+            IsValidDate = UserDataValidateUtility.ValidateDateInputs(ActionDate);
         }
-        return Enum.GetName(typeof(IncomeOption), IncomeChoice);
+        DateTime ParsedActionDate = default;
+        DateTime.TryParse(ActionDate, out ParsedActionDate);
+
+        return DateOnly.FromDateTime(ParsedActionDate);
     }
 
-    internal static string GetSearchChoice()
+    public static SearchOption GetSearchChoice()
     {
         ConsoleWriter.PrintSearchDialog();
 
-       int SearchChoice = GetUserChoice.GetChoice(
-            new List<int> { 1, 2 }); 
-        return Enum.GetName(typeof(SearchOption), SearchChoice);
-    }
-public static int GetAmount()
-    {
-        bool IsValid = false;
-        string? NumericalValue = null;
+        int  SearchChoice = GetUserChoice.GetChoice(new List<int> { 1, 2, 3 ,4});
 
-        while (!IsValid)
-        {
-            ConsoleWriter.GetUserInfoWriter("Amount :");
-            NumericalValue = ConsoleReader.GetInput();
-            IsValid = UserDataValidators.ValidateNumericalInputs(NumericalValue);
-        }
-        return int.Parse(NumericalValue);
+        return (SearchOption)SearchChoice;
     }
 
-    internal static string GetSearchByActionChoice()
+    public static Actions GetSearchByActionChoice()
     {
         ConsoleWriter.PrintSearchByActionDialog();
 
-        int SearchChoice = GetUserChoice.GetChoice(
-             new List<int> { 1, 2 });
-        return Enum.GetName(typeof(Actions), SearchChoice);
+        int SearchChoice = GetUserChoice.GetChoice(new List<int> { 1, 2 });
+
+        return (Actions)SearchChoice;
     }
 
-    internal static int GetActionId()
+    public static SetTimeOption GetSetTimeChoice()
     {
-        bool IsValid = false;
-        string? NumericalValue = null;
+        ConsoleWriter.PrintSetTimeDialog();
 
-        while (!IsValid)
+        int SearchChoice = GetUserChoice.GetChoice(new List<int> { 1, 2 });
+
+        return (SetTimeOption)SearchChoice;
+    }
+
+    public static EditOptions GetTaskEditChoice()
+    {
+        ConsoleWriter.PrintEditChoiceDialog();
+
+        int TaskEditChoice = GetUserChoice.GetChoice(new List<int> { 1, 2 ,3});
+
+        return (EditOptions)TaskEditChoice;
+    }
+
+    public static int GetNumber(string typeOfData)
+    {
+        Console.Write($"Enter Your {typeOfData}:");
+        bool IsNumberValid = false;
+        string? ValidNumber = null;
+        while (!IsNumberValid)
         {
-            ConsoleWriter.GetUserInfoWriter("ActionId :");
-            NumericalValue = ConsoleReader.GetInput();
-            IsValid = UserDataValidators.ValidateNumericalInputs(NumericalValue);
+            ValidNumber = Console.ReadLine();
+            IsNumberValid = UserDataValidateUtility.ValidateNumericalInputs(ValidNumber);
         }
-        return int.Parse(NumericalValue);
+
+        int ParsedValidNumber = default;
+        int.TryParse(ValidNumber, out ParsedValidNumber);
+
+        return ParsedValidNumber;
     }
 }

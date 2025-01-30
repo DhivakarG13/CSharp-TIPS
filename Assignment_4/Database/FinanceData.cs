@@ -1,48 +1,109 @@
-﻿public class FinanceData
+﻿using System.Data;
+
+public class FinanceData
 {
-    private List<IFinance> FinancialRecord;
+    public List<IFinance> FinancialRecord { get; private set; }
 
-    private List<DateTime> ActivityTime;
-
-    private int _balance = 0;
+    public List<DateOnly> ActivityTimeRecord { get; private set; }
 
     public FinanceData()
     {
         FinancialRecord = new List<IFinance>();
-        ActivityTime = new List<DateTime>();
+        ActivityTimeRecord = new List<DateOnly>();
 
     }
 
-    public List<IFinance> GetFinancialRecord() => FinancialRecord;
-    public int GetBalance() => _balance;
 
-    internal void AddAction(IFinance newAction)
+    public void AddAction(IFinance newAction)
     {
         FinancialRecord.Add(newAction);
-        ActivityTime.Add(DateTime.Now);
-        _balance += newAction.Amount;
+        ActivityTimeRecord.Add(GetActivityTime());
+        ConsoleWriter.PrintActionComplete("");
     }
 
-    internal List<int> SearchActivity()
+    private DateOnly GetActivityTime()
     {
-        List<int> FoundIndeces = new List<int>();
-        FoundIndeces.AddRange(SearchOperations.GetSearchResults(FinancialRecord));
-        return FoundIndeces;
-    }
-
-    internal void PrintRecord(List<int> foundIndeces)
-    {
-        foreach(int index in foundIndeces)
+        SetTimeOption UserSetTimeChoice = GetUserData.GetSetTimeChoice();
+        switch (UserSetTimeChoice)
         {
-            Console.WriteLine($"Index: [{index}]");
-            FinancialRecord[index].PrintData();
-            Console.WriteLine(ActivityTime[index]);
+            case SetTimeOption.Own_Time:
+                return GetUserData.GetActivityTime();
+            case SetTimeOption.Current_Time:
+                return DateOnly.FromDateTime(DateTime.Now);
+            default:
+                return DateOnly.FromDateTime(DateTime.Now);
         }
     }
 
-    internal void DeleteAt(int indexToDelete)
+    public List<int> SearchActivity()
+    {
+        List<int> FoundIndexes = new List<int>();
+        FoundIndexes.AddRange(SearchOperations.GetSearchResults(FinancialRecord, ActivityTimeRecord));
+        PrintRecord(FoundIndexes);
+        return FoundIndexes;
+    }
+
+    public void EditActivity(int indexToEdit)
+    {
+        EditOptions UserEditChoice = GetUserData.GetTaskEditChoice();
+
+        switch (UserEditChoice)
+        {
+            case EditOptions.Edit_Source:
+                FinancialRecord[indexToEdit].SetSource();
+                break;
+            case EditOptions.Edit_Amount:
+                FinancialRecord[indexToEdit].SetAmount();
+                break;
+            case EditOptions.Edit_Time:
+                ActivityTimeRecord[indexToEdit] = GetActivityTime();
+                break;
+        }
+
+    }
+
+    public void PrintRecord(List<int> FoundIndexes)
+    {
+        if (FoundIndexes.Count == 0 || FoundIndexes[0] == -1)
+        {
+            Console.WriteLine("No Values matches your Input");
+            Console.WriteLine("Press a key to continue");
+            Console.ReadKey();
+        }
+        else
+        {
+            foreach (int index in FoundIndexes)
+            {
+                Console.WriteLine($"Index: [{index}]");
+                FinancialRecord[index].PrintData();
+                Console.WriteLine(ActivityTimeRecord[index]);
+            }
+            ConsoleWriter.PrintActionComplete("Search Successful");
+        }
+    }
+
+    public void DeleteAt(int indexToDelete)
     {
         FinancialRecord.RemoveAt(indexToDelete);
-        ActivityTime.RemoveAt(indexToDelete);
+        ActivityTimeRecord.RemoveAt(indexToDelete);
+        ConsoleWriter.PrintActionComplete("Delete Successful");
+    }
+
+    public void PrintBalance()
+    {
+        int Balance = 0;
+        foreach (IFinance Action in FinancialRecord)
+        {
+            if (Action.GetType().ToString() == "Income")
+            {
+                Balance += Action.Amount;
+            }
+            if (Action.GetType().ToString() == "Expense")
+            {
+                Balance -= Action.Amount;
+            }
+        }
+        ConsoleWriter.PrintBalance(Balance);
+
     }
 }

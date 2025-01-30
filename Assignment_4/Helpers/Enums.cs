@@ -6,6 +6,7 @@ public enum UserOptions
     Search,
     View_Balance,
     View_Summary,
+    Delete_Activity,
     Edit_Activity,
     Close_App
 }
@@ -24,7 +25,11 @@ public enum ExpenseOption
     Grooming,
     Other
 }
-
+public enum SetTimeOption
+{
+    Current_Time = 1,
+    Own_Time
+}
 
 public enum IncomeOption
 {
@@ -36,12 +41,20 @@ public enum IncomeOption
 
 public enum SearchOption
 {
-    Action = 1,
-    ActionId
+    Source = 1,
+    Action,
+    ActionId,
+    ActionDate
 }
 
 public enum Actions
 {
     Income = 1,
-    Expence
+    Expense
+}
+public enum EditOptions
+{
+    Edit_Source=1,
+    Edit_Amount,
+    Edit_Time
 }

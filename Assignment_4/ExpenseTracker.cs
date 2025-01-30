@@ -1,6 +1,5 @@
 ﻿public class ExpenseTracker
 {
-    private string? _userName;
     private FinanceData _data;
 
     public ExpenseTracker()
@@ -9,65 +8,88 @@
     }
     public void Run()
     {
-        _userName = GetUserData.GetNameValue("User Name");
         bool CloseAppFlag = false;
 
         while (!CloseAppFlag)
         {
 
-            List<int> FoundIndeces = new List<int>();
             ConsoleWriter.PrintMainDialog();
             UserOptions MainDialogChoice = (UserOptions)GetUserChoice.GetChoice(
-                new List<int> { 1, 2, 3, 4, 5, 6, 7 });
-
+                new List<int> { 1, 2, 3, 4, 5, 6, 7 ,8});
+            List<int> FoundIndexes = new List<int>();
+            Console.Clear();
             switch (MainDialogChoice)
             {
+
                 case UserOptions.Add_Income:
-                    Income? newIncome = GetUserData.GetIncome(_data.GetFinancialRecord());
-                    _data.AddAction(newIncome);
-                    break;
+                    {
+                        _data.AddAction(new Income(_data.FinancialRecord));
+                        ConsoleWriter.PrintActionComplete("Income Added Successfully");
+                        break;
+                    }
+
                 case UserOptions.Add_Expense:
-                    Expense? newExpense = GetUserData.GetExpense(_data.GetFinancialRecord());
-                    _data.AddAction(newExpense);
-                    break;
+                    {
+                        _data.AddAction(new Expense(_data.FinancialRecord));
+                        ConsoleWriter.PrintActionComplete("Expense Added Successfully");
+                        break;
+                    }
+
                 case UserOptions.View_Balance:
-                    ConsoleWriter.PrintBalance(_data.GetBalance());
-                    break;
+                    {
+                        _data.PrintBalance();
+                        break;
+                    }
+
                 case UserOptions.Search:
+                    {
+                        _data.SearchActivity();
+                        break;
+                    }
+
                 case UserOptions.Edit_Activity:
-                    FoundIndeces.AddRange(_data.SearchActivity());
-                    if (FoundIndeces.Count == 0 || FoundIndeces[0] == -1)
                     {
-                        Console.WriteLine("Search Failed");
-                        Console.WriteLine("Press a key to continue");
-                        Console.ReadKey();
+                        FoundIndexes.AddRange(_data.SearchActivity());
+                        if (FoundIndexes.Count() > 0 || FoundIndexes[0] != -1)
+                        {
+                            int indexToEdit = GetUserChoice.GetChoice(FoundIndexes);
+                            _data.EditActivity(indexToEdit);
+                            ConsoleWriter.PrintActionComplete("Action Updated Successfully");
+                        }
                         break;
                     }
-                    _data.PrintRecord(FoundIndeces);
-                    if (MainDialogChoice == UserOptions.Edit_Activity)
+
+                case UserOptions.Delete_Activity:
                     {
-                        int indexToDelete = GetUserChoice.GetChoice(FoundIndeces);
-                        _data.DeleteAt(indexToDelete);
+                        FoundIndexes.AddRange(_data.SearchActivity());
+                        if (FoundIndexes.Count() > 0 || FoundIndexes[0] != -1)
+                        {
+                            int indexToDelete = GetUserChoice.GetChoice(FoundIndexes);
+                            _data.DeleteAt(indexToDelete);
+                            ConsoleWriter.PrintActionComplete("Deleted Successfully");
+                        }
+                        break;
                     }
-                    break;
+
+
                 case UserOptions.View_Summary:
-                    for (int index = 0; index < _data.GetFinancialRecord().Count; index++)
                     {
-                        FoundIndeces.Add(index);
-                    }
-                    if (FoundIndeces.Count == 0 || FoundIndeces[0] == -1)
-                    {
-                        Console.WriteLine("No Summary to display");
-                        Console.WriteLine("Press a key to continue");
-                        Console.ReadKey();
+                        for (int index = 0; index < _data.FinancialRecord.Count; index++)
+                        {
+                            FoundIndexes.Add(index);
+                        }
+                        _data.PrintRecord(FoundIndexes);
                         break;
                     }
-                    _data.PrintRecord(FoundIndeces);
-                    break;
+
                 case UserOptions.Close_App:
-                    CloseAppFlag = true;
-                    break;
+                    {
+                        CloseAppFlag = true;
+                        break;
+                    }
+
             }
+            Console.Clear();
         }
     }
 }
