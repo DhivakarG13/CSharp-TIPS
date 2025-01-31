@@ -15,18 +15,5 @@ namespace Inventory.Helpers
             }
             return newId;
         }
-
-        public static int UserIdGenerator(List<StorageSlot> inventory)
-        {
-            bool isValidUserId = false;
-            Random newRandom = new Random();
-            int newId = 0;
-            while (!isValidUserId)
-            {
-                newId = newRandom.Next(10000, 100000);
-                isValidUserId = ValidationService.ValidateNewUserId(newId, inventory);
-            }
-            return newId;
-        }
     }
 }

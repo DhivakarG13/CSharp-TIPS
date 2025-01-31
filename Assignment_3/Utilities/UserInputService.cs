@@ -1,18 +1,5 @@
 ﻿public static class UserInputService
 {
-    public static string? GetUserName()
-    {
-        MessageService.GetUserInfoWriter("\nEnter User Name : ");
-        bool isValidUserName = false;
-        string? userName = null;
-
-        while (!isValidUserName)
-        {
-            userName = Console.ReadLine();
-            isValidUserName = ValidationService.ValidateUserName(userName);
-        }
-        return userName;
-    }
 
     public static int GetProductQuantity()
     {
@@ -54,7 +41,7 @@
     /// Gets user Id || product Id.
     /// </summary>
     /// <returns>user Id || product Id</returns>
-    public static int GetId()
+    public static int GetProductId()
     {
         MessageService.GetUserInfoWriter("Enter Id : ");
         bool isValidId = false;

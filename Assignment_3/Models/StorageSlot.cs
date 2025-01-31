@@ -2,29 +2,23 @@
 
 public class StorageSlot
 {
-    public UserDetails? UserInfo { get; }
     public List<Product>? Products { get; }
     public DateTime TimeCreated { get; }
     public DateTime TimeLastAccessed { get; private set; }
 
-    public StorageSlot(string? userName,int userId, string? productName,
+    public StorageSlot(string? productName,
         int productQuantity)
     {
-        if (userName != null)
-        {
-            UserInfo = new UserDetails(userName, userId);
             Products = new List<Product>();
             CreateNewProductSpace(productName, productQuantity);
             TimeCreated = DateTime.Now;
             TimeLastAccessed = DateTime.Now;
-        }
     }
 
     public void PrintStorageSlotDetails()
     {
-        if (UserInfo != null && Products != null)
+        if (Products != null)
         {
-            UserInfo.PrintUserDetails();
 
             foreach (Product product in Products)
             {

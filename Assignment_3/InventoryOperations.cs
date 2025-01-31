@@ -33,12 +33,10 @@ public static class InventoryOperations
         Console.WriteLine("\n\n----- :For User Name: At least 5 Characters required and At least 1 Alphabet required-----");
         Console.WriteLine("----- :For Product Name: At least 5 Characters required and no special characters or numbers are allowed-----");
 
-        string? userName = UserInputService.GetUserName();
-        int userId = IdGenerateService.UserIdGenerator(inventory);
         string? productName = UserInputService.GetProductName();
         int productQuantity = UserInputService.GetProductQuantity();
 
-        StorageSlot storageSlot = new StorageSlot(userName, userId, productName, productQuantity);
+        StorageSlot storageSlot = new StorageSlot(productName, productQuantity);
 
         Console.Clear();
         storageSlot.PrintStorageSlotDetails();
@@ -53,92 +51,16 @@ public static class InventoryOperations
         MessageService.PrintSearchDialog();
         int searchDialogChoice = GetUserChoice(new List<int> { 1, 2, 3 });
         int foundIndex = -1;
-        if (searchDialogChoice == 1) //Search By Name
-        {
-            foundIndex = SearchByName(Inventory);
-        }
-        else if (searchDialogChoice == 2)
-        {
-            foundIndex = SearchByUserId(Inventory);
-        }
-        else if (searchDialogChoice == 3)
+        if (searchDialogChoice == 3)
         {
             foundIndex = SearchByProductId(Inventory);
         }
         return foundIndex;
     }
 
-    public static int SearchByName(List<StorageSlot> inventory)
-    {
-        string? userName = UserInputService.GetUserName();
-        List<int> foundIndexes = new List<int>();
-        int index = 0;
-
-        foreach (StorageSlot slot in inventory)
-        {
-            if (slot.UserInfo != null)
-                if (slot.UserInfo.UserName == userName)
-                {
-                    foundIndexes.Add(index);
-                }
-            index++;
-        }
-
-        if (foundIndexes.Count == 0)
-        {
-            Console.Clear();
-            MessageService.PrintError("\n\nNo results Match Your Search\n\n");
-            MessageService.PrintActionFailed("Search Failed");
-            return -1;
-        }
-        else if (foundIndexes.Count > 1)
-        {
-            MessageService.PrintWarning("More than One results Match your search ," +
-                " For User privacy search by UserId ");
-            index = SearchByUserId(inventory);
-            return index;
-        }
-        else if (foundIndexes.Count == 1)
-        {
-            inventory[foundIndexes[0]].UserInfo.PrintUserDetails();
-            inventory[foundIndexes[0]].PrintTimingDetails();
-            Console.WriteLine($"Total Sub Slots : {inventory[foundIndexes[0]].Products.Count}");
-            return foundIndexes[0];
-        }
-        return -1;
-    }
-
-    public static int SearchByUserId(List<StorageSlot> inventory)
-    {
-        int userId = UserInputService.GetId();
-        int index = 0;
-
-        foreach (StorageSlot slot in inventory)
-        {
-            if (slot.UserInfo != null)
-            {
-                if (slot.UserInfo.UserId == userId)
-                {
-                    slot.UserInfo.PrintUserDetails();
-                    if (slot.Products != null)
-                    {
-                        Console.WriteLine($"Total Sub Slots : {slot.Products.Count}");
-                    }
-                    slot.PrintTimingDetails();
-                    return index;
-                }
-            }
-            index++;
-        }
-        Console.Clear();
-        MessageService.PrintError("\n\nNo results Match Your Search\n\n");
-        MessageService.PrintActionFailed("Search Failed");
-        return -1;
-    }
-
     public static int SearchByProductId(List<StorageSlot> inventory)
     {
-        int productId = UserInputService.GetId();
+        int productId = UserInputService.GetProductId();
         int index = 0;
 
         foreach (StorageSlot slot in inventory)
@@ -147,9 +69,8 @@ public static class InventoryOperations
             {
                 foreach (Product product in slot.Products)
                 {
-                    if (product.ProductId == productId && slot.UserInfo != null)
+                    if (product.ProductId == productId)
                     {
-                        slot.UserInfo.PrintUserDetails();
                         Console.WriteLine("YOUR PRODUCT :");
                         product.PrintProductDetails();
                         return index;

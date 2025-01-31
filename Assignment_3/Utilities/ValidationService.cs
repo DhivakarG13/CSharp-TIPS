@@ -27,34 +27,6 @@
         return false;
     }
 
-    public static bool ValidateUserName(string? userName)
-    {
-
-        if (userName == null)
-        {
-            MessageService.PrintWarning("Enter a Value to Continue");
-            return false;
-        }
-        userName = userName.Trim();
-        if (userName.Length < 4)
-        {
-            MessageService.PrintWarning("At least 5 Characters required");
-            return false;
-        }
-        else if (!userName.Any(char.IsAsciiLetterOrDigit))
-        {
-            MessageService.PrintWarning("No Numerical values or special characters are allowed in Name");
-            return false;
-        }
-        else if (userName.Any(char.IsWhiteSpace))
-        {
-            MessageService.PrintWarning("No Space allowed InBetween");
-            return false;
-        }
-
-        return true;
-    }
-
     public static bool ValidateNumericalInputs(string? productQuantity)
     {
 
@@ -145,24 +117,5 @@
         }
         return true;
 
-    }
-
-    public static bool ValidateNewUserId(int newId, List<StorageSlot> inventory)
-    {
-        if (inventory.Count == 0)
-        {
-            return true;
-        }
-        foreach (StorageSlot storageSlot in inventory)
-        {
-            if (storageSlot.UserInfo != null)
-            {
-                if (storageSlot.UserInfo.UserId == newId)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 }
