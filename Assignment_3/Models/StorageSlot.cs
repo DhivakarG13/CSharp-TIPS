@@ -1,16 +1,18 @@
-﻿public class StorageSlot
+﻿using Inventory.Helpers;
+
+public class StorageSlot
 {
     public UserDetails? UserInfo { get; }
     public List<Product>? Products { get; }
     public DateTime TimeCreated { get; }
     public DateTime TimeLastAccessed { get; private set; }
 
-    public StorageSlot(string? userName, string? productName,
-        int productQuantity, List<StorageSlot> inventory)
+    public StorageSlot(string? userName,int userId, string? productName,
+        int productQuantity)
     {
         if (userName != null)
         {
-            UserInfo = new UserDetails(userName, inventory);
+            UserInfo = new UserDetails(userName, userId);
             Products = new List<Product>();
             CreateNewProductSpace(productName, productQuantity);
             TimeCreated = DateTime.Now;
@@ -74,7 +76,8 @@
     {
         if (Products != null)
         {
-            Product newProduct = new Product(productName, productQuantity, Products);
+            var id = IdGenerateService.ProductIdGenerator(Products);
+            Product newProduct = new Product(productName, productQuantity, id);
             Products.Add(newProduct);
         }
     }

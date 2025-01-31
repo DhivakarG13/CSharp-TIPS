@@ -5,10 +5,10 @@ public class UserDetails
     public string? UserName { get; }
     public int UserId { get; }
 
-    public UserDetails(string userName, List<StorageSlot> inventory)
+    public UserDetails(string userName, int userId)
     {
         UserName = userName;
-        UserId = IdGenerateService.UserIdGenerator(inventory);
+        UserId = userId;
     }
 
     public void PrintUserDetails()

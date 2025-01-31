@@ -1,16 +1,14 @@
-﻿using Inventory.Helpers;
-
-public class Product
+﻿public class Product
 {
     public string? ProductName { get; }
     public int ProductId { get; }
     public int Quantity { get; private set; }
 
     public Product(string? productName, int productQuantity,
-              List<Product> existingProducts)
+              int productId)
     {
         ProductName = productName;
-        ProductId = IdGenerateService.ProductIdGenerator(existingProducts); ;
+        ProductId = productId;
         AddProducts(productQuantity);
     }
 

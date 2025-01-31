@@ -53,7 +53,7 @@
     /// <summary>
     /// Gets user Id || product Id.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>user Id || product Id</returns>
     public static int GetId()
     {
         MessageService.GetUserInfoWriter("Enter Id : ");

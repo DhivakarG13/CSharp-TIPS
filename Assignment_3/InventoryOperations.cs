@@ -1,4 +1,6 @@
-﻿public static class InventoryOperations
+﻿using Inventory.Helpers;
+
+public static class InventoryOperations
 {
     public static int GetUserChoice(List<int> Range)
     {
@@ -32,10 +34,11 @@
         Console.WriteLine("----- :For Product Name: At least 5 Characters required and no special characters or numbers are allowed-----");
 
         string? userName = UserInputService.GetUserName();
+        int userId = IdGenerateService.UserIdGenerator(inventory);
         string? productName = UserInputService.GetProductName();
         int productQuantity = UserInputService.GetProductQuantity();
 
-        StorageSlot storageSlot = new StorageSlot(userName, productName, productQuantity, inventory);
+        StorageSlot storageSlot = new StorageSlot(userName, userId, productName, productQuantity);
 
         Console.Clear();
         storageSlot.PrintStorageSlotDetails();
