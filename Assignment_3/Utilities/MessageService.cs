@@ -1,36 +1,23 @@
 ﻿public static class MessageService
 {
-    public static void PrintMainDialog()
+    public static void DialogWriter(Enum Dialog)
     {
-        Console.WriteLine("--------------------------------");
-        Console.WriteLine("-------Inventory__Manager-------");
-        Console.WriteLine("--------------------------------");
-        Console.WriteLine("Main Menu :\n");
-        Console.WriteLine("[1] Create  New Storage Slot");
-        Console.WriteLine("[2] Check  your Storage Slot");
-        Console.WriteLine("[3] Add New Product to your Slot");
-        Console.WriteLine("[4] Add Products to your Slot");
-        Console.WriteLine("[5] Fetch Product from your Slot");
-        Console.WriteLine("[6] Delete your Storage");
-        Console.WriteLine("[7] Close Application\n\n");
+        foreach (var option in Enum.GetValues(Dialog.GetType()))
+        {
+            Console.WriteLine($"   [{(int)option}]  {option}");
+        }
     }
-
-    public static void PrintSearchDialog()
-    {
-        Console.WriteLine("Search By :");
-        Console.WriteLine("--------------------------------");
-        Console.WriteLine("[1] Name");
-        Console.WriteLine("[2] User Id");
-        Console.WriteLine("[3] Product Id\n\n");
-    }
-
     public static void GetUserInfoWriter(string? TypeOfData)
     {
         Console.ForegroundColor = ConsoleColor.DarkBlue;
         Console.Write($"{TypeOfData}");
         Console.ResetColor();
     }
-
+    public static void PrintProductDetails(Product product)
+    {
+        Console.WriteLine("{0,-10} {1,-10} {2,-5} {3,-5} {4,-10}", product.ProductName, product.ProductId, product.ProductPrice , product.Quantity, product.ExpiryDate);
+        
+    }
     public static void PrintError(string? ErrorMessage)
     {
         Console.ForegroundColor = ConsoleColor.Red;

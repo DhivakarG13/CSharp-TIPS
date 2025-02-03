@@ -1,135 +1,91 @@
-﻿public class InventoryManager
+﻿
+public class InventoryManager
 {
-    private List<StorageSlot> Inventory = new List<StorageSlot>();
+    private InventoryDataBase inventory = new InventoryDataBase();
 
     public void Run()
     {
         bool closeFlag = false;
-        int storageSlotIndex = -1;
 
-        //Add Description For Actions
-        //Go Back To Prev Page
-        //View all products
+        //TODO : Add Description For Actions
+        //TODO : Go Back To Prev Page
 
         while (true)
         {
-            MessageService.PrintMainDialog();
-            int mainDialogChoice = InventoryOperations.GetUserChoice(new
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine(" ------- INVENTORY MANAGER ------ ");
+            Console.WriteLine("----------------------------------\n");
+
+
+            List<Product> MatchingProducts = new List<Product>();
+            MessageService.DialogWriter(new MainDialog());
+            MainDialog mainDialogChoice = (MainDialog)UserInputService.GetUserChoice(new
                     List<int> { 1, 2, 3, 4, 5, 6, 7 });
+
+
+            Console.Clear();
 
             switch (mainDialogChoice)
             {
-                case 1://Create new Storage space
 
-                    Inventory.Add(InventoryOperations.CreateNewStorageSlot(Inventory));
-                    break;
-
-                case 2://Check Your Storage slot
+                case MainDialog.Create_Product:
                     {
-                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
-                        if (storageSlotIndex == -1)
-                        {
-                            break;
-                        }
-                        Inventory[storageSlotIndex].ViewAllProducts();
-                        Inventory[storageSlotIndex].ResetLastAccessTime();
-                        MessageService.PrintActionComplete("Search Done");
+                        inventory.AddProduct();
+                        MessageService.PrintActionComplete("New Product Added");
                         break;
                     }
-                case 3://Add New Product slot
+                case MainDialog.Search_Product:
                     {
-                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
+                        MatchingProducts = InventoryOperations.SearchInventory(inventory.Products);
+                        InventoryOperations.PrintProducts(MatchingProducts);
 
-                        if (storageSlotIndex == -1)
+                        if(MatchingProducts.Count > 0)
                         {
-                            break;
+                            MessageService.PrintActionComplete("-- Search Complete --");
                         }
-
-                        string? newProductName = UserInputService.GetProductName();
-                        bool isProductAlreadyExists = ValidationService.IsExistingProduct(newProductName, Inventory[storageSlotIndex].Products);
-                        if (isProductAlreadyExists)//Adding to existing slot as the name search Matches the existing product
-                        {
-                            int productQuantity = UserInputService.GetProductQuantity();
-                            Inventory[storageSlotIndex].AddProducts(newProductName, productQuantity);
-                            MessageService.PrintActionComplete("Adding to existing slot as the name search Matches the existing product");
-                        }
-                        else 
-                        {
-                            int newProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[storageSlotIndex].CreateNewProductSpace(newProductName, newProductQuantity);
-                            MessageService.PrintActionComplete("New product added");
-                        }
-                        Inventory[storageSlotIndex].ResetLastAccessTime();
-
                         break;
-                    }
-                case 4://Add Products to your Slot
+                    }    
+                case MainDialog.Edit_Product_Details:
                     {
-                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
-
-                        if (storageSlotIndex == -1)
+                        MatchingProducts = InventoryOperations.SearchInventory(inventory.Products);
+                        if (MatchingProducts.Count > 0)
                         {
-                            break;
-                        }
-                        string? productName = UserInputService.GetProductName();
-                        bool isProductFound = ValidationService.IsExistingProduct(productName, Inventory[storageSlotIndex].Products);
-                        if (isProductFound)
-                        {
-                            int ProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[storageSlotIndex].AddProducts(productName, ProductQuantity);
-                            MessageService.PrintActionComplete("Products Added :)");
-                            Inventory[storageSlotIndex].ResetLastAccessTime();
-                        }
-                        else
-                        {
-                            Console.Clear();
-                            MessageService.PrintError("\n\nNo results Match Your Search\n\n");
-                            MessageService.PrintActionFailed(" Unavailable :( ");
+                            inventory.EditProductDetails(MatchingProducts);
+                            MessageService.PrintActionComplete("-- Product Updated --");
                         }
                         break;
                     }
-                case 5://Fetch Product from your Slot
+                case MainDialog.Delete_Product:
                     {
-                        storageSlotIndex = InventoryOperations.SearchInventory(Inventory);
-
-                        if (storageSlotIndex == -1)
+                        MatchingProducts = InventoryOperations.SearchInventory(inventory.Products);
+                        if (MatchingProducts.Count > 0)
                         {
-                            break;
-                        }
-                        string? productName = UserInputService.GetProductName();
-                        bool isProductFound = ValidationService.IsExistingProduct(productName, Inventory[storageSlotIndex].Products);
-                        if (isProductFound)
-                        {
-                            int ProductQuantity = UserInputService.GetProductQuantity();
-                            Inventory[storageSlotIndex].FetchProducts(productName, ProductQuantity);
-                            Inventory[storageSlotIndex].ResetLastAccessTime();
-                        }
-                        else
-                        {
-                            MessageService.PrintActionFailed("Product Unavailable");
+                            inventory.DeleteProduct(MatchingProducts);
+                            MessageService.PrintActionComplete("-- Product Deleted --");
                         }
                         break;
                     }
-                case 6://Delete your Storage
+                case MainDialog.View_All_Products:
                     {
-                        int slotIndexToDelete = InventoryOperations.SearchInventory(Inventory);
 
-                        if (slotIndexToDelete == -1)
+                        Console.WriteLine("----------------------------------");
+                        Console.WriteLine(" ----- Products in Inventory ---- ");
+                        Console.WriteLine("----------------------------------");
+
+                        InventoryOperations.PrintAllProducts(inventory.Products);
+                        
+                        if (inventory.Products.Count > 0)
                         {
-                            break;
+                            MessageService.PrintActionComplete("-- Products available in the Inventory are displayed --");
                         }
-                        Inventory.RemoveAt(slotIndexToDelete);
-                        MessageService.PrintActionComplete("Your Slot Deleted and Items are Retrieved :)");
                         break;
                     }
-
-                case 7://Closes the Application
+                case MainDialog.Exit_App:
                     {
                         closeFlag = true;
                         break;
                     }
             }
-
             Console.Clear();
 
             if (closeFlag)

@@ -1,4 +1,5 @@
-﻿public static class ValidationService
+﻿
+public static class ValidationService
 {
     public static bool ValidateChoice(string? choice, List<int> Range)
     {
@@ -26,34 +27,31 @@
         MessageService.PrintWarning("Choose a valid Option to Continue");
         return false;
     }
-
-    public static bool ValidateNumericalInputs(string? productQuantity)
+    public static bool ValidateProductIndexChoice(string? userChoice, int totalElements)
     {
-
-        if (productQuantity == null)
+        if (userChoice == null)
         {
-            MessageService.PrintWarning("Enter a Value to continue");
+            MessageService.PrintWarning("Choose a Option to continue");
             return false;
         }
 
-        int parsedQuantity;
+        int parsedChoice = default;
+        bool isParse_Able = false;
+        isParse_Able = int.TryParse(userChoice, out parsedChoice);
 
-        bool isInteger = int.TryParse(productQuantity, out parsedQuantity);
-
-        if (isInteger == false)
+        if (!isParse_Able)
         {
-            MessageService.PrintWarning("Numerical values Expected");
+            MessageService.PrintWarning("Enter a Valid Number to Continue");
             return false;
         }
-        if (parsedQuantity < 0)
+        if (parsedChoice < totalElements && parsedChoice >= 0)
         {
-            MessageService.PrintWarning("Negative numbers NotAllowed");
-            return false;
+            return true;
         }
 
-        return true;
+        MessageService.PrintWarning("Choose a valid Option to Continue");
+        return false;
     }
-
     public static bool ValidateProductName(string? productName)
     {
 
@@ -82,6 +80,32 @@
         return true;
     }
 
+    public static bool ValidatePrice(string? priceValue)
+    {
+        if (priceValue == null)
+        {
+            MessageService.PrintWarning("Enter a Price to continue");
+            return false;
+        }
+
+        int parsedPriceValue;
+
+        bool isInteger = int.TryParse(priceValue, out parsedPriceValue);
+
+        if (isInteger == false)
+        {
+            MessageService.PrintWarning("Numerical values Expected");
+            return false;
+        }
+        if (parsedPriceValue < 0)
+        {
+            MessageService.PrintWarning("Negative numbers NotAllowed");
+            return false;
+        }
+
+        return true;
+    }
+
     public static bool IsExistingProduct(string? newProductName, List<Product>? products)
     {
         if (products != null)
@@ -104,6 +128,11 @@
 
     public static bool ValidateNewProductId(int NewId, List<Product> existingProducts)
     {
+        if (NewId > 9999 || NewId < 1000)
+        {
+            MessageService.PrintWarning(" User ID is a four digit Number");
+            return false;
+        }
         if (existingProducts.Count == 0)
         {
             return true;
@@ -118,4 +147,50 @@
         return true;
 
     }
+
+    public static bool ValidateNumericalInputs(string? numericalValue)
+    {
+
+        if (numericalValue == null)
+        {
+            MessageService.PrintWarning("Enter a Value to continue");
+            return false;
+        }
+
+        int parsedNumericalValue;
+
+        bool isInteger = int.TryParse(numericalValue, out parsedNumericalValue);
+
+        if (isInteger == false)
+        {
+            MessageService.PrintWarning("Numerical values Expected");
+            return false;
+        }
+        if (parsedNumericalValue < 0)
+        {
+            MessageService.PrintWarning("Negative numbers NotAllowed");
+            return false;
+        }
+
+        return true;
+    }
+
+    public static bool ValidateStringValue(string? stringValue)
+    {
+        if (string.IsNullOrEmpty(stringValue))
+        {
+            MessageService.PrintWarning("Enter a proper string to continue");
+            return false;
+        }
+        stringValue = stringValue.Trim();
+        if (stringValue.Length < 3)
+        {
+            MessageService.PrintWarning("At least 3 Characters Expected");
+            MessageService.PrintWarning("Outer Spaces are not considered");
+            return false;
+        }
+        return true;
+    }
+
+    
 }

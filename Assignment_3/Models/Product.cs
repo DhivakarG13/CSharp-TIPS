@@ -1,31 +1,42 @@
 ﻿public class Product
 {
-    public string? ProductName { get; }
-    public int ProductId { get; }
-    public int Quantity { get; private set; }
+    public string? ProductName { get; private set; }
+    public int ProductId { get; private set; }
+    public decimal? ProductPrice { get; private set; }
+    public int Quantity { get; private set; } = 0;
+    public DateOnly ExpiryDate { get; private set; }
 
     public Product(string? productName, int productQuantity,
-              int productId)
+              decimal productPrice ,int productId, DateOnly expiryDate)
+    {
+        SetProductName(productName);
+        SetProductPrice(productPrice);
+        SetProductQuantity(productQuantity);
+        SetProductId(productId);
+        SetProductExpiryDate(expiryDate);
+    }
+
+    public void SetProductName(string? productName)
     {
         ProductName = productName;
+    }
+
+    public void SetProductPrice(decimal productPrice)
+    {
+        ProductPrice = productPrice;
+    }
+
+    public void SetProductQuantity(int productQuantity)
+    {
+        Quantity = productQuantity; 
+    }
+
+    public void SetProductId(int productId)
+    {
         ProductId = productId;
-        AddProducts(productQuantity);
     }
-
-    internal void PrintProductDetails()
+    public void SetProductExpiryDate(DateOnly expiryDate)
     {
-        Console.WriteLine($"\nPRODUCT NAME       : {ProductName}");
-        Console.WriteLine($"PRODUCT ID         : {ProductId}");
-        Console.WriteLine($"AVAILABLE QUANTITY : {Quantity}\n");
-    }
-
-    public void AddProducts(int quantity)
-    {
-        Quantity += quantity;
-    }
-
-    public void FetchProducts(int quantity)
-    {
-        Quantity -= quantity;
+        ExpiryDate = expiryDate; 
     }
 }

@@ -1,88 +1,198 @@
-﻿using Inventory.Helpers;
+﻿using System.Collections.Generic;
 
 public static class InventoryOperations
 {
-    public static int GetUserChoice(List<int> Range)
+
+    public static List<Product> SearchInventory(List<Product> products)
     {
-        Console.Write("Enter your Choice:");
-        bool isValidChoice = false;
-        string? userChoice = null;
 
-        while (!isValidChoice)
-        {
-            userChoice = Console.ReadLine();
-            isValidChoice = ValidationService.ValidateChoice(userChoice, Range);
-        }
-        // Preventing Warnings
-        int parsedChoice = -1;
 
-        if (userChoice != null)
-        {
-            parsedChoice = int.Parse(userChoice);
-        }
-        return parsedChoice;
-    }
+        Console.WriteLine("----------------------------------");
+        Console.WriteLine("\n\n         -- Searching Your Product -- \n\n");
+        Console.WriteLine("----------------------------------");
 
-    public static StorageSlot CreateNewStorageSlot(List<StorageSlot> inventory)
-    {
-        Console.Clear();
-        Console.WriteLine("-------------------------------");
-        Console.WriteLine("---Creating New Slot For You---");
-        Console.WriteLine("-------------------------------");
-
-        Console.WriteLine("\n\n----- :For User Name: At least 5 Characters required and At least 1 Alphabet required-----");
-        Console.WriteLine("----- :For Product Name: At least 5 Characters required and no special characters or numbers are allowed-----");
-
-        string? productName = UserInputService.GetProductName();
-        int productQuantity = UserInputService.GetProductQuantity();
-
-        StorageSlot storageSlot = new StorageSlot(productName, productQuantity);
+        List<Product> matchingProductIndexes = new List<Product>();
 
         Console.Clear();
-        storageSlot.PrintStorageSlotDetails();
-        MessageService.PrintActionComplete("New Storage space created");
+        MessageService.DialogWriter(new SearchDialog());
+        SearchDialog searchDialogChoice = (SearchDialog)UserInputService.GetUserChoice(new List<int> { 1, 2, 3, 4 });
 
-        return storageSlot;
-    }
-
-    public static int SearchInventory(List<StorageSlot> Inventory)
-    {
-        Console.Clear();
-        MessageService.PrintSearchDialog();
-        int searchDialogChoice = GetUserChoice(new List<int> { 1, 2, 3 });
-        int foundIndex = -1;
-        if (searchDialogChoice == 3)
+        switch (searchDialogChoice)
         {
-            foundIndex = SearchByProductId(Inventory);
+            case SearchDialog.Search_By_ProductName:
+                matchingProductIndexes = SearchByProductName(products);
+                break;
+            case SearchDialog.Search_By_ProductId:
+                matchingProductIndexes = SearchByProductId(products);
+                break;
+            case SearchDialog.Search_By_Product_Prize_Range:
+                matchingProductIndexes = SearchByProductPrizeRange(products);
+                break;
+            case SearchDialog.Search_By_ExpiryDate:
+                matchingProductIndexes = SearchByExpiryDate(products);
+                break;
         }
-        return foundIndex;
+
+        if (matchingProductIndexes.Count == 0)
+        {
+            Console.Clear();
+            MessageService.PrintError("\n\nNo results Match Your Search\n\n");
+            MessageService.PrintActionFailed("Search Failed");
+        }
+        return matchingProductIndexes;
     }
 
-    public static int SearchByProductId(List<StorageSlot> inventory)
+    public static List<Product> SearchByProductName(List<Product> products)
     {
-        int productId = UserInputService.GetProductId();
-        int index = 0;
+        List<Product> matchingProducts = new List<Product>();
+        string? productName = UserInputService.GetStringInput("Product Name");
 
-        foreach (StorageSlot slot in inventory)
+        foreach (Product product in products)
         {
-            if (slot.Products != null)
+            if (productName != null && product.ProductName != null && product.ProductName.Contains(productName))
             {
-                foreach (Product product in slot.Products)
-                {
-                    if (product.ProductId == productId)
-                    {
-                        Console.WriteLine("YOUR PRODUCT :");
-                        product.PrintProductDetails();
-                        return index;
-                    }
-                }
-                index++;
+                matchingProducts.Add(product);
             }
         }
-        Console.Clear();
-        MessageService.PrintError("\n\nNo results Match Your Search\n\n");
-        MessageService.PrintActionFailed("Search Failed");
-        return -1;
+        return matchingProducts;
+    }
+    public static List<Product> SearchByProductPrizeRange(List<Product> products)
+    {
+        List<Product> matchingProducts = new List<Product>();
+
+        int minPrice = UserInputService.GetNumericalValue("Minimum Value");
+        int maxPrice = UserInputService.GetNumericalValue("Maximum Value");
+
+        while (minPrice > maxPrice)
+        {
+            MessageService.PrintWarning("Minimum value must be Lesser than or equal to MaximumValue");
+            minPrice = UserInputService.GetNumericalValue("Minimum Value");
+            maxPrice = UserInputService.GetNumericalValue("Maximum Value");
+        }
+
+        foreach (Product product in products)
+        {
+            if (product.ProductPrice >= minPrice && product.ProductPrice <= maxPrice)
+            {
+                matchingProducts.Add(product);
+            }
+        }
+        return matchingProducts;
     }
 
+    public static List<Product> SearchByProductId(List<Product> products)
+    {
+        int productId = UserInputService.GetNumericalValue("Product ID");
+        List<Product> matchingProducts = new List<Product>();
+
+        for (int productIndex = 0; productIndex < products.Count; productIndex++)
+        {
+            Product product = products[productIndex];
+            if (product.ProductId == productId)
+            {
+                matchingProducts.Add(product);
+                return matchingProducts;
+            }
+        }
+
+        return matchingProducts;
+    }
+    public static List<Product> SearchByExpiryDate(List<Product> products)
+    {
+        List<Product> matchingProducts = new List<Product>();
+
+        int dayNumber = 1;
+        int monthNumber = 1;
+        int yearNumber;
+
+        DateOnly LastDate = new DateOnly();
+
+        Console.WriteLine("Search by date Option");
+        MessageService.DialogWriter(new SearchByDateDialog());
+        SearchByDateDialog SearchByDateChoice = (SearchByDateDialog)UserInputService.GetUserChoice(new List<int>() { 1, 2, 3 });
+        switch (SearchByDateChoice)
+        {
+            case SearchByDateDialog.Search_By_Day:
+                {
+                     dayNumber = UserInputService.GetNumericalValue("Day");
+                    goto case SearchByDateDialog.Search_By_Month;
+                }
+            case SearchByDateDialog.Search_By_Month:
+                {
+                     monthNumber = UserInputService.GetNumericalValue("Month");
+                    goto case SearchByDateDialog.Search_By_Year;
+                }
+            case SearchByDateDialog.Search_By_Year:
+                {
+                     yearNumber = UserInputService.GetNumericalValue("Year");
+
+                    string toBeParsedLastDate = $"{dayNumber}/{monthNumber}/{yearNumber}";
+
+                    bool isValidLastDate = DateOnly.TryParse(toBeParsedLastDate, out LastDate);
+
+                    if( isValidLastDate )
+                    {
+                        foreach (Product product in products)
+                        {
+                            if (product.ExpiryDate <= LastDate)
+                            {
+                                matchingProducts.Add(product);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageService.PrintWarning("Wrong format of Date Entered");
+                    }
+
+                    break;
+                }
+        }
+        return matchingProducts;
+    }
+    public static void PrintProducts(List<Product> productsToPrint)
+    {
+        if (productsToPrint.Count() == 1)
+        {
+            Console.Write(("\n Index : [0]"),15);
+            MessageService.PrintProductDetails(productsToPrint[0]);
+        }
+
+        if (productsToPrint.Count() > 1)
+        {
+            Console.WriteLine($":: {productsToPrint.Count()} Products Matches Your Search");
+            Console.WriteLine("[1]Continue [2]Print All Matching Product");
+            int printDialogChoice = UserInputService.GetUserChoice(new List<int> { 1, 2 });
+            if (printDialogChoice == 2)
+            {
+                PrintAllProducts(productsToPrint);
+            }
+        }
+    }
+    public static void PrintAllProducts(List<Product> productsToPrint)
+    {
+        int maxPrintLimit = 3;
+        for (int productIndex = 0; productIndex < productsToPrint.Count; productIndex++)
+        {
+            Product product = productsToPrint[productIndex];
+            Console.Write($"Index : {productIndex,15}");
+            MessageService.PrintProductDetails(product);
+            maxPrintLimit--;
+            if (maxPrintLimit == 0 && productIndex != productsToPrint.Count - 1)
+            {
+                Console.WriteLine("\n ----- Print More? ----- \n");
+                Console.WriteLine("  [1]Yes || [2]No  \n");
+                int printMoreChoice = UserInputService.GetUserChoice(new
+                        List<int> { 1, 2 });
+                if (printMoreChoice == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    maxPrintLimit = 3;
+                }
+            }
+        }
+    }
 }

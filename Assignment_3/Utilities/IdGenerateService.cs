@@ -10,7 +10,7 @@ namespace Inventory.Helpers
             int newId = 0;
             while (!isValidId)
             {
-                newId = newRandom.Next(10000, 100000);
+                newId = newRandom.Next(1000, 10000);
                 isValidId = ValidationService.ValidateNewProductId(newId, ExistingProducts);
             }
             return newId;
