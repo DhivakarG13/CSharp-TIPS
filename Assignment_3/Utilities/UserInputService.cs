@@ -31,7 +31,7 @@
 
     public static string? GetProductName()
     {
-        MessageService.GetUserInfoWriter("Enter Product Name : ");
+        MessageService.GetUserInfoWriter("Enter Product Name (5 Characters Expected): ");
         bool isValidProductName = false;
         string? productName = null;
 
@@ -49,7 +49,7 @@
 
     public static int GetProductId()
     {
-        MessageService.GetUserInfoWriter("Enter Id : ");
+        MessageService.GetUserInfoWriter("Enter Id (4 Digit Positive Number): ");
         bool isValidId = false;
         string? userId = null;
 
@@ -71,7 +71,7 @@
 
     public static int GetProductPrice()
     {
-        MessageService.GetUserInfoWriter("Enter Price : ");
+        MessageService.GetUserInfoWriter("Enter Price (Positive Number only): ");
         bool isValidPrice = false;
         string? productPrice = null;
 
@@ -93,7 +93,7 @@
 
     public static int GetProductQuantity()
     {
-        MessageService.GetUserInfoWriter("Enter Quantity : ");
+        MessageService.GetUserInfoWriter("Enter Quantity (Positive Number only): ");
         bool isValidQuantity = false;
         string? productQuantity = null;
 
@@ -115,7 +115,7 @@
 
     public static DateOnly GetProductExpiryDate()
     {
-        MessageService.GetUserInfoWriter("Enter ExpiryDate : ");
+        MessageService.GetUserInfoWriter("Enter ExpiryDate (DD/MM/YYYY): ");
         bool isValidDate = false;
         DateOnly expiryDate = default;
 
