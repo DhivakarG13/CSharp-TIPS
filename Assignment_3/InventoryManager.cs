@@ -7,8 +7,6 @@ public class InventoryManager
     {
         bool closeFlag = false;
 
-        //TODO : Add Description For Actions
-        //TODO : Go Back To Prev Page
 
         while (true)
         {
@@ -39,12 +37,12 @@ public class InventoryManager
                         MatchingProducts = InventoryOperations.SearchInventory(inventory.Products);
                         InventoryOperations.PrintProducts(MatchingProducts);
 
-                        if(MatchingProducts.Count > 0)
+                        if (MatchingProducts.Count > 0)
                         {
                             MessageService.PrintActionComplete("-- Search Complete --");
                         }
                         break;
-                    }    
+                    }
                 case MainDialog.Edit_Product_Details:
                     {
                         MatchingProducts = InventoryOperations.SearchInventory(inventory.Products);
@@ -72,8 +70,8 @@ public class InventoryManager
                         Console.WriteLine(" ----- Products in Inventory ---- ");
                         Console.WriteLine("----------------------------------");
 
-                        InventoryOperations.PrintAllProducts(inventory.Products);
-                        
+                        MessageService.PrintProductDetails(inventory.Products);
+
                         if (inventory.Products.Count > 0)
                         {
                             MessageService.PrintActionComplete("-- Products available in the Inventory are displayed --");

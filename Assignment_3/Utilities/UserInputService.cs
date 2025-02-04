@@ -16,7 +16,7 @@
     }
     public static int GetUserProductIndexChoice(int totalProducts)
     {
-        Console.Write("Enter your Choice:");
+        Console.WriteLine("Enter your Choice:");
         bool isValidChoice = false;
         string? userChoice = null;
         int parsedChoice = default;
