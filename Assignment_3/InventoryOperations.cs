@@ -20,13 +20,27 @@ public static class InventoryOperations
         switch (searchDialogChoice)
         {
             case SearchDialog.Search_By_ProductName:
-                matchingProductIndexes = SearchByProductName(products);
+                string? productName = UserInputService.GetStringInput("Product Name");
+                matchingProductIndexes = SearchByProductName(products , productName);
                 break;
             case SearchDialog.Search_By_ProductId:
-                matchingProductIndexes = SearchByProductId(products);
+
+                int productId = UserInputService.GetNumericalValue("Product ID");
+                matchingProductIndexes = SearchByProductId(products , productId);
                 break;
             case SearchDialog.Search_By_Product_Prize_Range:
-                matchingProductIndexes = SearchByProductPrizeRange(products);
+
+                int minPrice = UserInputService.GetNumericalValue("Minimum Value");
+                int maxPrice = UserInputService.GetNumericalValue("Maximum Value");
+
+                while (minPrice > maxPrice)
+                {
+                    MessageService.PrintWarning("Minimum value must be Lesser than or equal to MaximumValue");
+                    minPrice = UserInputService.GetNumericalValue("Minimum Value");
+                    maxPrice = UserInputService.GetNumericalValue("Maximum Value");
+                }
+
+                matchingProductIndexes = SearchByProductPrizeRange(products, minPrice, maxPrice);
                 break;
             case SearchDialog.Search_By_ExpiryDate:
                 matchingProductIndexes = SearchByExpiryDate(products);
@@ -42,10 +56,9 @@ public static class InventoryOperations
         return matchingProductIndexes;
     }
 
-    public static List<Product> SearchByProductName(List<Product> products)
+    public static List<Product> SearchByProductName(List<Product> products , string? productName)
     {
         List<Product> matchingProducts = new List<Product>();
-        string? productName = UserInputService.GetStringInput("Product Name");
 
         foreach (Product product in products)
         {
@@ -56,19 +69,9 @@ public static class InventoryOperations
         }
         return matchingProducts;
     }
-    public static List<Product> SearchByProductPrizeRange(List<Product> products)
+    public static List<Product> SearchByProductPrizeRange(List<Product> products , int minPrice,int maxPrice)
     {
         List<Product> matchingProducts = new List<Product>();
-
-        int minPrice = UserInputService.GetNumericalValue("Minimum Value");
-        int maxPrice = UserInputService.GetNumericalValue("Maximum Value");
-
-        while (minPrice > maxPrice)
-        {
-            MessageService.PrintWarning("Minimum value must be Lesser than or equal to MaximumValue");
-            minPrice = UserInputService.GetNumericalValue("Minimum Value");
-            maxPrice = UserInputService.GetNumericalValue("Maximum Value");
-        }
 
         foreach (Product product in products)
         {
@@ -80,9 +83,8 @@ public static class InventoryOperations
         return matchingProducts;
     }
 
-    public static List<Product> SearchByProductId(List<Product> products)
+    public static List<Product> SearchByProductId(List<Product> products , int productId)
     {
-        int productId = UserInputService.GetNumericalValue("Product ID");
         List<Product> matchingProducts = new List<Product>();
 
         for (int productIndex = 0; productIndex < products.Count; productIndex++)
