@@ -18,16 +18,18 @@
             string productNameToSearch = "ester";
 
             List<Product> expectedProducts = new List<Product>();
-            expectedProducts.AddRange(new Product[] { new Product("Jester", 20, 200, 2008, DateOnly.MinValue),    
-                                                  new Product("Lester", 20, 200, 2009, DateOnly.MinValue)
-                                                });
+            expectedProducts.AddRange(new Product[] { testProducts[4],   //  new Product("Jester", 20, 200, 2008, DateOnly.MinValue)
+                                                      testProducts[5]   //  new Product("Lester", 20, 200, 2009, DateOnly.MinValue)
+                                                    });
+
+
 
             //Act
             List<Product> actualProducts = new List<Product>();
             actualProducts = InventoryOperations.SearchByProductName(testProducts, productNameToSearch);
 
             //Assert
-            Assert.Equal(actualProducts.Count(), expectedProducts.Count());
+            Assert.Equal(actualProducts, expectedProducts);
         }
 
         [Fact]
@@ -35,12 +37,12 @@
         {
             //Assign
             List<Product> testProducts = new List<Product>();
-            testProducts.AddRange(new Product[] { new Product("Joey", 2004, 200, 10, new DateOnly()),
-                                                  new Product("Jake", 2004, 200, 10, new DateOnly()),
-                                                  new Product("John", 2004, 200, 10, new DateOnly()),
-                                                  new Product("Josh", 2004, 200, 10, new DateOnly()),
-                                                  new Product("Jester", 2004, 200, 10, new DateOnly()),
-                                                  new Product("Lester", 2004, 200, 10, new DateOnly())
+            testProducts.AddRange(new Product[] { new Product("Joey", 20, 200, 2004, DateOnly.MinValue),
+                                                  new Product("Jake", 20, 200, 2005, DateOnly.MinValue),
+                                                  new Product("John", 20, 200, 2005, DateOnly.MinValue),
+                                                  new Product("Josh", 20, 200, 2005, DateOnly.MinValue),
+                                                  new Product("Jester", 20, 200, 2008, DateOnly.MinValue),
+                                                  new Product("Lester", 20, 200, 2009, DateOnly.MinValue)
                                                 });
 
             string? productNameToSearch = "Shawn";
