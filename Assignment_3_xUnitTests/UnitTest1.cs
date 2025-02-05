@@ -11,6 +11,6 @@ namespace Assignment_3_xUnitTests
         }
     }
 }
-namespace InventoryOptionsTests
+namespace InventoryOperationsTests
 {
 }

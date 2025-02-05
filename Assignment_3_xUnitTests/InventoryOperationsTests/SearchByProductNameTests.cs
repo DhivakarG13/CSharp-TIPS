@@ -1,4 +1,4 @@
-﻿namespace Assignment_3_xUnitTests.ModelsTest.InventoryDataBaseTests
+﻿namespace Assignment_3_xUnitTests.InventoryOperationsTests
 {
     public class SearchByProductNameTests
     {
@@ -8,22 +8,26 @@
             //Assign
             List<Product> testProducts = new List<Product>();
             testProducts.AddRange(new Product[] { new Product("Joey", 2004, 200, 10, DateOnly.MinValue),
-                                                  new Product("Jake", 2004, 200, 10, DateOnly.MinValue),
-                                                  new Product("John", 2004, 200, 10, DateOnly.MinValue),
-                                                  new Product("Josh", 2004, 200, 10, DateOnly.MinValue),
-                                                  new Product("Jester", 2004, 200, 10, DateOnly.MinValue),
-                                                  new Product("Lester", 2004, 200, 10, DateOnly.MinValue)
+                                                  new Product("Jake", 2005, 200, 10, DateOnly.MinValue),
+                                                  new Product("John", 2006, 200, 10, DateOnly.MinValue),
+                                                  new Product("Josh", 2007, 200, 10, DateOnly.MinValue),
+                                                  new Product("Jester", 2008, 200, 10, DateOnly.MinValue),
+                                                  new Product("Lester", 2009, 200, 10, DateOnly.MinValue)
                                                 });
-            List<Product> ExpectedProducts = new List<Product>();
-            testProducts.AddRange(new Product[] { new Product("Jester", 2004, 200, 10,DateOnly.MinValue),
-                                                  new Product("Lester", 2004, 200, 10, DateOnly.MinValue)
-                                                });
+
             string? productNameToSearch = "ester";
+
+            List<Product> expectedProducts = new List<Product>();
+            testProducts.AddRange(new Product[] { testProducts[4],    //new Product("Jester", 2008, 200, 10, DateOnly.MinValue)
+                                                  testProducts[5] }); //new Product("Lester", 2009, 200, 10, DateOnly.MinValue)
+
             //Act
-            List<Product> ActualProducts = InventoryOperations.SearchByProductName(testProducts, productNameToSearch);
+            List<Product> actualProducts = InventoryOperations.SearchByProductName(testProducts, productNameToSearch);
+
             //Assert
-            Assert.Equal(ActualProducts, ExpectedProducts);
+            Assert.Equal(actualProducts, expectedProducts);
         }
+
         [Fact]
         public void SearchByProductName_GetsListOfProductAndProductToSearch_ReturnsEmptyListIfNoSearchMatches()
         {
@@ -36,17 +40,15 @@
                                                   new Product("Jester", 2004, 200, 10, new DateOnly()),
                                                   new Product("Lester", 2004, 200, 10, new DateOnly())
                                                 });
-            List<Product> ExpectedProducts = new List<Product>();
-            ExpectedProducts.Clear();
-            List<Product> ActualProducts = new List<Product>();
-            ActualProducts.Clear();
+
             string? productNameToSearch = "Shawn";
+            List<Product> expectedProducts = new List<Product>();
 
             //Act
-            ActualProducts = InventoryOperations.SearchByProductName(testProducts, productNameToSearch);
+            List<Product> actualProducts = InventoryOperations.SearchByProductName(testProducts, productNameToSearch);
 
             //Assert
-            Assert.Equal(ActualProducts, ExpectedProducts);
+            Assert.Equal(actualProducts.Count(), expectedProducts.Count());
         }
     }
 }
