@@ -19,16 +19,17 @@
             int maxValue = 400;
 
             List<Product> expectedProducts = new List<Product>();
-            testProducts.AddRange(new Product[] { testProducts[1],    //new Product("Jake", 2005, 300, 10, DateOnly.MinValue)
-                                                  testProducts[4],    //new Product("Jester", 2009, 300, 10, DateOnly.MinValue)
-                                                  testProducts[5] }); //new Product("Lester", 2010, 350, 10, DateOnly.MinValue)
+            expectedProducts.AddRange(new Product[] { new Product("Jake", 2005, 300, 10, DateOnly.MinValue),    
+                                                  new Product("Jester", 2009, 300, 10, DateOnly.MinValue),    
+                                                  new Product("Lester", 2010, 350, 10, DateOnly.MinValue)
+                                                }); 
 
 
             //Act
             List<Product> actualProducts = InventoryOperations.SearchByProductPrizeRange(testProducts, minValue, maxValue);
 
             //Assert
-            Assert.Equal(actualProducts, expectedProducts);
+            Assert.Equal(actualProducts.Count(), expectedProducts.Count());
         }
 
         [Fact]

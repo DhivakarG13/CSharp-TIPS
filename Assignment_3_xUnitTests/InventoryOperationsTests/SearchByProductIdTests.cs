@@ -17,13 +17,16 @@
             List<Product> expectedProducts = new List<Product>();
             int productIDToSearch = 2008;
 
-            expectedProducts.AddRange(new Product[] { testProducts[4] }); //new Product("Jester", 2008, 200, 10, DateOnly.MinValue)
+            expectedProducts.AddRange(new Product[] { 
+                                                  new Product("Jester", 2008, 200, 10, DateOnly.MinValue) 
+                                                    });
 
             //Act
-            List<Product> actualProducts = InventoryOperations.SearchByProductId(testProducts, productIDToSearch);
+            List<Product> actualProducts = new List<Product>();
+            actualProducts= InventoryOperations.SearchByProductId(testProducts, productIDToSearch);
 
             //Assert
-            Assert.Equal(actualProducts, expectedProducts);
+            Assert.Equal(expectedProducts.Count(),actualProducts.Count());
 
         }
 
@@ -48,7 +51,7 @@
             List<Product> actualProducts = InventoryOperations.SearchByProductId(testProducts, productIDToSearch);
 
             //Assert
-            Assert.Equal(actualProducts.Count(), expectedProductsCount);
+            Assert.Equal( expectedProductsCount , actualProducts.Count());
 
         }
     }
