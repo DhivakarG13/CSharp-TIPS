@@ -36,7 +36,7 @@ public class InventoryDataBase
             InventoryOperations.PrintProducts(ProductsToDelete);
             Console.Write("\n\n Choose an index to Delete");
             int indexToDelete = UserInputService.GetUserProductIndexChoice(ProductsToDelete.Count());
-            Products.RemoveAt(indexToDelete);
+            Products.Remove(ProductsToDelete[indexToDelete]);
         }
     }
 
@@ -50,10 +50,10 @@ public class InventoryDataBase
             Console.WriteLine("----------------------------------");
 
             InventoryOperations.PrintProducts(ProductsToEdits);
-            Console.Write("\n\n Choose an index to Edit");
+            Console.WriteLine("\n\n Choose an index to Edit");
 
             int indexToEdit = UserInputService.GetUserProductIndexChoice(ProductsToEdits.Count());
-
+            Product productToEdit = ProductsToEdits[indexToEdit];
             while (true)
             {
                 MessageService.DialogWriter(new EditDialog());
@@ -64,33 +64,33 @@ public class InventoryDataBase
                 {
                     case EditDialog.Edit_ProductName:
                         {
-                            Products[indexToEdit].SetProductName(UserInputService.GetProductName());
+                            productToEdit.SetProductName(UserInputService.GetProductName());
                             break;
                         }
                     case EditDialog.Edit_ProductId:
                         {
                             int newProductID = SetNewProductId();
-                            Products[indexToEdit].SetProductId(newProductID);
+                            productToEdit.SetProductId(newProductID);
                             break;
                         }
                     case EditDialog.Edit_ProductQuantity:
                         {
-                            Products[indexToEdit].SetProductQuantity(UserInputService.GetProductQuantity());
+                            productToEdit.SetProductQuantity(UserInputService.GetProductQuantity());
                             break;
                         }
                     case EditDialog.Edit_ProductPrice:
                         {
-                            Products[indexToEdit].SetProductPrice(UserInputService.GetProductPrice());
+                            productToEdit.SetProductPrice(UserInputService.GetProductPrice());
                             break;
                         }
                     case EditDialog.Edit_ExpiryDate:
                         {
-                            Products[indexToEdit].SetProductExpiryDate(UserInputService.GetProductExpiryDate());
+                            productToEdit.SetProductExpiryDate(UserInputService.GetProductExpiryDate());
                             break;
                         }
                 }
                 Console.WriteLine("\n\n Edit Another Entity ?");
-                Console.WriteLine("::  [1] Yes :: [2] No  ::");
+                Console.WriteLine("::  [1] Yes  ::  [2] No  ::");
                 int continueEditChoice = UserInputService.GetUserChoice(new
                         List<int> { 1, 2 });
 

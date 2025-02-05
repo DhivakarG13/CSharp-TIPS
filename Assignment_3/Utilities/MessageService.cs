@@ -1,4 +1,6 @@
-﻿public static class MessageService
+﻿using ConsoleTables;
+
+public static class MessageService
 {
     public static void DialogWriter(Enum Dialog)
     {
@@ -13,10 +15,18 @@
         Console.Write($"{TypeOfData}");
         Console.ResetColor();
     }
-    public static void PrintProductDetails(Product product)
+    public static void PrintProductDetails(List<Product> productsToPrint)
     {
-        Console.WriteLine("{0,-10} {1,-10} {2,-5} {3,-5} {4,-10}", product.ProductName, product.ProductId, product.ProductPrice , product.Quantity, product.ExpiryDate);
-        
+        ConsoleTable table = new ConsoleTable("Index", "ProductName", "ProductId", "ProductPrice", "ProductQuantity", "ExpiryDate}");
+
+        for (int productIndex = 0; productIndex < productsToPrint.Count; productIndex++)
+        {
+            table.AddRow($"{productIndex}",productsToPrint[productIndex].ProductName,
+                productsToPrint[productIndex].ProductId,productsToPrint[productIndex].ProductPrice,
+                productsToPrint[productIndex].Quantity,productsToPrint[productIndex].ExpiryDate );
+            
+        }
+        table.Write();
     }
     public static void PrintError(string? ErrorMessage)
     {
