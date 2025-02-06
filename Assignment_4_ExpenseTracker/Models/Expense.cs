@@ -11,6 +11,14 @@ namespace Assignment_4_ExpenseTracker.Models
         private int _transactionId;
         private DateOnly _actionDate;
 
+        public Expense(ExpenseOptions expenseOption, string? otherExpenseSource, int amount, int transactionId, DateOnly actionDate)
+        {
+            _expenseType = expenseOption;
+            _otherExpenseSource = otherExpenseSource;
+            _amount = amount;
+            _transactionId = transactionId;
+            _actionDate = actionDate;
+        }
         public string? GetSource()
         {
             if (_expenseType == ExpenseOptions.Other)
