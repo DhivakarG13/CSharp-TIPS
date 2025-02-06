@@ -1,4 +1,5 @@
 ﻿using Constants;
+using Models;
 
 namespace Assignment_4_ExpenseTracker.MessageServices
 {
@@ -21,7 +22,17 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             Console.Write($"{TypeOfData}");
             Console.ResetColor();
         }
-
+        public static void PrintActionData(List<IFinance> actionsToPrint)
+        {
+            foreach (IFinance action in actionsToPrint)
+            {
+                Console.WriteLine(ConstantStrings.enclosureLines);
+                Console.WriteLine($"Income Type      : {action.GetSource()}");
+                Console.WriteLine($"Amount           : {action.Amount}");
+                Console.WriteLine($"Transaction Id   : {action.TransactionId}");
+                Console.WriteLine($"Transaction Date : {action.ActionDate}\n");
+            }
+        }
         public static void PrintWarning(string? WarningMessage)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -39,5 +50,15 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             Console.ReadKey();
         }
 
+        internal static void PrintActionFailed(object Message)
+        {
+            Console.WriteLine(ConstantStrings.enclosureLines);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{Message}");
+            Console.ResetColor();
+            Console.WriteLine("---------------------------\n\n\n");
+            Console.WriteLine("Press Any Key to continue");
+            Console.ReadKey();
+        }
     }
 }
