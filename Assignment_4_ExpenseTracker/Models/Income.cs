@@ -6,12 +6,12 @@ namespace Assignment_4_ExpenseTracker.Models
     public class Income : IFinance
     {
         private IncomeOptions _incomeType;
-        private string? _otherIncomeSource;
+        private string _otherIncomeSource;
         private int _amount;
         private int _transactionId;
         private DateOnly _actionDate;
 
-        public Income(IncomeOptions incomeOption,string? otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
+        public Income(IncomeOptions incomeOption,string otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
         {
             _incomeType = incomeOption;
             _otherIncomeSource = otherIncomeSource;
@@ -19,7 +19,7 @@ namespace Assignment_4_ExpenseTracker.Models
             _transactionId = transactionId;
             _actionDate = actionDate;
         }
-        public string? GetSource()
+        public string GetSource()
         {
             if (_incomeType == IncomeOptions.Other)
             {

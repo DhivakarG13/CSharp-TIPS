@@ -121,5 +121,26 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
                 return false;
             }
         }
+
+        internal static bool ValidateStringValue(string? stringValue)
+        {
+            if (stringValue == null || stringValue.Length == 0)
+            {
+                ConsoleWriter.PrintWarning(ConstantStrings.userInputValueEmpty);
+                return false;
+            }
+            stringValue = stringValue.Trim();
+            if (stringValue.Length < 2)
+            {
+                ConsoleWriter.PrintWarning(ConstantStrings.twoCharactersLimitWarning);
+                return false;
+            }
+            if (stringValue.Any(char.IsWhiteSpace))
+            {
+                ConsoleWriter.PrintWarning(ConstantStrings.noSpaceAllowedWarning);
+                return false;
+            }
+            return true;
+        }
     }
 }
