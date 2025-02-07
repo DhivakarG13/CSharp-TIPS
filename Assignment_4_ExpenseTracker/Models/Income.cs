@@ -11,6 +11,14 @@ namespace Assignment_4_ExpenseTracker.Models
         private int _transactionId;
         private DateOnly _actionDate;
 
+        public Income(IncomeOptions incomeOption,string? otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
+        {
+            _incomeType = incomeOption;
+            _otherIncomeSource = otherIncomeSource;
+            _amount = amount;
+            _transactionId = transactionId;
+            _actionDate = actionDate;
+        }
         public string? GetSource()
         {
             if (_incomeType == IncomeOptions.Other)
