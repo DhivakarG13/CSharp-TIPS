@@ -2,7 +2,7 @@
 {
     public interface IFinance
     {
-        string? GetSource();
+        string GetSource();
         void SetSource((int, string) value);
 
         public int Amount { get; set; }

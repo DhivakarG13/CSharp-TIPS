@@ -6,12 +6,12 @@ namespace Assignment_4_ExpenseTracker.Models
     public class Expense : IFinance
     {
         private ExpenseOptions _expenseType;
-        private string? _otherExpenseSource;
+        private string _otherExpenseSource;
         private int _amount;
         private int _transactionId;
         private DateOnly _actionDate;
 
-        public Expense(ExpenseOptions expenseOption, string? otherExpenseSource, int amount, int transactionId, DateOnly actionDate)
+        public Expense(ExpenseOptions expenseOption, string otherExpenseSource, int amount, int transactionId, DateOnly actionDate)
         {
             _expenseType = expenseOption;
             _otherExpenseSource = otherExpenseSource;
@@ -19,7 +19,7 @@ namespace Assignment_4_ExpenseTracker.Models
             _transactionId = transactionId;
             _actionDate = actionDate;
         }
-        public string? GetSource()
+        public string GetSource()
         {
             if (_expenseType == ExpenseOptions.Other)
             {
