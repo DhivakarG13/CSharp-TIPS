@@ -3,9 +3,9 @@ using Constants.Enumerations;
 using Assignment_4_ExpenseTracker.MessageServices;
 using Assignment_4_ExpenseTracker.Models;
 
-namespace Assignment_4_ExpenseTracker.RepositoryManager
+namespace Assignment_4_ExpenseTracker.RepositoryOperations
 {
-    public static class SearchRepository
+    public static class SearchRepositoryServices
     {
         public static List<IFinance> GetSearchResults(SearchOptions searchChoice, List<IFinance> financialRecord)
         {

@@ -95,5 +95,21 @@ namespace Assignment_4_ExpenseTracker.MessageServices
                 Console.ResetColor();
             }
         }
+
+        internal static void PrintRecentlyAddedActions(int totalActionsToPrintInMainDialog, List<IFinance> finances)
+        {
+            if (finances.Count() > 0)
+            {
+                Console.WriteLine("\n::: Recently added Actions :::\n");
+                for (int index = 0; index < totalActionsToPrintInMainDialog && index < finances.Count(); index++)
+                {
+                    PrintActionData(index, finances[finances.Count() - 1]);
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n::: Add actions to Display Recently added actions here :::\n");
+            }
+        }
     }
 }
