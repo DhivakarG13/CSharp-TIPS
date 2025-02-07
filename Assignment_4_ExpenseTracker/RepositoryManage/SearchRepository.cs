@@ -1,6 +1,7 @@
 ﻿using Models;
 using Constants.Enumerations;
 using Assignment_4_ExpenseTracker.MessageServices;
+using Assignment_4_ExpenseTracker.Models;
 
 namespace Assignment_4_ExpenseTracker.RepositoryManager
 {
@@ -15,26 +16,32 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
                 case SearchOptions.Source:
                     {
                         string Source = GetUserData.GetStringValue("Enter Your");
+                        Console.Clear();
                         matchingActions.AddRange(SearchBySource(Source, financialRecord));
                         break;
                     }
                 case SearchOptions.Action:
                     {
+                        Console.Clear();
                         ConsoleWriter.PrintDialog(new Actions());
-                        Actions searchByActionChoice = (Actions)GetUserData.GetChoice(Enum.GetNames(typeof(Actions)).Length);
+                        Actions searchByActionChoice = (Actions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(Actions)).Length);
+                        Console.Clear();
                         matchingActions.AddRange(SearchByAction(searchByActionChoice.ToString(), financialRecord));
                         break;
                     }
                 case SearchOptions.ActionId:
                     {
                         int transactionId = GetUserData.GetActionId();
+                        Console.Clear();
                         matchingActions.AddRange(SearchByTransactionId(transactionId, financialRecord));
                         break;
                     }
                 case SearchOptions.ActionDate:
                     {
+                        Console.Clear();
                         ConsoleWriter.PrintDialog(new SearchByActionDateOptions());
-                        SearchByActionDateOptions SearchByActionDateChoice = (SearchByActionDateOptions)GetUserData.GetChoice(Enum.GetNames(typeof(SearchByActionDateOptions)).Length);
+                        SearchByActionDateOptions SearchByActionDateChoice = (SearchByActionDateOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchByActionDateOptions)).Length);
+                        Console.Clear();
                         matchingActions.AddRange(SearchByActionDate(SearchByActionDateChoice, financialRecord));
                         break;
                     }
@@ -129,12 +136,30 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
             {
-                if (action.GetType().ToString().Contains( searchByActionChoice))
+                if (action.GetType().ToString().Contains(searchByActionChoice))
                 {
                     matchingProducts.Add(action);
                 }
             }
             return matchingProducts;
+        }
+
+        internal static (int, int) GetSummary(List<IFinance> financeData)
+        {
+            int income = 0;
+            int expense = 0;
+            foreach (IFinance action in financeData)
+            {
+                if (action is Income)
+                {
+                    income += action.Amount;
+                }
+                else if (action is Expense)
+                {
+                    expense += action.Amount;
+                }
+            }
+            return (income, expense);
         }
     }
 }

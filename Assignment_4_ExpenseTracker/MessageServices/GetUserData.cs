@@ -4,22 +4,50 @@ using Assignment_4_ExpenseTracker.HelperUtility;
 using Constants;
 using Constants.Enumerations;
 
-public static class GetUserData
+namespace Assignment_4_ExpenseTracker.MessageServices
 {
-    public static int GetChoice(int TotalProducts)
+
+    public static class GetUserData
     {
-        string? Choice = null;
-        bool IsValidChoice = false;
-        while (!IsValidChoice)
+        public static int GetDialogChoice(int TotalChoices)
         {
-            Console.Write("Enter Your Choice:");
-            Choice = ConsoleReader.GetInput();
-            IsValidChoice = ValidationServices.ValidateChoice(Choice, TotalProducts);
-            Console.WriteLine();
+            List<int> Range = new List<int>();
+            for (int index = 1; index <= TotalChoices; index++)
+            {
+                Range.Add(index);
+            }
+            string? Choice = null;
+            bool IsValidChoice = false;
+            while (!IsValidChoice)
+            {
+                Console.Write("Enter Your Choice : ");
+                Choice = ConsoleReader.GetInput();
+                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                Console.WriteLine();
+            }
+            IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
+            return ParsedChoice;
         }
-        IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
-        return ParsedChoice;
-    }
+
+        public static int GetChoiceFromList(int TotalProducts)
+        {
+            List<int> Range = new List<int>();
+            for (int index = 0; index < TotalProducts; index++)
+            {
+                Range.Add(index);
+            }
+            string? Choice = null;
+            bool IsValidChoice = false;
+            while (!IsValidChoice)
+            {
+                Console.Write("Enter Your Index : ");
+                Choice = ConsoleReader.GetInput();
+                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                Console.WriteLine();
+            }
+            IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
+            return ParsedChoice;
+        }
 
     public static (IncomeOptions, string) GetIncomeSource()
     {
@@ -31,7 +59,6 @@ public static class GetUserData
             source = GetUserData.GetOtherSource(ConstantStrings.income);
         }
         (IncomeOptions, string) IncomeSource = ((IncomeOptions)IncomeChoice, source);
-
             return IncomeSource;
         }
 
@@ -66,17 +93,14 @@ public static class GetUserData
         {
             bool IsValid = false;
             string? Amount = null;
-
             while (!IsValid)
             {
                 ConsoleWriter.GetActionInfoWriter(ConstantStrings.amount);
                 Amount = ConsoleReader.GetInput();
                 IsValid = ValidationServices.ValidateAmount(Amount);
             }
-
             int ParsedAmount = default;
             int.TryParse(Amount, out ParsedAmount);
-
             return ParsedAmount;
         }
 
