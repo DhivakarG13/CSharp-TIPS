@@ -40,13 +40,15 @@
 
         public const string expense                         = "Expense";
 
-        public const string value                           = "value";
+        public const string actionId                        = "Action Id : ";
 
-        public const string source                          = " Source :";
+        public const string value                           = "value : ";
 
-        public const string amount                          = "Amount :";
+        public const string source                          = " Source : ";
 
-        public const string actionDate                      = "Action Date :";
+        public const string amount                          = "Amount                : ";
+
+        public const string actionDate                      = "Action Date : ";
 
         public const string userInputNegativeNumber         = "Negative value not allowed ";
 

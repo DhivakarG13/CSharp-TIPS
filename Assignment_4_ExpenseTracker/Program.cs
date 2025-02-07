@@ -16,7 +16,7 @@ namespace Assignment4ExpenseTracker
             while (!closeAppFlag)
             {
                 ConsoleWriter.PrintDialog(new MainMenu());
-                MainMenu mainMenuChoice = (MainMenu)GetUserData.GetChoice(Enum.GetNames(typeof(MainMenu)).Length);
+                MainMenu mainMenuChoice = (MainMenu)GetUserData.GetDialogChoice(Enum.GetNames(typeof(MainMenu)).Length);
                 Console.Clear();
                 closeAppFlag = expenseTrackerApp.Run(mainMenuChoice);
             }

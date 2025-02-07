@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿using System;
+using Constants;
 using Models;
 
 namespace Assignment_4_ExpenseTracker.MessageServices
@@ -22,16 +23,31 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             Console.Write($"{TypeOfData}");
             Console.ResetColor();
         }
-        public static void PrintActionData(List<IFinance> actionsToPrint)
+        public static void PrintListOfActionData(List<IFinance> actionsToPrint)
         {
+            int actionIndex = 0;
             foreach (IFinance action in actionsToPrint)
             {
-                Console.WriteLine(ConstantStrings.enclosureLines);
-                Console.WriteLine($"Income Type      : {action.GetSource()}");
-                Console.WriteLine($"Amount           : {action.Amount}");
-                Console.WriteLine($"Transaction Id   : {action.TransactionId}");
-                Console.WriteLine($"Transaction Date : {action.ActionDate}\n");
+                PrintActionData(actionIndex, action);
+                actionIndex++;
             }
+        }
+        public static void PrintSource(string source)
+        {
+            Console.WriteLine($"Source                : {source}");
+        }
+        public static void PrintTransactionId(int transactionId)
+        {
+            Console.WriteLine($"Your Transaction Id   : {transactionId}");
+        }
+        public static void PrintActionData(int actionIndex, IFinance actionToPrint)
+        {
+            Console.WriteLine(ConstantStrings.enclosureLines);
+            Console.WriteLine($"Index[{actionIndex}]");
+            Console.WriteLine($"Action Source    : {actionToPrint.GetSource()}");
+            Console.WriteLine($"Amount           : {actionToPrint.Amount}");
+            Console.WriteLine($"Transaction Id   : {actionToPrint.TransactionId}");
+            Console.WriteLine($"Transaction Date : {actionToPrint.ActionDate}\n");
         }
         public static void PrintWarning(string? WarningMessage)
         {
@@ -43,7 +59,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
         {
             Console.WriteLine(ConstantStrings.enclosureLines);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{Message}");
+            Console.WriteLine($"--{Message}--");
             Console.ResetColor();
             Console.WriteLine("---------------------------\n\n\n");
             Console.WriteLine("Press Any Key to continue");
@@ -59,6 +75,25 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             Console.WriteLine("---------------------------\n\n\n");
             Console.WriteLine("Press Any Key to continue");
             Console.ReadKey();
+        }
+
+        internal static void PrintSummary((int, int) summary)
+        {
+            int Balance = summary.Item1 - summary.Item2;
+            Console.WriteLine($"Total Income : {summary.Item1}");
+            Console.WriteLine($"Total Expense: {summary.Item2}");
+            if (Balance < 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Available Balance : {Balance}");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Available Balance : {Balance}");
+                Console.ResetColor();
+            }
         }
     }
 }
