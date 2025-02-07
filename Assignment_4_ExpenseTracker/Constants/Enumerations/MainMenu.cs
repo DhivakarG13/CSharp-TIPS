@@ -8,6 +8,8 @@
             Add_Expense,
             Search,
             View_All_Actions,
+            Edit_Activity,
+            View_Summary,
             Close_App
         }
     }
