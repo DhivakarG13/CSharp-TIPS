@@ -106,6 +106,26 @@ public static class ValidationService
         return true;
     }
 
+    public static bool IsExistingProduct(string? newProductName, List<Product>? products)
+    {
+        if (products != null)
+        {
+            if (products.Count == 0)
+            {
+                return false;
+            }
+            foreach (Product product in products)
+            {
+                if (newProductName == product.ProductName)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public static bool ValidateNewProductId(int NewId, List<Product> existingProducts)
     {
         if (NewId > 9999 || NewId < 1000)
