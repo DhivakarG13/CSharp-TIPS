@@ -7,9 +7,9 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
 {
     public static class SearchRepositoryServices
     {
-        public static List<IFinance> GetSearchResults(SearchOptions searchChoice, List<IFinance> financialRecord)
+        public static List<Finance> GetSearchResults(SearchOptions searchChoice, List<Finance> financialRecord)
         {
-            List<IFinance> matchingActions = new List<IFinance>();
+            List<Finance> matchingActions = new List<Finance>();
 
             switch (searchChoice)
             {
@@ -23,6 +23,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
                 case SearchOptions.Action:
                     {
                         Console.Clear();
+                        ConsoleWriter.ActionTitleWriter("-- Searching by Action --");
                         ConsoleWriter.PrintDialog(new Actions());
                         Actions searchByActionChoice = (Actions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(Actions)).Length);
                         Console.Clear();
@@ -31,6 +32,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
                     }
                 case SearchOptions.ActionId:
                     {
+                        ConsoleWriter.ActionTitleWriter("-- Searching by Action ID --");
                         int transactionId = GetUserData.GetActionId();
                         Console.Clear();
                         matchingActions.AddRange(SearchByTransactionId(transactionId, financialRecord));
@@ -38,7 +40,8 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
                     }
                 case SearchOptions.ActionDate:
                     {
-                        Console.Clear();
+                        Console.Clear(); 
+                        ConsoleWriter.ActionTitleWriter("-- Searching by Action Date --");
                         ConsoleWriter.PrintDialog(new SearchByActionDateOptions());
                         SearchByActionDateOptions SearchByActionDateChoice = (SearchByActionDateOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchByActionDateOptions)).Length);
                         Console.Clear();
@@ -49,10 +52,10 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
             return matchingActions;
         }
 
-        private static List<IFinance> SearchByActionDate(SearchByActionDateOptions SearchByActionDateChoice, List<IFinance> FinancialRecord)
+        private static List<Finance> SearchByActionDate(SearchByActionDateOptions SearchByActionDateChoice, List<Finance> FinancialRecord)
         {
-
-            List<IFinance> matchingProducts = new List<IFinance>();
+            ConsoleWriter.ActionTitleWriter("-- Searching by Action Date --");
+            List<Finance> matchingProducts = new List<Finance>();
 
             switch (SearchByActionDateChoice)
             {
@@ -62,7 +65,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
                         int MonthNumber = GetUserData.GetNumericalValue("Month");
                         int YearNumber = GetUserData.GetNumericalValue("Year");
                         int Index = 0;
-                        foreach (IFinance action in FinancialRecord)
+                        foreach (Finance action in FinancialRecord)
                         {
                             if (action.ActionDate.Day == DayNumber && action.ActionDate.Month == MonthNumber && action.ActionDate.Year == YearNumber)
                             {
@@ -77,7 +80,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
                         int MonthNumber = GetUserData.GetNumericalValue("Month");
                         int YearNumber = GetUserData.GetNumericalValue("Year");
                         int Index = 0;
-                        foreach (IFinance action in FinancialRecord)
+                        foreach (Finance action in FinancialRecord)
                         {
                             if (action.ActionDate.Month == MonthNumber && action.ActionDate.Year == YearNumber)
                             {
@@ -91,7 +94,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
                     {
                         int YearNumber = GetUserData.GetNumericalValue("Year");
                         int Index = 0;
-                        foreach (IFinance action in FinancialRecord)
+                        foreach (Finance action in FinancialRecord)
                         {
                             if (action.ActionDate.Year == YearNumber)
                             {
@@ -105,12 +108,12 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchBySource(string Source, List<IFinance> FinancialRecord)
+        private static List<Finance> SearchBySource(string Source, List<Finance> FinancialRecord)
         {
-            List<IFinance> matchingProducts = new List<IFinance>();
-            foreach (IFinance action in FinancialRecord)
+            List<Finance> matchingProducts = new List<Finance>();
+            foreach (Finance action in FinancialRecord)
             {
-                if (Source != null && action.GetSource().Contains(Source))
+                if (Source != null && action.SourceType.Contains(Source))
                 {
                     matchingProducts.Add(action);
                 }
@@ -118,10 +121,10 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchByTransactionId(int transactionId, List<IFinance> FinancialRecord)
+        private static List<Finance> SearchByTransactionId(int transactionId, List<Finance> FinancialRecord)
         {
-            List<IFinance> matchingProducts = new List<IFinance>();
-            foreach (IFinance action in FinancialRecord)
+            List<Finance> matchingProducts = new List<Finance>();
+            foreach (Finance action in FinancialRecord)
             {
                 if (action.TransactionId == transactionId)
                 {
@@ -131,12 +134,12 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchByAction(string searchByActionChoice, List<IFinance> FinancialRecord)
+        private static List<Finance> SearchByAction(string searchByActionChoice, List<Finance> FinancialRecord)
         {
-            List<IFinance> matchingProducts = new List<IFinance>();
-            foreach (IFinance action in FinancialRecord)
+            List<Finance> matchingProducts = new List<Finance>();
+            foreach (Finance action in FinancialRecord)
             {
-                if (action.GetType().ToString().Contains(searchByActionChoice))
+                if (action.GetActionType().Contains(searchByActionChoice))
                 {
                     matchingProducts.Add(action);
                 }
@@ -144,17 +147,17 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
             return matchingProducts;
         }
 
-        internal static (int, int) GetSummary(List<IFinance> financeData)
+        internal static (int, int) GetSummary(List<Finance> financeData)
         {
             int income = 0;
             int expense = 0;
-            foreach (IFinance action in financeData)
+            foreach (Finance action in financeData)
             {
-                if (action is Income)
+                if (action.GetActionType() == "Income")
                 {
                     income += action.Amount;
                 }
-                else if (action is Expense)
+                else if (action.GetActionType() == "Expense")
                 {
                     expense += action.Amount;
                 }

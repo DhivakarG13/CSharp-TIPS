@@ -1,44 +1,23 @@
-﻿using Constants.Enumerations;
+﻿using System.Text.Json.Serialization;
+using Constants.Enumerations;
 using Models;
 
 namespace Assignment_4_ExpenseTracker.Models
 {
-    public class Income : IFinance
+    public class Income : Finance
     {
-        private IncomeOptions _incomeType;
-        private string _otherIncomeSource;
-        private int _amount;
-        private int _transactionId;
-        private DateOnly _actionDate;
-
-        public Income(IncomeOptions incomeOption,string otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
+        [JsonConstructor]
+        public Income(string sourceType, int amount, int transactionId, DateOnly actionDate) : base(sourceType ,amount, transactionId, actionDate)
         {
-            _incomeType = incomeOption;
-            _otherIncomeSource = otherIncomeSource;
-            _amount = amount;
-            _transactionId = transactionId;
-            _actionDate = actionDate;
+            SourceType = sourceType;
+            Amount = amount;
+            TransactionId = transactionId;
+            ActionDate = actionDate;
         }
-        public string GetSource()
+        public override string GetActionType()
         {
-            if (_incomeType == IncomeOptions.Other)
-            {
-                return _otherIncomeSource;
-            }
-            else
-            {
-                return _incomeType.ToString();
-            }
+            return "Income";
         }
 
-        public void SetSource((int, string) value)
-        {
-            _incomeType = (IncomeOptions)value.Item1;
-            _otherIncomeSource = value.Item2;
-        }
-
-        public int Amount { get => _amount; set => _amount = value; }
-        public int TransactionId { get => _transactionId; set => _transactionId = value; }
-        public DateOnly ActionDate { get => _actionDate; set => _actionDate = value; }
     }
 }

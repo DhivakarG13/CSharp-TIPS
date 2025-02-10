@@ -93,13 +93,13 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
             return true;
         }
 
-        public static bool ValidateNewTransactionId(int newId, List<IFinance> financialRecord)
+        public static bool ValidateNewTransactionId(int newId, List<Finance> financialRecord)
         {
             if (financialRecord.Count == 0)
             {
                 return true;
             }
-            foreach (IFinance Action in financialRecord)
+            foreach (Finance Action in financialRecord)
             {
                 if (Action.TransactionId == newId)
                 {

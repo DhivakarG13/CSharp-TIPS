@@ -3,7 +3,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
 {
     internal static class IdGenerator
     {
-        public static int TransactionIdGenerator(List<IFinance> FinancialRecord)
+        public static int TransactionIdGenerator(List<Finance> FinancialRecord)
         {
             bool IsValid = false;
             Random NewRandom = new Random();

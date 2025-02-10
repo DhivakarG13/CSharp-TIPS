@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleTables;
 using Constants;
 using Models;
 
@@ -17,21 +18,25 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             }
             Console.WriteLine("\n\n");
         }
+        public static void ActionTitleWriter(string actionTitle)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"-- {actionTitle} --");
+            Console.ResetColor();
+        }
+        public static void ActionDescriptionWriter(string description)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"-- {description} --");
+            Console.ResetColor();
+        }
         public static void GetActionInfoWriter(string? TypeOfData)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($"{TypeOfData}");
             Console.ResetColor();
         }
-        public static void PrintListOfActionData(List<IFinance> actionsToPrint)
-        {
-            int actionIndex = 0;
-            foreach (IFinance action in actionsToPrint)
-            {
-                PrintActionData(actionIndex, action);
-                actionIndex++;
-            }
-        }
+        
         public static void PrintSource(string source)
         {
             Console.WriteLine($"Source                : {source}");
@@ -40,14 +45,26 @@ namespace Assignment_4_ExpenseTracker.MessageServices
         {
             Console.WriteLine($"Your Transaction Id   : {transactionId}");
         }
-        public static void PrintActionData(int actionIndex, IFinance actionToPrint)
+        public static void PrintListOfActionData(List<Finance> actionsToPrint)
         {
-            Console.WriteLine(ConstantStrings.enclosureLines);
-            Console.WriteLine($"Index[{actionIndex}]");
-            Console.WriteLine($"Action Source    : {actionToPrint.GetSource()}");
-            Console.WriteLine($"Amount           : {actionToPrint.Amount}");
-            Console.WriteLine($"Transaction Id   : {actionToPrint.TransactionId}");
-            Console.WriteLine($"Transaction Date : {actionToPrint.ActionDate}\n");
+            ConsoleTable table = new ConsoleTable("Index", "Action Type", "Action Source", "Transaction Id", "Amount", "Transaction Date}");
+
+            for (int actionIndex = 0; actionIndex < actionsToPrint.Count; actionIndex++)
+            {
+                table.AddRow($"{actionIndex}", actionsToPrint[actionIndex].GetActionType(), actionsToPrint[actionIndex].SourceType,
+                    actionsToPrint[actionIndex].TransactionId, actionsToPrint[actionIndex].Amount, actionsToPrint[actionIndex].ActionDate);
+
+            }
+            table.Write();
+        }
+        public static void PrintActionData(int actionIndex, Finance actionToPrint)
+        {
+            ConsoleTable table = new ConsoleTable("Index","Action Type", "Action Source", "Transaction Id","Amount", "Transaction Date}");
+
+                table.AddRow($"{actionIndex}",actionToPrint.GetActionType(), actionToPrint.SourceType,
+                    actionToPrint.TransactionId, actionToPrint.Amount, actionToPrint.ActionDate);
+
+            table.Write();
         }
         public static void PrintWarning(string? WarningMessage)
         {
@@ -96,15 +113,19 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             }
         }
 
-        internal static void PrintRecentlyAddedActions(int totalActionsToPrintInMainDialog, List<IFinance> finances)
+        internal static void PrintRecentlyAddedActions(int totalActionsToPrintInMainDialog, List<Finance> finances)
         {
+
+            List<Finance> recentlyAddedActions = new List<Finance>();
+
             if (finances.Count() > 0)
             {
                 Console.WriteLine("\n::: Recently added Actions :::\n");
                 for (int index = 0; index < totalActionsToPrintInMainDialog && index < finances.Count(); index++)
                 {
-                    PrintActionData(index, finances[finances.Count() - 1]);
+                    recentlyAddedActions.Add(finances[finances.Count() - index - 1]);
                 }
+                PrintListOfActionData(recentlyAddedActions);
             }
             else
             {

@@ -49,41 +49,41 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             return ParsedChoice;
         }
 
-        public static (IncomeOptions, string) GetIncomeSource()
+        public static string GetIncomeSource()
         {
             ConsoleWriter.PrintDialog(new IncomeOptions());
             IncomeOptions IncomeChoice = (IncomeOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(IncomeOptions)).Length);
             string source = "";
             if (IncomeChoice == IncomeOptions.Other)
             {
-                source = GetUserData.GetOtherSource(ConstantStrings.income);
+                source = GetUserData.GetOtherSource(ConstantStrings.income) ?? string.Empty;
+                return source;
             }
             else
             {
                 ConsoleWriter.PrintSource(IncomeChoice.ToString());
             }
-            (IncomeOptions, string) IncomeSource = ((IncomeOptions)IncomeChoice, source);
-            return IncomeSource;
+            return IncomeChoice.ToString();
         }
 
-        public static (ExpenseOptions, string) GetExpenseSource()
+        public static string GetExpenseSource()
         {
             ConsoleWriter.PrintDialog(new ExpenseOptions());
             ExpenseOptions ExpenseChoice = (ExpenseOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(ExpenseOptions)).Length);
-            string source = "";
+            string? source = "";
             if (ExpenseChoice == ExpenseOptions.Other)
             {
                 source = GetUserData.GetOtherSource(ConstantStrings.expense);
+                return source ?? string.Empty;
             }
             else
             {
                 ConsoleWriter.PrintSource(ExpenseChoice.ToString());
             }
-            (ExpenseOptions, string) ExpenseSource = ((ExpenseOptions)ExpenseChoice, source);
-            return ExpenseSource;
+            return ExpenseChoice.ToString();
         }
 
-        public static string GetOtherSource(string action)
+        public static string? GetOtherSource(string action)
         {
             bool isValidSource = false;
             string? Source = string.Empty;
@@ -113,13 +113,13 @@ namespace Assignment_4_ExpenseTracker.MessageServices
 
         public static DateOnly GetActivityTime()
         {
-            ConsoleWriter.PrintDialog(new SetTimeOptions());
-            SetTimeOptions UserSetTimeChoice = (SetTimeOptions)GetDialogChoice(Enum.GetNames(typeof(SetTimeOptions)).Length);
+            ConsoleWriter.PrintDialog(new SetDateOptions());
+            SetDateOptions UserSetTimeChoice = (SetDateOptions)GetDialogChoice(Enum.GetNames(typeof(SetDateOptions)).Length);
             switch (UserSetTimeChoice)
             {
-                case SetTimeOptions.Own_Time:
+                case SetDateOptions.Own_Date:
                     return GetUserTime();
-                case SetTimeOptions.Current_Time:
+                case SetDateOptions.Current_Date:
                     return DateOnly.FromDateTime(DateTime.Now);
                 default:
                     return DateOnly.FromDateTime(DateTime.Now);

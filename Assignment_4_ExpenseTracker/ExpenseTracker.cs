@@ -35,7 +35,7 @@ namespace Assignment4ExpenseTracker
                     }
                 case MainMenu.Search:
                     {
-                        List<IFinance> matchingActions = new List<IFinance>();
+                        List<Finance> matchingActions = new List<Finance>();
                         ConsoleWriter.PrintDialog(new SearchOptions());
                         SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
                         matchingActions = SearchRepositoryServices.GetSearchResults(searchChoice, _repository.GetFinanceData());
@@ -65,7 +65,7 @@ namespace Assignment4ExpenseTracker
                     }
                 case MainMenu.Edit_Activity:
                     {
-                        List<IFinance> matchingActions = new List<IFinance>();
+                        List<Finance> matchingActions = new List<Finance>();
                         ConsoleWriter.PrintDialog(new SearchOptions());
                         SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
                         matchingActions = SearchRepositoryServices.GetSearchResults(searchChoice, _repository.GetFinanceData());
@@ -84,8 +84,11 @@ namespace Assignment4ExpenseTracker
                     }
                 case MainMenu.Delete_Activity:
                 {
-                        List<IFinance> matchingActions = new List<IFinance>();
+                        ConsoleWriter.ActionTitleWriter("-- Deleting Activity --");
+                        List<Finance> matchingActions = new List<Finance>();
                         ConsoleWriter.PrintDialog(new SearchOptions());
+
+                        ConsoleWriter.ActionTitleWriter("-- Searching Activity --");
                         SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
                         matchingActions = SearchRepositoryServices.GetSearchResults(searchChoice, _repository.GetFinanceData());
                         if (matchingActions.Count > 0)

@@ -9,31 +9,34 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
 {
     public static class UpdateRepositoryServices
     {
-        public static void AddIncome(List<IFinance> financeData)
+        public static void AddIncome(List<Finance> financeData)
         {
             Console.Clear();
-            (IncomeOptions, string) incomeSource = GetUserData.GetIncomeSource();
+            ConsoleWriter.ActionTitleWriter("-- Adding Income __");
+            string incomeSource = GetUserData.GetIncomeSource();
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
             ConsoleWriter.PrintTransactionId(actionId);
             DateOnly actionDate = GetUserData.GetActivityTime();
-            financeData.Add(new Income(incomeSource.Item1, incomeSource.Item2, amount, actionId, actionDate));
+            financeData.Add(new Income(incomeSource, amount, actionId, actionDate));
         }
 
-        public static void AddExpense(List<IFinance> financeData)
+        public static void AddExpense(List<Finance> financeData)
         {
             Console.Clear();
-            (ExpenseOptions, string) expenseSource = GetUserData.GetExpenseSource();
+            ConsoleWriter.ActionTitleWriter("-- Adding Expense __");
+            string expenseSource = GetUserData.GetExpenseSource();
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
             ConsoleWriter.PrintTransactionId(actionId);
             DateOnly actionDate = GetUserData.GetActivityTime();
-            financeData.Add(new Expense(expenseSource.Item1, expenseSource.Item2, amount, actionId, actionDate));
+            financeData.Add(new Expense(expenseSource, amount, actionId, actionDate));
         }
 
-        public static void EditActivity(IFinance actionToEdit)
+        public static void EditActivity(Finance actionToEdit)
         {
             Console.Clear();
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity --");
             ConsoleWriter.PrintActionData(default, actionToEdit);
             ConsoleWriter.PrintDialog(new EditOptions());
             EditOptions UserEditChoice = (EditOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(EditOptions)).Length);
@@ -54,34 +57,35 @@ namespace Assignment_4_ExpenseTracker.RepositoryOperations
             ConsoleWriter.PrintActionData(default, actionToEdit);
 
         }
-        private static void EditActivitySource(IFinance actionToEdit)
+        private static void EditActivitySource(Finance actionToEdit)
         {
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity Source --");
             if (actionToEdit.GetType().ToString() == "Expense")
             {
-                (ExpenseOptions, string) expenseSource = GetUserData.GetExpenseSource();
-                (int, string) newSource = ((int)expenseSource.Item1, expenseSource.Item2);
-                actionToEdit.SetSource(newSource);
+                string expenseSource = GetUserData.GetExpenseSource();
+                actionToEdit.SourceType = expenseSource;
             }
             else
             {
-                (IncomeOptions, string) incomeSource = GetUserData.GetIncomeSource();
-                (int, string) newSource = ((int)incomeSource.Item1, incomeSource.Item2);
-                actionToEdit.SetSource(newSource);
+                string incomeSource = GetUserData.GetIncomeSource();
+                actionToEdit.SourceType = incomeSource;
             }
         }
-        private static void EditActivityTime(IFinance actionToEdit)
+        private static void EditActivityTime(Finance actionToEdit)
         {
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity Time --");
             DateOnly actionDate = GetUserData.GetActivityTime();
             actionToEdit.ActionDate = actionDate;
         }
 
-        private static void EditActivityAmount(IFinance actionToEdit)
+        private static void EditActivityAmount(Finance actionToEdit)
         {
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity Amount --");
             int amount = GetUserData.GetAmount();
             actionToEdit.Amount = amount;
         }
 
-        internal static void DeleteAction(List<IFinance> FinanceData,IFinance finance)
+        internal static void DeleteAction(List<Finance> FinanceData,Finance finance)
         {
             FinanceData.Remove(finance);
         }
