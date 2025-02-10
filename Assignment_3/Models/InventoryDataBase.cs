@@ -64,28 +64,28 @@ public class InventoryDataBase
                 {
                     case EditDialog.Edit_ProductName:
                         {
-                            productToEdit.SetProductName(UserInputService.GetProductName());
+                            productToEdit.ProductName = UserInputService.GetProductName();
                             break;
                         }
                     case EditDialog.Edit_ProductId:
                         {
                             int newProductID = SetNewProductId();
-                            productToEdit.SetProductId(newProductID);
+                            productToEdit.ProductId = newProductID;
                             break;
                         }
                     case EditDialog.Edit_ProductQuantity:
                         {
-                            productToEdit.SetProductQuantity(UserInputService.GetProductQuantity());
+                            productToEdit.Quantity = UserInputService.GetProductQuantity();
                             break;
                         }
                     case EditDialog.Edit_ProductPrice:
                         {
-                            productToEdit.SetProductPrice(UserInputService.GetProductPrice());
+                            productToEdit.ProductPrice = UserInputService.GetProductPrice();
                             break;
                         }
                     case EditDialog.Edit_ExpiryDate:
                         {
-                            productToEdit.SetProductExpiryDate(UserInputService.GetProductExpiryDate());
+                            productToEdit.ExpiryDate = UserInputService.GetProductExpiryDate();
                             break;
                         }
                 }
