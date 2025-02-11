@@ -1,13 +1,7 @@
-﻿using System.Collections.Generic;
-using ConsoleTables;
-
-public static class InventoryOperations
+﻿public static class InventoryOperations
 {
-
     public static List<Product> SearchInventory(List<Product> products)
     {
-
-
         Console.WriteLine("----------------------------------");
         Console.WriteLine(" ---- Searching Your Product ---- ");
         Console.WriteLine("----------------------------------");
@@ -89,13 +83,11 @@ public static class InventoryOperations
     {
         List<Product> matchingProducts = new List<Product>();
 
-        for (int productIndex = 0; productIndex < products.Count; productIndex++)
+        foreach (Product product in products)
         {
-            Product product = products[productIndex];
             if (product.ProductId == productId)
             {
                 matchingProducts.Add(product);
-                return matchingProducts;
             }
         }
 
