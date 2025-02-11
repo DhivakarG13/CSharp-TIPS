@@ -9,10 +9,10 @@ namespace Assignment4ExpenseTracker
 {
     public class ExpenseTracker
     {
-        public FinanceRepository _repository;
-        public ExpenseTracker()
+        List<IFinance> _repository;
+        public ExpenseTracker(List<IFinance> repository)
         {
-            _repository = new FinanceRepository();
+            _repository = repository;
         }
 
         public bool Run(MainMenu mainMenuChoice)
@@ -22,14 +22,14 @@ namespace Assignment4ExpenseTracker
 
                 case MainMenu.Add_Income:
                     {
-                        UpdateRepository.AddIncome(_repository.FinanceData);
+                        UpdateRepositoryServices.AddIncome(_repository);
                         ConsoleWriter.PrintActionComplete(ConstantStrings.incomeAddedSuccessfullyMessage);
                         break;
                     }
 
                 case MainMenu.Add_Expense:
                     {
-                        UpdateRepository.AddExpense(_repository.FinanceData);
+                        UpdateRepositoryServices.AddExpense(_repository);
                         ConsoleWriter.PrintActionComplete(ConstantStrings.expenseAddedSuccessfullyMessage);
                         break;
                     }
@@ -38,7 +38,7 @@ namespace Assignment4ExpenseTracker
                         List<IFinance> matchingActions = new List<IFinance>();
                         ConsoleWriter.PrintDialog(new SearchOptions());
                         SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
-                        matchingActions = SearchRepository.GetSearchResults(searchChoice, _repository.FinanceData);
+                        matchingActions = SearchRepositoryServices.GetSearchResults(searchChoice, _repository);
                         if (matchingActions.Count > 0)
                         {
                             ConsoleWriter.PrintListOfActionData(matchingActions);
@@ -52,9 +52,9 @@ namespace Assignment4ExpenseTracker
                     }
                 case MainMenu.View_All_Actions:
                     {
-                        if (_repository.FinanceData.Any())
+                        if (_repository.Any())
                         {
-                            ConsoleWriter.PrintListOfActionData(_repository.FinanceData);
+                            ConsoleWriter.PrintListOfActionData(_repository);
                             ConsoleWriter.PrintActionComplete(ConstantStrings.allActionsDisplayedMessage);
                         }
                         else
@@ -68,13 +68,35 @@ namespace Assignment4ExpenseTracker
                         List<IFinance> matchingActions = new List<IFinance>();
                         ConsoleWriter.PrintDialog(new SearchOptions());
                         SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
-                        matchingActions = SearchRepository.GetSearchResults(searchChoice, _repository.FinanceData);
+                        matchingActions = SearchRepositoryServices.GetSearchResults(searchChoice, _repository);
                         if (matchingActions.Count > 0)
                         {
                             ConsoleWriter.PrintListOfActionData(matchingActions);
                             int indexToEdit = GetUserData.GetChoiceFromList(matchingActions.Count());
-                            UpdateRepository.EditActivity(matchingActions[indexToEdit]);
+                            UpdateRepositoryServices.EditActivity(matchingActions[indexToEdit]);
                             ConsoleWriter.PrintActionComplete("Action Updated Successfully");
+                        }
+                        else
+                        {
+                            ConsoleWriter.PrintActionFailed(ConstantStrings.SearchFailedMessage);
+                        }
+                        break;
+                    }
+                case MainMenu.Delete_Activity:
+                    {
+                        ConsoleWriter.ActionTitleWriter("-- Deleting Activity --");
+                        List<IFinance> matchingActions = new List<IFinance>();
+                        ConsoleWriter.PrintDialog(new SearchOptions());
+
+                        ConsoleWriter.ActionTitleWriter("-- Searching Activity --");
+                        SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
+                        matchingActions = SearchRepositoryServices.GetSearchResults(searchChoice, _repository);
+                        if (matchingActions.Count > 0)
+                        {
+                            ConsoleWriter.PrintListOfActionData(matchingActions);
+                            int indexToDelete = GetUserData.GetChoiceFromList(matchingActions.Count());
+                            UpdateRepositoryServices.DeleteAction(_repository, matchingActions[indexToDelete]);
+                            ConsoleWriter.PrintActionComplete("Action Deleted Successfully");
                         }
                         else
                         {
@@ -84,7 +106,7 @@ namespace Assignment4ExpenseTracker
                     }
                 case MainMenu.View_Summary:
                     {
-                        (int, int) summary = SearchRepository.GetSummary(_repository.FinanceData);
+                        (int, int) summary = SearchRepositoryServices.GetSummary(_repository);
                         ConsoleWriter.PrintSummary(summary);
                         ConsoleWriter.PrintActionComplete(string.Empty);
                         break;
