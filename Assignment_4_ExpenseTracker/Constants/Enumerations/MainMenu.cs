@@ -9,6 +9,7 @@
             Search,
             View_All_Actions,
             Edit_Activity,
+            Delete_Activity,
             View_Summary,
             Close_App
         }

@@ -4,11 +4,15 @@ namespace Repository
 {
     public class FinanceRepository
     {
-        public List<IFinance> FinanceData;
+        private List<IFinance> FinanceData;
 
         public FinanceRepository()
         {
             FinanceData = new List<IFinance>();
+        }
+        public List<IFinance> GetFinanceData()
+        {
+            return FinanceData;
         }
 
     }
