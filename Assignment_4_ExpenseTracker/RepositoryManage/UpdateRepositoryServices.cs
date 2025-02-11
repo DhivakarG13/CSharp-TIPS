@@ -7,11 +7,12 @@ using Constants.Enumerations;
 
 namespace Assignment_4_ExpenseTracker.RepositoryManage
 {
-    public static class UpdateRepository
+    public static class UpdateRepositoryServices
     {
         public static void AddIncome(List<IFinance> financeData)
         {
             Console.Clear();
+            ConsoleWriter.ActionTitleWriter("-- Adding Income __");
             (IncomeOptions, string) incomeSource = GetUserData.GetIncomeSource();
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
@@ -23,6 +24,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
         public static void AddExpense(List<IFinance> financeData)
         {
             Console.Clear();
+            ConsoleWriter.ActionTitleWriter("-- Adding Expense __");
             (ExpenseOptions, string) expenseSource = GetUserData.GetExpenseSource();
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
@@ -34,6 +36,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
         public static void EditActivity(IFinance actionToEdit)
         {
             Console.Clear();
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity --");
             ConsoleWriter.PrintActionData(default, actionToEdit);
             ConsoleWriter.PrintDialog(new EditOptions());
             EditOptions UserEditChoice = (EditOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(EditOptions)).Length);
@@ -56,7 +59,8 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
         }
         private static void EditActivitySource(IFinance actionToEdit)
         {
-            if (actionToEdit.GetType().ToString() == "Expense")
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity Source --");
+            if (actionToEdit is Expense)
             {
                 (ExpenseOptions, string) expenseSource = GetUserData.GetExpenseSource();
                 (int, string) newSource = ((int)expenseSource.Item1, expenseSource.Item2);
@@ -71,14 +75,29 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
         }
         private static void EditActivityTime(IFinance actionToEdit)
         {
+<<<<<<<< HEAD:Assignment_4_ExpenseTracker/RepositoryManage/UpdateRepository.cs
             DateOnly actionDate = GetUserData.GetActivityDate();
+========
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity Time --");
+            DateOnly actionDate = GetUserData.GetActivityTime();
+>>>>>>>> 56182b0 (Assignment_ 4 _ Expense Tracker _Module[5] Delete Action and Recently Added Action in Main Page[NEW]):Assignment_4_ExpenseTracker/RepositoryManage/UpdateRepositoryServices.cs
             actionToEdit.ActionDate = actionDate;
         }
 
         private static void EditActivityAmount(IFinance actionToEdit)
         {
+            ConsoleWriter.ActionTitleWriter("-- Editing Activity Amount --");
             int amount = GetUserData.GetAmount();
             actionToEdit.Amount = amount;
         }
+<<<<<<<< HEAD:Assignment_4_ExpenseTracker/RepositoryManage/UpdateRepository.cs
+========
+        internal static void DeleteAction(List<IFinance> FinanceData, IFinance finance)
+        {
+            FinanceData.Remove(finance);
+        }
+
+
+>>>>>>>> 56182b0 (Assignment_ 4 _ Expense Tracker _Module[5] Delete Action and Recently Added Action in Main Page[NEW]):Assignment_4_ExpenseTracker/RepositoryManage/UpdateRepositoryServices.cs
     }
 }
