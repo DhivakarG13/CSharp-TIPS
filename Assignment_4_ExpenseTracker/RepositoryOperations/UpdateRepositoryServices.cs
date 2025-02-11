@@ -5,9 +5,9 @@ using Models;
 using Assignment_4_ExpenseTracker.HelperUtility;
 using Constants.Enumerations;
 
-namespace Assignment_4_ExpenseTracker.RepositoryManager
+namespace Assignment_4_ExpenseTracker.RepositoryOperations
 {
-    public static class UpdateRepository
+    public static class UpdateRepositoryServices
     {
         public static void AddIncome(List<IFinance> financeData)
         {
@@ -81,6 +81,9 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             actionToEdit.Amount = amount;
         }
 
-
+        internal static void DeleteAction(List<IFinance> FinanceData,IFinance finance)
+        {
+            FinanceData.Remove(finance);
+        }
     }
 }

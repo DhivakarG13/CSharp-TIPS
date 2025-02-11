@@ -93,7 +93,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
                 Source = ConsoleReader.GetInput();
                 isValidSource = ValidationServices.ValidateOtherSource(Source);
             }
-            return Source ?? "";
+            return Source ;
         }
 
         public static int GetAmount()

@@ -10,6 +10,7 @@
             View_All_Actions,
             Edit_Activity,
             View_Summary,
+            Delete_Activity,
             Close_App
         }
     }
