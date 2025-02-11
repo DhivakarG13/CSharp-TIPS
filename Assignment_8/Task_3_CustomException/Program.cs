@@ -12,7 +12,7 @@
                 {
 
                     throw new InvalidUserInputException("Your value is Invalid It's Assigned to 0");
-                    throw new InvalidUserInputException();
+                    //throw new InvalidUserInputException();
                 }
             }
             catch (InvalidUserInputException ex)

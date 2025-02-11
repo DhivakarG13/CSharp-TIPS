@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2", "..\Task2\Task2.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task3_CustomException", "..\Task3_CustomException\Task3_CustomException.csproj", "{6BF86B6C-34E4-4DAE-8E64-10B4994CC91A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_4_GlobalException", "..\Task_4_GlobalException\Task_4_GlobalException.csproj", "{8464ECED-A136-4172-B82A-FA61CA360D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_5", "..\Task_5\Task_5.csproj", "{3ABC004C-E1A7-4472-8544-8591C4F2D444}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{6BF86B6C-34E4-4DAE-8E64-10B4994CC91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BF86B6C-34E4-4DAE-8E64-10B4994CC91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BF86B6C-34E4-4DAE-8E64-10B4994CC91A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8464ECED-A136-4172-B82A-FA61CA360D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8464ECED-A136-4172-B82A-FA61CA360D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8464ECED-A136-4172-B82A-FA61CA360D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8464ECED-A136-4172-B82A-FA61CA360D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABC004C-E1A7-4472-8544-8591C4F2D444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABC004C-E1A7-4472-8544-8591C4F2D444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABC004C-E1A7-4472-8544-8591C4F2D444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABC004C-E1A7-4472-8544-8591C4F2D444}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
