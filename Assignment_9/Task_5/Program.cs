@@ -26,37 +26,39 @@ namespace Task_5
                 new Supplier(2005 , "Supplier6" , 1000),
                 new Supplier(2005 , "Supplier7" , 1002)
             };
+
+            var query = new QueryBuilder(products, suppliers);
         }
     }
-    public class QueryBuilders
+    public class QueryBuilder
     {
-        public List<Product> toBeOperatedList {  get; set; }
+        public List<Product> toBeOperatedProductList {  get; set; }
+        public List<Supplier> toBeOperatedSupplierList {  get; set; }
         public List<Product> operatedList { get; set;}
-
-        
-
-        public QueryBuilders(List<Product> listOfEntities)
+        public QueryBuilder(List<Product> listOfProducts, List<Supplier> listOfSuppliers)
         {
-            toBeOperatedList = listOfEntities;
+            toBeOperatedProductList = listOfProducts;
+            toBeOperatedSupplierList = listOfSuppliers;
             operatedList = new List<Product>();
         }
-        public QueryBuilders Filter(Func<Product,bool> func)   // (p=>p.price>0)
+        public QueryBuilder Filter(Func<Product,bool> func)   // (p=>p.price>0)
         {
-            operatedList = toBeOperatedList.Where(func).ToList();
+            operatedList = toBeOperatedProductList.Where(func).ToList();
             return this;
         }
-        public QueryBuilders SortBy(Func<Product, decimal> func)
+        public QueryBuilder SortBy(Func<Product, decimal> func)
         {
             operatedList = operatedList.OrderBy(func).ToList();
             return this;
         }
-        public QueryBuilders Join(Func<Product, Supplier, bool> func)
+        public QueryBuilder Join(Func<int ,bool> func1 , Func<int , bool> func2)
         {
+            operatedList = operatedList.Join(toBeOperatedSupplierList, func1, func2, new List<Product> { new Product(0, null, 0, 0) });
             return this;
         }
         public List<Task_1.Product> Execute()
         {
-            return new List<Task_1.Product>();
+            return operatedList;
         }
     }
 }
