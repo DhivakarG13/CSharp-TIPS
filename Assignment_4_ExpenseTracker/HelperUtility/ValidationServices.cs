@@ -122,7 +122,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
             }
         }
 
-        internal static bool ValidateStringValue(string? stringValue)
+        public static bool ValidateStringValue(string? stringValue)
         {
             if (stringValue == null || stringValue.Length == 0)
             {

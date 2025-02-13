@@ -108,7 +108,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchBySource(string Source, List<IFinance> FinancialRecord)
+        public static List<IFinance> SearchBySource(string Source, List<IFinance> FinancialRecord)
         {
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
@@ -121,7 +121,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchByTransactionId(int transactionId, List<IFinance> FinancialRecord)
+        public static List<IFinance> SearchByTransactionId(int transactionId, List<IFinance> FinancialRecord)
         {
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
@@ -134,7 +134,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchByAction(string searchByActionChoice, List<IFinance> FinancialRecord)
+        public static List<IFinance> SearchByAction(string searchByActionChoice, List<IFinance> FinancialRecord)
         {
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
@@ -147,7 +147,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        internal static (int, int) GetSummary(List<IFinance> financeData)
+        public static (int, int) GetSummary(List<IFinance> financeData)
         {
             int income = 0;
             int expense = 0;
