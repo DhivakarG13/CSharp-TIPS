@@ -17,6 +17,8 @@
 * provides services like memory management, exception handling, Garbage collection, Thread management, Type Safety.
 * Net Framework provide language inter-operability
  code written in different languages is converted to CIL and all the codes are inter_operable now.
+![image](https://github.com/user-attachments/assets/7f48fcfd-e3fd-444b-8ff9-578a94cb043f)
+
 
 ## 2) What are the key components of Net platform?
  
