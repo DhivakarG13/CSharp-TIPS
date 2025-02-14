@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assignment_4_ExpenseTracker.Models;
+﻿using Assignment_4_ExpenseTracker.Models;
 using Constants.Enumerations;
 
 namespace Assignment_4_ExpenseTracker_XUnitTests.Model
@@ -21,6 +16,7 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.Model
 
             Assert.Equal(expectedValue, actualValue);
         }
+
         [Fact]
         public void Given_WhenGetSource_ThenReturnsIncome()
         {
@@ -31,6 +27,7 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.Model
 
             Assert.Equal(expectedValue, actualValue);
         }
+
         [Fact]
         public void GivenTupleOfIncomeOptionIndexAndSource_WhenSetSource_ThenSetsIncomeSource()
         {

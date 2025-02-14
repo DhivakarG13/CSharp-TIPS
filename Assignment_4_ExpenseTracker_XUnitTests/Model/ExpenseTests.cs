@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Constants.Enumerations;
+﻿using Constants.Enumerations;
 using Assignment_4_ExpenseTracker.Models;
 
 namespace Assignment_4_ExpenseTracker_XUnitTests.Model
@@ -21,6 +16,7 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.Model
 
             Assert.Equal(expectedValue, actualValue);
         }
+
         [Fact]
         public void Given_WhenGetSource_ThenReturnsExpense()
         {
@@ -32,18 +28,19 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.Model
 
             Assert.Equal(expectedValue, actualValue);
         }
+
         [Fact]
         public void GivenTupleOfExpenseOptionIndexAndSource_WhenSetSource_ThenSetsExpenseSource()
         {
             Expense testExpense = new Expense(ExpenseOptions.Other, "Laptop", 100, 2004, DateOnly.MinValue);
-            (int, string) value = ((int)ExpenseOptions.Other, "Bottle");
+            (int, string) sourceValue = ((int)ExpenseOptions.Other, "Bottle");
 
-            testExpense.SetSource(value);
+            testExpense.SetSource(sourceValue);
 
-            string Bottle = "Bottle";
+            string expectedValue = "Bottle";
             string actualValue = testExpense.GetSource();
 
-            Assert.Equal(Bottle, actualValue);
+            Assert.Equal(expectedValue, actualValue);
         }
     }
 }

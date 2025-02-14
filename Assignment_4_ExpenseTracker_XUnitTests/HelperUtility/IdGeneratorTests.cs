@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using Assignment_4_ExpenseTracker.Models;
+﻿using Assignment_4_ExpenseTracker.Models;
 using Constants.Enumerations;
 using Models;
 using Assignment_4_ExpenseTracker.HelperUtility;
@@ -13,7 +7,6 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
     public class IdGeneratorTests
     {
         [Fact]
-
         public void GivenListOfActions_WhenTransactionIdGenerator_ReturnsUniqueId()
         {
             List<IFinance> testFinancialRecord = new List<IFinance>(){

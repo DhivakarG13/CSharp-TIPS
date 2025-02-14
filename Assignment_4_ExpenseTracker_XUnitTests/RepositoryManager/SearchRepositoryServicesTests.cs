@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assignment_4_ExpenseTracker.Models;
+﻿using Assignment_4_ExpenseTracker.Models;
 using Models;
 using Constants.Enumerations;
 using Assignment_4_ExpenseTracker.RepositoryManager;
@@ -33,7 +28,6 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.RepositoryManager
                 new Income(IncomeOptions.Salary , "",100,2010,DateOnly.MinValue),
                 new Income(IncomeOptions.Other , "Sales",100,2011,DateOnly.MinValue)
             };
-
             List<IFinance> expectedValue = new List<IFinance>() {
                 testFinancialRecord[resultIndex],
             };
@@ -57,7 +51,6 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.RepositoryManager
                 new Income(IncomeOptions.Other , "Sales",100,2011,DateOnly.MinValue)
             };
             string stringToSearch = "Sal";
-
             List<IFinance> expectedValue = new List<IFinance>() {
                 testFinancialRecord[6],
                 testFinancialRecord[7]
@@ -116,7 +109,6 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.RepositoryManager
                 new Income(IncomeOptions.Salary , "",100,2010,DateOnly.MinValue),
                 new Income(IncomeOptions.Other , "Sales",100,2011,DateOnly.MinValue)
             };
-
             List<IFinance> expectedValue = new List<IFinance>() {
                 testFinancialRecord[MatchingIndex],
             };
@@ -194,7 +186,6 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.RepositoryManager
                 new Income(IncomeOptions.Other , "Sales",100,2011,DateOnly.MinValue)
             };
             string searchByActionChoice = "Expense";
-
             List<IFinance> expectedValue = new List<IFinance>() {
                 testFinancialRecord[0],
                 testFinancialRecord[1],

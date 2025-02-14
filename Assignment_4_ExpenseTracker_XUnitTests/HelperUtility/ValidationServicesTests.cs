@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assignment_4_ExpenseTracker.HelperUtility;
-using Assignment_4_ExpenseTracker.MessageServices;
+﻿using Assignment_4_ExpenseTracker.HelperUtility;
 using Assignment_4_ExpenseTracker.Models;
-using Constants;
 using Constants.Enumerations;
 using Models;
 
@@ -169,6 +162,7 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
 
                 Assert.False(expectedResult);
             }
+
             [Theory]
             [InlineData("Hello")]
             [InlineData("0*1")]
@@ -177,9 +171,9 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
             [InlineData("*****")]
             public void GivenStringValue_WhenValidateStringValue_ThenReturnsTrueIfStringLengthGreaterThan2(string stringValue)
             {
-                bool ExpectedValue = ValidationServices.ValidateStringValue(stringValue);
+                bool expectedValue = ValidationServices.ValidateStringValue(stringValue);
 
-                Assert.True(ExpectedValue);
+                Assert.True(expectedValue);
             }
 
             [Theory]
@@ -190,9 +184,9 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
             [InlineData(" 9 ")]
             public void GivenStringValue_WhenValidateStringValue_ThenReturnsFalseIfStringLengthLesserThan3(string stringValue)
             {
-                bool ExpectedValue = ValidationServices.ValidateStringValue(stringValue);
+                bool expectedValue = ValidationServices.ValidateStringValue(stringValue);
 
-                Assert.False(ExpectedValue);
+                Assert.False(expectedValue);
             }
 
             [Theory]
@@ -220,7 +214,6 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
 
                 Assert.False(expectedResult);
             }
-
 
             [Theory]
             [InlineData(2024)]
@@ -254,9 +247,9 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
             [InlineData("29-2-2024")]
             public void GivenStringValue_WhenValidateDateInputs_ThenReturnsTrueIfValidDate(string otherSource)
             {
-                bool ExpectedValue = ValidationServices.ValidateDateInputs(otherSource);
+                bool expectedValue = ValidationServices.ValidateDateInputs(otherSource);
 
-                Assert.True(ExpectedValue);
+                Assert.True(expectedValue);
             }
 
             [Theory]
@@ -268,24 +261,11 @@ namespace Assignment_4_ExpenseTracker_XUnitTests.HelperUtility
             [InlineData("  10/10/2024  ")]
             public void GivenStringValue_WhenValidateDateInputs_ThenReturnsFalseIfInValidDate(string otherSource)
             {
-                bool ExpectedValue = ValidationServices.ValidateDateInputs(otherSource);
+                bool expectedValue = ValidationServices.ValidateDateInputs(otherSource);
 
-                Assert.False(ExpectedValue);
+                Assert.False(expectedValue);
             }
         }
 
     }
 }
-
-//public static bool ValidateDateInputs(string? ActionDate)
-//{
-//    if (DateTime.TryParse(ActionDate, out DateTime userDateTime))
-//    {
-//        return true;
-//    }
-//    else
-//    {
-//        ConsoleWriter.PrintWarning(ConstantStrings.userInputInvalidDate);
-//        return false;
-//    }
-//}
