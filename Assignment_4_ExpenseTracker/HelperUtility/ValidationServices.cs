@@ -28,7 +28,6 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
                 ConsoleWriter.PrintWarning(ConstantStrings.userChoiceOutOfRange);
                 return false;
             }
-
         }
 
         public static bool ValidateOtherSource(string? sourceName)
@@ -56,6 +55,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
             }
             return true;
         }
+
         public static bool ValidateAmount(string? numericalValue)
         {
             if (numericalValue == null || numericalValue.Length == 0)
@@ -77,6 +77,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
             }
             return true;
         }
+
         public static bool ValidateNumericalInputs(string? numericalValue)
         {
             if (numericalValue == null || numericalValue.Length == 0)

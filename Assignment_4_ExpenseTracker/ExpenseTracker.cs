@@ -114,7 +114,6 @@ namespace Assignment4ExpenseTracker
                     {
                         return true;
                     }
-
             }
             Console.Clear();
             return false;

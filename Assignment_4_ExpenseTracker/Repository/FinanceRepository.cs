@@ -10,6 +10,7 @@ namespace Repository
         {
             FinanceData = new List<IFinance>();
         }
+
         public List<IFinance> GetFinanceData()
         {
             return FinanceData;

@@ -4,8 +4,8 @@
     {
         internal static string? GetInput()
         {
-            string? Input = Console.ReadLine();
-            return Input;
+            string? userInput = Console.ReadLine();
+            return userInput;
         }
     }
 }

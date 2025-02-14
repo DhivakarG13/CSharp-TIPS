@@ -54,7 +54,6 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             }
             Console.Clear();
             ConsoleWriter.PrintActionData(default, actionToEdit);
-
         }
 
         private static void EditActivitySource(IFinance actionToEdit)
@@ -92,7 +91,5 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
         {
             financeData.Remove(finance);
         }
-
-
     }
 }

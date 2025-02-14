@@ -19,10 +19,12 @@ namespace Assignment_4_ExpenseTracker.Models
             _transactionId = transactionId;
             _actionDate = actionDate;
         }
+
         new public string GetType()
         {
             return "Expense";
         }
+
         public string GetSource()
         {
             if (_expenseType == ExpenseOptions.Other)
