@@ -4,13 +4,13 @@
     {
         public int SupplierId { get; set; }
         public string SupplierName { get; set; }
-        public int ProductId { get; set; }
+        public int SupplierProductId { get; set; }
 
         public Supplier(int supplierId , string supplierName, int productId)
         {
             SupplierId = supplierId;
             SupplierName = supplierName;
-            ProductId = productId;
+            SupplierProductId = productId;
         }
     }
 

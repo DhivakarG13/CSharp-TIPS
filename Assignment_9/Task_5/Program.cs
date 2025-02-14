@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Task_1;
 using Task_2;
 
 namespace Task_5
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -27,36 +26,44 @@ namespace Task_5
                 new Supplier(2005 , "Supplier7" , 1002)
             };
 
-            var query = new QueryBuilder(products, suppliers);
+            var query = new QueryBuilder<Product, Supplier>(products, suppliers);
         }
     }
-    public class QueryBuilder
+    public class QueryBuilder<T1, T2> where T1 : class where T2 : class
     {
-        public List<Product> toBeOperatedProductList {  get; set; }
-        public List<Supplier> toBeOperatedSupplierList {  get; set; }
-        public List<Product> operatedList { get; set;}
-        public QueryBuilder(List<Product> listOfProducts, List<Supplier> listOfSuppliers)
+        public List<T1> toBeOperatedProductList { get; set; }
+        public List<T2> toBeOperatedSupplierList { get; set; }
+        public IEnumerable<T1> operatedList { get; set; }
+
+        public QueryBuilder(List<T1> listOfProducts, List<T2> listOfSuppliers)
         {
             toBeOperatedProductList = listOfProducts;
             toBeOperatedSupplierList = listOfSuppliers;
-            operatedList = new List<Product>();
+            operatedList = new List<T1>();
         }
-        public QueryBuilder Filter(Func<Product,bool> func)   // (p=>p.price>0)
+
+        public QueryBuilder<T1, T2> Filter(Func<T1, bool> func)
         {
-            operatedList = toBeOperatedProductList.Where(func).ToList();
+            operatedList = toBeOperatedProductList.Where(func);
             return this;
         }
-        public QueryBuilder SortBy(Func<Product, decimal> func)
+
+        public QueryBuilder<T1, T2> SortBy<T3>(Func<T1, T3> func)
         {
             operatedList = operatedList.OrderBy(func).ToList();
             return this;
         }
-        public QueryBuilder Join(Func<int ,bool> func1 , Func<int , bool> func2)
+
+        public QueryBuilder<T1, T2> Join<T3>(Func<T3, T3, bool> func)
         {
-            operatedList = operatedList.Join(toBeOperatedSupplierList, func1, func2, new List<Product> { new Product(0, null, 0, 0) });
+            var resultList = from product in operatedList
+                             join supplier in toBeOperatedSupplierList
+                            on func()
+                            select new { product, supplier };
+
             return this;
         }
-        public List<Task_1.Product> Execute()
+        public IEnumerable<T1> Execute()
         {
             return operatedList;
         }

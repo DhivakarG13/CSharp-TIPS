@@ -40,11 +40,11 @@ namespace Task_2
             };
 
             var JoinedSupplierList = suppliers.Join(products,
-                supplier => supplier.ProductId,
+                supplier => supplier.SupplierProductId,
                 product => product.ProductId,
                 (supplier, product) => new { SupplierName = supplier.SupplierName , 
                     SupplierId =supplier.SupplierId , ProductName = product.ProductName,
-                    SupplierProductID = supplier.ProductId , ProductId = product.ProductId
+                    SupplierProductID = supplier.SupplierProductId , ProductId = product.ProductId
                 });
 
             Console.WriteLine("{0,15}  {1,15} {2,15} {3,15} {4,15}", "SupplierName", "SupplierId", "ProductName", "SupplierProductID", "ProductId");
