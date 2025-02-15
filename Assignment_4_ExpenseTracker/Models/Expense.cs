@@ -18,9 +18,9 @@ namespace Assignment_4_ExpenseTracker.Models
         {
             _expenseType = expenseOption;
             _otherExpenseSource = otherExpenseSource;
-            _amount = amount;
-            _transactionId = transactionId;
-            _actionDate = actionDate;
+            Amount = amount;
+            TransactionId = transactionId;
+            ActionDate = actionDate;
         }
         public string? GetSource()
         {
