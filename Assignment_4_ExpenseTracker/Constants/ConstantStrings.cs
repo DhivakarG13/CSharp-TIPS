@@ -30,11 +30,11 @@
 
         public const string expenseAddedSuccessfullyMessage = "Expense Added Successfully";
 
-        public const string SearchSuccessfulMessage         = "Search successful";
+        public const string searchSuccessfulMessage         = "Search successful";
 
         public const string allActionsDisplayedMessage      = ":: All actions Displayed ::";
 
-        public const string SearchFailedMessage             = "No items match your search";
+        public const string searchFailedMessage             = "No items match your search";
 
         public const string income                          = "Income";
 

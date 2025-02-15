@@ -1,121 +1,118 @@
-﻿
-
-using Assignment_4_ExpenseTracker.HelperUtility;
+﻿using Assignment_4_ExpenseTracker.HelperUtility;
 using Constants;
 using Constants.Enumerations;
 
 namespace Assignment_4_ExpenseTracker.MessageServices
 {
-
     public static class GetUserData
     {
-        public static int GetDialogChoice(int TotalChoices)
+        public static int GetDialogChoice(int totalChoices)
         {
-            List<int> Range = new List<int>();
-            for (int index = 1; index <= TotalChoices; index++)
+            List<int> range = new List<int>();
+            for (int index = 1; index <= totalChoices; index++)
             {
-                Range.Add(index);
+                range.Add(index);
             }
-            string? Choice = null;
-            bool IsValidChoice = false;
-            while (!IsValidChoice)
+            string? choice = null;
+            bool isValidChoice = false;
+            while (!isValidChoice)
             {
                 Console.Write("Enter Your Choice : ");
-                Choice = ConsoleReader.GetInput();
-                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                choice = ConsoleReader.GetInput();
+                isValidChoice = ValidationServices.ValidateChoice(choice, range);
                 Console.WriteLine();
             }
-            IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
-            return ParsedChoice;
+            isValidChoice = int.TryParse(choice, out int parsedChoice);
+            return parsedChoice;
         }
 
-        public static int GetChoiceFromList(int TotalProducts)
+        public static int GetChoiceFromList(int totalProducts)
         {
             List<int> Range = new List<int>();
-            for (int index = 0; index < TotalProducts; index++)
+            for (int index = 0; index < totalProducts; index++)
             {
                 Range.Add(index);
             }
-            string? Choice = null;
-            bool IsValidChoice = false;
-            while (!IsValidChoice)
+            string? choice = null;
+            bool isValidChoice = false;
+            while (!isValidChoice)
             {
                 Console.Write("Enter Your Index : ");
-                Choice = ConsoleReader.GetInput();
-                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                choice = ConsoleReader.GetInput();
+                isValidChoice = ValidationServices.ValidateChoice(choice, Range);
                 Console.WriteLine();
             }
-            IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
-            return ParsedChoice;
+            isValidChoice = int.TryParse(choice, out int parsedChoice);
+            return parsedChoice;
         }
 
         public static (IncomeOptions, string) GetIncomeSource()
         {
             ConsoleWriter.PrintDialog(new IncomeOptions());
-            IncomeOptions IncomeChoice = (IncomeOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(IncomeOptions)).Length);
+            IncomeOptions incomeChoice = (IncomeOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(IncomeOptions)).Length);
             string source = "";
-            if (IncomeChoice == IncomeOptions.Other)
+            if (incomeChoice == IncomeOptions.Other)
             {
                 source = GetUserData.GetOtherSource(ConstantStrings.income);
             }
             else
             {
-                ConsoleWriter.PrintSource(IncomeChoice.ToString());
+                ConsoleWriter.PrintSource(incomeChoice.ToString());
             }
-            (IncomeOptions, string) IncomeSource = ((IncomeOptions)IncomeChoice, source);
-            return IncomeSource;
+            (IncomeOptions, string) incomeSource = ((IncomeOptions)incomeChoice, source);
+            return incomeSource;
         }
 
         public static (ExpenseOptions, string) GetExpenseSource()
         {
             ConsoleWriter.PrintDialog(new ExpenseOptions());
-            ExpenseOptions ExpenseChoice = (ExpenseOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(ExpenseOptions)).Length);
+            ExpenseOptions expenseChoice = (ExpenseOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(ExpenseOptions)).Length);
             string source = "";
-            if (ExpenseChoice == ExpenseOptions.Other)
+            if (expenseChoice == ExpenseOptions.Other)
             {
                 source = GetUserData.GetOtherSource(ConstantStrings.expense);
             }
             else
             {
-                ConsoleWriter.PrintSource(ExpenseChoice.ToString());
+                ConsoleWriter.PrintSource(expenseChoice.ToString());
             }
-            (ExpenseOptions, string) ExpenseSource = ((ExpenseOptions)ExpenseChoice, source);
-            return ExpenseSource;
+            (ExpenseOptions, string) expenseSource = ((ExpenseOptions)expenseChoice, source);
+            return expenseSource;
         }
 
         public static string GetOtherSource(string action)
         {
             bool isValidSource = false;
-            string? Source = string.Empty;
+            string? source = string.Empty;
             while (!isValidSource)
             {
                 ConsoleWriter.GetActionInfoWriter(action + ConstantStrings.source);
-                Source = ConsoleReader.GetInput();
-                isValidSource = ValidationServices.ValidateOtherSource(Source);
+                source = ConsoleReader.GetInput();
+                isValidSource = ValidationServices.ValidateOtherSource(source);
             }
-            return Source ?? "";
+            return source ?? "";
         }
 
         public static int GetAmount()
         {
-            bool IsValid = false;
-            string? Amount = null;
-            while (!IsValid)
+            bool isValid = false;
+            string? amount = null;
+            while (!isValid)
             {
                 ConsoleWriter.GetActionInfoWriter(ConstantStrings.amount);
-                Amount = ConsoleReader.GetInput();
-                IsValid = ValidationServices.ValidateAmount(Amount);
+                amount = ConsoleReader.GetInput();
+                isValid = ValidationServices.ValidateAmount(amount);
             }
-            int ParsedAmount = default;
-            int.TryParse(Amount, out ParsedAmount);
-            return ParsedAmount;
+            int parsedAmount = default;
+            int.TryParse(amount, out parsedAmount);
+            return parsedAmount;
         }
 
         public static DateOnly GetActivityTime()
         {
             ConsoleWriter.PrintDialog(new SetTimeOptions());
-            SetTimeOptions UserSetTimeChoice = (SetTimeOptions)GetDialogChoice(Enum.GetNames(typeof(SetTimeOptions)).Length);
-            switch (UserSetTimeChoice)
+            SetTimeOptions userSetTimeChoice = (SetTimeOptions)GetDialogChoice(Enum.GetNames(typeof(SetTimeOptions)).Length);
+            switch (userSetTimeChoice)
             {
                 case SetTimeOptions.Own_Time:
                     return GetUserTime();
@@ -128,58 +125,58 @@ namespace Assignment_4_ExpenseTracker.MessageServices
 
         public static DateOnly GetUserTime()
         {
-            bool IsValidDate = false;
-            string? ActionDate = null;
-            while (!IsValidDate)
+            bool isValidDate = false;
+            string? actionDate = null;
+            while (!isValidDate)
             {
                 ConsoleWriter.GetActionInfoWriter(ConstantStrings.actionDate);
-                ActionDate = ConsoleReader.GetInput();
-                IsValidDate = ValidationServices.ValidateDateInputs(ActionDate);
+                actionDate = ConsoleReader.GetInput();
+                isValidDate = ValidationServices.ValidateDateInputs(actionDate);
             }
-            DateTime ParsedActionDate = default;
-            DateTime.TryParse(ActionDate, out ParsedActionDate);
-            return DateOnly.FromDateTime(ParsedActionDate);
+            DateTime parsedActionDate = default;
+            DateTime.TryParse(actionDate, out parsedActionDate);
+            return DateOnly.FromDateTime(parsedActionDate);
         }
 
         public static int GetActionId()
         {
-            bool IsValidActionId = false;
-            string? ActionId = null;
-            while (!IsValidActionId)
+            bool isValidActionId = false;
+            string? actionId = null;
+            while (!isValidActionId)
             {
                 ConsoleWriter.GetActionInfoWriter(ConstantStrings.actionId);
-                ActionId = ConsoleReader.GetInput();
-                IsValidActionId = ValidationServices.ValidateNumericalInputs(ActionId);
+                actionId = ConsoleReader.GetInput();
+                isValidActionId = ValidationServices.ValidateNumericalInputs(actionId);
             }
-            int ParsedActionId = default;
-            int.TryParse(ActionId, out ParsedActionId);
-            return ParsedActionId;
+            int parsedActionId = default;
+            int.TryParse(actionId, out parsedActionId);
+            return parsedActionId;
         }
 
         public static int GetNumericalValue(string typeOfData)
         {
             Console.Write($"Enter Your {typeOfData}:");
-            bool IsNumberValid = false;
-            string? ValidNumber = null;
-            while (!IsNumberValid)
+            bool isNumberValid = false;
+            string? validNumber = null;
+            while (!isNumberValid)
             {
-                ValidNumber = Console.ReadLine();
-                IsNumberValid = ValidationServices.ValidateNumericalInputs(ValidNumber);
+                validNumber = Console.ReadLine();
+                isNumberValid = ValidationServices.ValidateNumericalInputs(validNumber);
             }
-            int ParsedValidNumber = default;
-            int.TryParse(ValidNumber, out ParsedValidNumber);
-            return ParsedValidNumber;
+            int parsedValidNumber = default;
+            int.TryParse(validNumber, out parsedValidNumber);
+            return parsedValidNumber;
         }
 
-        internal static string GetStringValue(string action)
+        public static string GetStringValue(string action)
         {
-            bool IsValidStringValue = false;
+            bool isValidStringValue = false;
             string? stringValue = string.Empty;
-            while (!IsValidStringValue)
+            while (!isValidStringValue)
             {
                 ConsoleWriter.GetActionInfoWriter(action + ConstantStrings.value);
                 stringValue = ConsoleReader.GetInput();
-                IsValidStringValue = ValidationServices.ValidateStringValue(stringValue);
+                isValidStringValue = ValidationServices.ValidateStringValue(stringValue);
             }
             return stringValue ?? string.Empty;
         }

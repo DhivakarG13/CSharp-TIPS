@@ -3,7 +3,6 @@ using Assignment_4_ExpenseTracker.RepositoryManager;
 using Constants;
 using Constants.Enumerations;
 using Models;
-using Repository;
 
 namespace Assignment4ExpenseTracker
 {
@@ -42,11 +41,11 @@ namespace Assignment4ExpenseTracker
                         if (matchingActions.Count > 0)
                         {
                             ConsoleWriter.PrintListOfActionData(matchingActions);
-                            ConsoleWriter.PrintActionComplete(ConstantStrings.SearchSuccessfulMessage);
+                            ConsoleWriter.PrintActionComplete(ConstantStrings.searchSuccessfulMessage);
                         }
                         else
                         {
-                            ConsoleWriter.PrintActionFailed(ConstantStrings.SearchFailedMessage);
+                            ConsoleWriter.PrintActionFailed(ConstantStrings.searchFailedMessage);
                         }
                         break;
                     }
@@ -78,7 +77,7 @@ namespace Assignment4ExpenseTracker
                         }
                         else
                         {
-                            ConsoleWriter.PrintActionFailed(ConstantStrings.SearchFailedMessage);
+                            ConsoleWriter.PrintActionFailed(ConstantStrings.searchFailedMessage);
                         }
                         break;
                     }
@@ -100,7 +99,7 @@ namespace Assignment4ExpenseTracker
                         }
                         else
                         {
-                            ConsoleWriter.PrintActionFailed(ConstantStrings.SearchFailedMessage);
+                            ConsoleWriter.PrintActionFailed(ConstantStrings.searchFailedMessage);
                         }
                         break;
                     }
@@ -115,7 +114,6 @@ namespace Assignment4ExpenseTracker
                     {
                         return true;
                     }
-
             }
             Console.Clear();
             return false;

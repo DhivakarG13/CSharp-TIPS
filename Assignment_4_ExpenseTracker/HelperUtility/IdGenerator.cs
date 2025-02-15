@@ -1,19 +1,19 @@
 ﻿using Models;
 namespace Assignment_4_ExpenseTracker.HelperUtility
 {
-    internal static class IdGenerator
+    public static class IdGenerator
     {
-        public static int TransactionIdGenerator(List<IFinance> FinancialRecord)
+        public static int TransactionIdGenerator(List<IFinance> financialRecord)
         {
-            bool IsValid = false;
-            Random NewRandom = new Random();
-            int NewId = 0;
-            while (!IsValid)
+            bool isValid = false;
+            Random newRandom = new Random();
+            int newId = 0;
+            while (!isValid)
             {
-                NewId = NewRandom.Next(10000, 100000);
-                IsValid = ValidationServices.ValidateNewTransactionId(NewId, FinancialRecord);
+                newId = newRandom.Next(10000, 100000);
+                isValid = ValidationServices.ValidateNewTransactionId(newId, financialRecord);
             }
-            return NewId;
+            return newId;
         }
     }
 }

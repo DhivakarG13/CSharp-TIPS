@@ -1,6 +1,5 @@
 ﻿using Assignment_4_ExpenseTracker.MessageServices;
 using Assignment_4_ExpenseTracker.Models;
-using System;
 using Models;
 using Assignment_4_ExpenseTracker.HelperUtility;
 using Constants.Enumerations;
@@ -55,8 +54,8 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             }
             Console.Clear();
             ConsoleWriter.PrintActionData(default, actionToEdit);
-
         }
+
         private static void EditActivitySource(IFinance actionToEdit)
         {
             ConsoleWriter.ActionTitleWriter("-- Editing Activity Source --");
@@ -73,6 +72,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
                 actionToEdit.SetSource(newSource);
             }
         }
+
         private static void EditActivityTime(IFinance actionToEdit)
         {
             ConsoleWriter.ActionTitleWriter("-- Editing Activity Time --");
@@ -86,11 +86,10 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             int amount = GetUserData.GetAmount();
             actionToEdit.Amount = amount;
         }
-        internal static void DeleteAction(List<IFinance> FinanceData, IFinance finance)
+
+        public static void DeleteAction(List<IFinance> financeData, IFinance finance)
         {
-            FinanceData.Remove(finance);
+            financeData.Remove(finance);
         }
-
-
     }
 }

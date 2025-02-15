@@ -3,42 +3,44 @@ using Models;
 
 namespace Assignment_4_ExpenseTracker.Models
 {
-    public class Expense : IFinance
+    public class Income : IFinance
     {
-        private ExpenseOptions _expenseType;
-        private string _otherExpenseSource;
+        private IncomeOptions _incomeType;
+        private string _otherIncomeSource;
         private int _amount;
         private int _transactionId;
         private DateOnly _actionDate;
 
-        public Expense(ExpenseOptions expenseOption, string otherExpenseSource, int amount, int transactionId, DateOnly actionDate)
+        public Income(IncomeOptions incomeOption,string otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
         {
-            _expenseType = expenseOption;
-            _otherExpenseSource = otherExpenseSource;
+            _incomeType = incomeOption;
+            _otherIncomeSource = otherIncomeSource;
             _amount = amount;
             _transactionId = transactionId;
             _actionDate = actionDate;
         }
+
         new public string GetType()
         {
-            return "Expense";
+            return "Income";
         }
+
         public string GetSource()
         {
-            if (_expenseType == ExpenseOptions.Other)
+            if (_incomeType == IncomeOptions.Other)
             {
-                return _otherExpenseSource;
+                return _otherIncomeSource;
             }
             else
             {
-                return _expenseType.ToString();
+                return _incomeType.ToString();
             }
         }
 
         public void SetSource((int, string) value)
         {
-            _expenseType = (ExpenseOptions)value.Item1;
-            _otherExpenseSource = value.Item2;
+            _incomeType = (IncomeOptions)value.Item1;
+            _otherIncomeSource = value.Item2;
         }
 
         public int Amount { get => _amount; set => _amount = value; }

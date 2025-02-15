@@ -1,5 +1,4 @@
-﻿using System;
-using ConsoleTables;
+﻿using ConsoleTables;
 using Constants;
 using Models;
 
@@ -33,10 +32,10 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             Console.ResetColor();
         }
 
-        public static void GetActionInfoWriter(string? TypeOfData)
+        public static void GetActionInfoWriter(string? typeOfData)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write($"{TypeOfData}");
+            Console.Write($"{typeOfData}");
             Console.ResetColor();
         }
 
@@ -73,59 +72,57 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             Console.WriteLine($"Your Transaction Id   : {transactionId}");
         }
 
-        public static void PrintWarning(string? WarningMessage)
+        public static void PrintWarning(string? warningMessage)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine($"{WarningMessage}");
+            Console.WriteLine($"{warningMessage}");
             Console.ResetColor();
         }
 
-        public static void PrintActionComplete(string? Message)
+        public static void PrintActionComplete(string? message)
         {
             Console.WriteLine(ConstantStrings.enclosureLines);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"--{Message}--");
+            Console.WriteLine($"--{message}--");
             Console.ResetColor();
             Console.WriteLine("---------------------------\n\n\n");
             Console.WriteLine("Press Any Key to continue");
             Console.ReadKey();
         }
 
-        internal static void PrintActionFailed(object Message)
+        public static void PrintActionFailed(string? message)
         {
             Console.WriteLine(ConstantStrings.enclosureLines);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{Message}");
+            Console.WriteLine($"{message}");
             Console.ResetColor();
             Console.WriteLine("---------------------------\n\n\n");
             Console.WriteLine("Press Any Key to continue");
             Console.ReadKey();
         }
 
-        internal static void PrintSummary((int, int) summary)
+        public static void PrintSummary((int, int) summary)
         {
-            int Balance = summary.Item1 - summary.Item2;
+            int balance = summary.Item1 - summary.Item2;
             Console.WriteLine($"Total Income : {summary.Item1}");
             Console.WriteLine($"Total Expense: {summary.Item2}");
-            if (Balance < 0)
+            if (balance < 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Available Balance : {Balance}");
+                Console.WriteLine($"Available Balance : {balance}");
                 Console.ResetColor();
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Available Balance : {Balance}");
+                Console.WriteLine($"Available Balance : {balance}");
                 Console.ResetColor();
             }
         }
 
-        internal static void PrintRecentlyAddedActions(int totalActionsToPrintInMainDialog, List<IFinance> finances)
+        public static void PrintRecentlyAddedActions(int totalActionsToPrintInMainDialog, List<IFinance> finances)
         {
-
             List<IFinance> recentlyAddedActions = new List<IFinance>();
-
             if (finances.Count() > 0)
             {
                 Console.WriteLine("\n::: Recently added Actions :::\n");
