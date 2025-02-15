@@ -7,9 +7,12 @@ namespace Assignment_4_ExpenseTracker.Models
     {
         private ExpenseOptions _expenseType;
         private string? _otherExpenseSource;
-        private int _amount;
-        private int _transactionId;
-        private DateOnly _actionDate;
+
+        public int Amount { get; set; }
+
+        public int TransactionId { get; set; }
+
+        public DateOnly ActionDate { get; set; }
 
         public string? GetSource()
         {
@@ -28,9 +31,5 @@ namespace Assignment_4_ExpenseTracker.Models
             _expenseType = (ExpenseOptions)value.Item1;
             _otherExpenseSource = value.Item2;
         }
-
-        public int Amount { get => _amount; set => _amount = value; }
-        public int TransactionId { get => _transactionId; set => _transactionId = value; }
-        public DateOnly ActionDate { get => _actionDate; set => _actionDate = value; }
     }
 }
