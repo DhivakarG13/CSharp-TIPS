@@ -11,7 +11,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("4")]
         [InlineData("5")]
         [InlineData("6")]
-        public void GivenChoiceAndListOfChoices_WhenValidateChoice_ThenReturnsTrueIfCorrectChoice(string userChoice)
+        public void ChoiceAndListOfChoices_ValidateChoice_ReturnsTrueIfCorrectChoice(string userChoice)
         {
 
             List<int> choiceRange = new List<int>() { 1, 2, 3, 4, 5, 6 };
@@ -28,7 +28,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("9")]
         [InlineData("10")]
         [InlineData("11")]
-        public void GivenChoiceAndListOfChoices_WhenValidateChoice_ThenReturnsFalseIfOutOfRangeChoice(string userChoice)
+        public void ChoiceAndListOfChoices_ValidateChoice_ReturnsFalseIfOutOfRangeChoice(string userChoice)
         {
             List<int> choiceRange = new List<int>() { 1, 2, 3, 4, 5, 6 };
 
@@ -44,7 +44,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("9 9")]
         [InlineData("1*1")]
         [InlineData("a")]
-        public void GivenChoiceAndListOfChoices_WhenValidateChoice_ThenReturnsFalseIfInvalidNumber(string userChoice)
+        public void ChoiceAndListOfChoices_ValidateChoice_ReturnsFalseIfInvalidNumber(string userChoice)
         {
             List<int> choiceRange = new List<int>() { 1, 2, 3, 4, 5, 6 };
 
@@ -59,7 +59,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("823000")]
         [InlineData("009")]
         [InlineData("010")]
-        public void GivenString_WhenValidateNumericalInputs_ThenReturnsTrueIfPositiveNumber(string numericalValue)
+        public void String_ValidateNumericalInputs_ReturnsTrueIfPositiveNumber(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
@@ -71,9 +71,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("-823000")]
         [InlineData("-9")]
         [InlineData("-10")]
-        public void GivenString_WhenValidateNumericalInputs_ThenReturnsFalseIfNegativeNumber(string numericalValue)
+        public void String_ValidateNumericalInputs_ReturnsFalseIfNegativeNumber(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidatePrice(numericalValue);
+            bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
             Assert.False(expectedResult);
         }
@@ -86,9 +86,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hello")]
         [InlineData("--1")]
         [InlineData("++100")]
-        public void GivenString_WhenValidateNumericalInputs_ThenReturnsFalseIfParseFail(string numericalValue)
+        public void String_ValidateNumericalInputs_ReturnsFalseIfParseFail(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidatePrice(numericalValue);
+            bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
             Assert.False(expectedResult);
         }
@@ -99,7 +99,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("823000")]
         [InlineData("009")]
         [InlineData("010")]
-        public void GivenString_WhenValidatePrice_ThenReturnsTrueIfValidPrice(string numericalValue)
+        public void String_ValidatePrice_ReturnsTrueIfValidPrice(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidatePrice(numericalValue);
 
@@ -114,7 +114,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hello")]
         [InlineData("--1")]
         [InlineData("++100")]
-        public void GivenString_WhenValidatePrice_ThenReturnsFalseIfNotParseAble(string numericalValue)
+        public void String_ValidatePrice_ReturnsFalseIfNotParseAble(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidatePrice(numericalValue);
 
@@ -126,7 +126,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("-823000")]
         [InlineData("-9")]
         [InlineData("-10")]
-        public void GivenString_WhenValidatePrice_ThenReturnsFalseIfNegativeNumber(string numericalValue)
+        public void String_ValidatePrice_ReturnsFalseIfNegativeNumber(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidatePrice(numericalValue);
 
@@ -138,7 +138,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(6, "5")]
         [InlineData(1, "0")]
         [InlineData(100, "99")]
-        public void GivenChoiceAndTotalChoices_WhenValidateProductIndexChoice_ThenReturnsTrueIfChoiceInRange(int totalElements, string userChoice)
+        public void ChoiceAndTotalChoices_ValidateProductIndexChoice_ReturnsTrueIfChoiceInRange(int totalElements, string userChoice)
         {
             bool actualResult = ValidationService.ValidateProductIndexChoice(userChoice, totalElements);
 
@@ -150,7 +150,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(6, "-10")]
         [InlineData(1, "100")]
         [InlineData(100, "199")]
-        public void GivenChoiceAndTotalChoices_WhenValidateProductIndexChoice_ThenReturnsFalseIfChoiceOutOfRange(int totalElements, string userChoice)
+        public void ChoiceAndTotalChoices_ValidateProductIndexChoice_ReturnsFalseIfChoiceOutOfRange(int totalElements, string userChoice)
         {
             bool actualResult = ValidationService.ValidateProductIndexChoice(userChoice, totalElements);
 
@@ -164,7 +164,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(1, "0*1")]
         [InlineData(100, "9 9")]
         [InlineData(100, "9_")]
-        public void GivenChoiceAndTotalChoices_WhenValidateProductIndexChoice_ThenReturnsFalseIfChoiceNotParseAble(int totalElements, string userChoice)
+        public void ChoiceAndTotalChoices_ValidateProductIndexChoice_ReturnsFalseIfChoiceNotParseAble(int totalElements, string userChoice)
         {
             bool actualResult = ValidationService.ValidateProductIndexChoice(userChoice, totalElements);
 
@@ -177,7 +177,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("9 9")]
         [InlineData("Jack")]
         [InlineData("*****")]
-        public void GivenStringValue_WhenValidateStringValue_ThenReturnsTrueIfStringLengthGreaterThan2(string stringValue)
+        public void StringValue_ValidateStringValue_ReturnsTrueIfStringLengthGreaterThan2(string stringValue)
         {
             bool ExpectedValue = ValidationService.ValidateStringValue(stringValue);
 
@@ -190,7 +190,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hi")]
         [InlineData("0")]
         [InlineData(" 9 ")]
-        public void GivenStringValue_WhenValidateStringValue_ThenReturnsFalseIfStringLengthLesserThan3(string stringValue)
+        public void StringValue_ValidateStringValue_ReturnsFalseIfStringLengthLesserThan3(string stringValue)
         {
             bool ExpectedValue = ValidationService.ValidateStringValue(stringValue);
 
@@ -201,7 +201,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Jack")]
         [InlineData("  Joey  ")]
         [InlineData("Hunter")]
-        public void GivenStringValue_WhenValidateProductName_ThenReturnsTrueIfValidName(string productName)
+        public void StringValue_ValidateProductName_ReturnsTrueIfValidName(string productName)
         {
             bool ExpectedValue = ValidationService.ValidateProductName(productName);
 
@@ -214,7 +214,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Ja ck")]
         [InlineData("D")]
         [InlineData("1234")]
-        public void GivenStringValue_WhenValidateProductName_ThenReturnsFalseIfInvalidName(string productName)
+        public void StringValue_ValidateProductName_ReturnsFalseIfInvalidName(string productName)
         {
             bool ExpectedValue = ValidationService.ValidateProductName(productName);
 
@@ -227,7 +227,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(3000)]
         [InlineData(4009)]
         [InlineData(5010)]
-        public void GivenNewIdAndProducts_WhenValidateNewProductId_ThenReturnsTrueIfNewIdNotFoundInProducts(int NewId)
+        public void NewIdAndProducts_ValidateNewProductId_ReturnsTrueIfNewIdNotFoundInProducts(int NewId)
         {
             List<Product> testProducts = GenerateProducts(10);
 
@@ -243,7 +243,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(2007)]
         [InlineData(2008)]
         [InlineData(2009)]
-        public void GivenNewIdAndProducts_WhenValidateNewProductId_ThenReturnsFalseIfNewIdFoundInProducts(int NewId)
+        public void NewIdAndProducts_ValidateNewProductId_ReturnsFalseIfNewIdFoundInProducts(int NewId)
         {
             List<Product> testProducts = GenerateProducts(10);
 
@@ -251,6 +251,7 @@ namespace Assignment_3_xUnitTests.Utilities
 
             Assert.False(expectedResult);
         }
+
         private List<Product> GenerateProducts(int countOfProducts)
         {
             List<Product> testProducts = new List<Product>();

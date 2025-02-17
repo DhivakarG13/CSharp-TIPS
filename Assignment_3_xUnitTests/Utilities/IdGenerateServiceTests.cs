@@ -13,8 +13,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(2004)]
         [InlineData(2005)]
         [InlineData(2006)]
-
-        public void GivenProducts_WhenProductIdGenerator_ReturnsUniqueId(int oldId)
+        public void Products_ProductIdGenerator_ReturnsUniqueId(int oldId)
         {
             List<Product> testProducts = GenerateProducts(3);
 
@@ -23,6 +22,7 @@ namespace Assignment_3_xUnitTests.Utilities
             Assert.NotEqual(oldId, actualId);
             Assert.InRange(actualId, 1000, 10000);
         }
+
         private List<Product> GenerateProducts(int countOfProducts)
         {
             List<Product> testProducts = new List<Product>();

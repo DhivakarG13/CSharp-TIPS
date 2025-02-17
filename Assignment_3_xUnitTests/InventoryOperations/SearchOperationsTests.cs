@@ -13,7 +13,7 @@
         {
             List<Product> testProducts = GenerateProducts(6);
             List<Product> expectedProducts = new List<Product>();
-            expectedProducts.AddRange(new Product[] { testProducts[matchingIndex] }); //new Product("Jester", 28, 200, 2008, DateOnly.MinValue),
+            expectedProducts.AddRange(new Product[] { testProducts[matchingIndex] }); 
 
             List<Product> actualProducts = new List<Product>();
             actualProducts = InventoryOperations.SearchByProductId(testProducts, productIDToSearch);
@@ -85,7 +85,7 @@
 
         [Theory]
         [InlineData("Comet")]
-        public void GivenProductsAndProductName_WhenSearchByProductName_ThenReturnsEmptyListIfNoMatchingProducts(string productNameToSearch)
+        public void ProductsAndProductName_SearchByProductName_ReturnsEmptyListIfNoMatchingProducts(string productNameToSearch)
         {
             List<Product> testProducts = GenerateProducts(10);
 
@@ -94,6 +94,7 @@
 
             Assert.Empty(actualProducts);
         }
+
         private List<Product> GenerateProducts(int countOfProducts)
         {
             List<Product> testProducts = new List<Product>();
