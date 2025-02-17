@@ -59,7 +59,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("823000")]
         [InlineData("009")]
         [InlineData("010")]
-        public void String_ValidateNumericalInputs_ReturnsTrueIfPositiveNumber(string numericalValue)
+        public void NumberAsStringToValidate_ValidateNumericalInputs_ReturnsTrueIfPositiveNumber(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
@@ -71,7 +71,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("-823000")]
         [InlineData("-9")]
         [InlineData("-10")]
-        public void String_ValidateNumericalInputs_ReturnsFalseIfNegativeNumber(string numericalValue)
+        public void NumberAsStringToValidate_ValidateNumericalInputs_ReturnsFalseIfNegativeNumber(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
@@ -86,7 +86,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hello")]
         [InlineData("--1")]
         [InlineData("++100")]
-        public void String_ValidateNumericalInputs_ReturnsFalseIfParseFail(string numericalValue)
+        public void NumberAsStringToValidate_ValidateNumericalInputs_ReturnsFalseIfParseFail(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
@@ -99,7 +99,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("823000")]
         [InlineData("009")]
         [InlineData("010")]
-        public void String_ValidatePrice_ReturnsTrueIfValidPrice(string numericalValue)
+        public void PriceAsStringToValidate_ValidatePrice_ReturnsTrueIfValidPrice(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidatePrice(numericalValue);
 
@@ -114,7 +114,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hello")]
         [InlineData("--1")]
         [InlineData("++100")]
-        public void String_ValidatePrice_ReturnsFalseIfNotParseAble(string numericalValue)
+        public void PriceAsStringToValidate_ValidatePrice_ReturnsFalseIfNotParseAble(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidatePrice(numericalValue);
 
@@ -126,7 +126,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("-823000")]
         [InlineData("-9")]
         [InlineData("-10")]
-        public void String_ValidatePrice_ReturnsFalseIfNegativeNumber(string numericalValue)
+        public void PriceAsStringToValidate_ValidatePrice_ReturnsFalseIfNegativeNumber(string numericalValue)
         {
             bool expectedResult = ValidationService.ValidatePrice(numericalValue);
 
@@ -177,7 +177,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("9 9")]
         [InlineData("Jack")]
         [InlineData("*****")]
-        public void StringValue_ValidateStringValue_ReturnsTrueIfStringLengthGreaterThan2(string stringValue)
+        public void StringValueToValidate_ValidateStringValue_ReturnsTrueIfStringLengthGreaterThan2(string stringValue)
         {
             bool ExpectedValue = ValidationService.ValidateStringValue(stringValue);
 
@@ -190,7 +190,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hi")]
         [InlineData("0")]
         [InlineData(" 9 ")]
-        public void StringValue_ValidateStringValue_ReturnsFalseIfStringLengthLesserThan3(string stringValue)
+        public void StringValueToValidate_ValidateStringValue_ReturnsFalseIfStringLengthLesserThan3(string stringValue)
         {
             bool ExpectedValue = ValidationService.ValidateStringValue(stringValue);
 
@@ -201,7 +201,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Jack")]
         [InlineData("  Joey  ")]
         [InlineData("Hunter")]
-        public void StringValue_ValidateProductName_ReturnsTrueIfValidName(string productName)
+        public void ProductNameToValidate_ValidateProductName_ReturnsTrueIfValidName(string productName)
         {
             bool ExpectedValue = ValidationService.ValidateProductName(productName);
 
@@ -214,7 +214,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Ja ck")]
         [InlineData("D")]
         [InlineData("1234")]
-        public void StringValue_ValidateProductName_ReturnsFalseIfInvalidName(string productName)
+        public void ProductNameToValidate_ValidateProductName_ReturnsFalseIfInvalidName(string productName)
         {
             bool ExpectedValue = ValidationService.ValidateProductName(productName);
 
