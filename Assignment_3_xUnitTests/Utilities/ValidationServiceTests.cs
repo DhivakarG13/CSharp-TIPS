@@ -10,8 +10,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("3")]
         [InlineData("4")]
         [InlineData("5")]
-        [InlineData("6")]
-        public void ChoiceAndListOfChoices_ValidateChoice_ReturnsTrueIfCorrectChoice(string userChoice)
+        [InlineData("6 ")]
+        [InlineData(" 6")]
+        public void ChoiceAndListOfChoices_ValidateChoice_ReturnsTrueIfChoiceInRange(string userChoice)
         {
 
             List<int> choiceRange = new List<int>() { 1, 2, 3, 4, 5, 6 };
@@ -61,9 +62,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("010")]
         public void NumberAsStringToValidate_ValidateNumericalInputs_ReturnsTrueIfPositiveNumber(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
+            bool ActualResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
-            Assert.True(expectedResult);
+            Assert.True(ActualResult);
         }
 
         [Theory]
@@ -73,9 +74,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("-10")]
         public void NumberAsStringToValidate_ValidateNumericalInputs_ReturnsFalseIfNegativeNumber(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
+            bool actualResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
-            Assert.False(expectedResult);
+            Assert.False(actualResult);
         }
 
         [Theory]
@@ -88,9 +89,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("++100")]
         public void NumberAsStringToValidate_ValidateNumericalInputs_ReturnsFalseIfParseFail(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidateNumericalInputs(numericalValue);
+            bool actualResult = ValidationService.ValidateNumericalInputs(numericalValue);
 
-            Assert.False(expectedResult);
+            Assert.False(actualResult);
         }
 
         [Theory]
@@ -101,9 +102,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("010")]
         public void PriceAsStringToValidate_ValidatePrice_ReturnsTrueIfValidPrice(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidatePrice(numericalValue);
+            bool actualResult = ValidationService.ValidatePrice(numericalValue);
 
-            Assert.True(expectedResult);
+            Assert.True(actualResult);
         }
 
         [Theory]
@@ -114,11 +115,11 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hello")]
         [InlineData("--1")]
         [InlineData("++100")]
-        public void PriceAsStringToValidate_ValidatePrice_ReturnsFalseIfNotParseAble(string numericalValue)
+        public void PriceAsStringToValidate_ValidatePrice_ReturnsFalseIfInvalidPrice(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidatePrice(numericalValue);
+            bool actualResult = ValidationService.ValidatePrice(numericalValue);
 
-            Assert.False(expectedResult);
+            Assert.False(actualResult);
         }
 
         [Theory]
@@ -128,9 +129,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("-10")]
         public void PriceAsStringToValidate_ValidatePrice_ReturnsFalseIfNegativeNumber(string numericalValue)
         {
-            bool expectedResult = ValidationService.ValidatePrice(numericalValue);
+            bool actualResult = ValidationService.ValidatePrice(numericalValue);
 
-            Assert.False(expectedResult);
+            Assert.False(actualResult);
         }
 
         [Theory]
@@ -164,7 +165,7 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(1, "0*1")]
         [InlineData(100, "9 9")]
         [InlineData(100, "9_")]
-        public void ChoiceAndTotalChoices_ValidateProductIndexChoice_ReturnsFalseIfChoiceNotParseAble(int totalElements, string userChoice)
+        public void ChoiceAndTotalChoices_ValidateProductIndexChoice_ReturnsFalseIfInvalidChoice(int totalElements, string userChoice)
         {
             bool actualResult = ValidationService.ValidateProductIndexChoice(userChoice, totalElements);
 
@@ -177,11 +178,12 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("9 9")]
         [InlineData("Jack")]
         [InlineData("*****")]
+        [InlineData("a**b*")]
         public void StringValueToValidate_ValidateStringValue_ReturnsTrueIfStringLengthGreaterThan2(string stringValue)
         {
-            bool ExpectedValue = ValidationService.ValidateStringValue(stringValue);
+            bool actualResult = ValidationService.ValidateStringValue(stringValue);
 
-            Assert.True(ExpectedValue);
+            Assert.True(actualResult);
         }
 
         [Theory]
@@ -192,9 +194,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(" 9 ")]
         public void StringValueToValidate_ValidateStringValue_ReturnsFalseIfStringLengthLesserThan3(string stringValue)
         {
-            bool ExpectedValue = ValidationService.ValidateStringValue(stringValue);
+            bool actualResult = ValidationService.ValidateStringValue(stringValue);
 
-            Assert.False(ExpectedValue);
+            Assert.False(actualResult);
         }
 
         [Theory]
@@ -203,9 +205,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("Hunter")]
         public void ProductNameToValidate_ValidateProductName_ReturnsTrueIfValidName(string productName)
         {
-            bool ExpectedValue = ValidationService.ValidateProductName(productName);
+            bool actualResult = ValidationService.ValidateProductName(productName);
 
-            Assert.True(ExpectedValue);
+            Assert.True(actualResult);
         }
 
         [Theory]
@@ -216,9 +218,9 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData("1234")]
         public void ProductNameToValidate_ValidateProductName_ReturnsFalseIfInvalidName(string productName)
         {
-            bool ExpectedValue = ValidationService.ValidateProductName(productName);
+            bool actualResult = ValidationService.ValidateProductName(productName);
 
-            Assert.False(ExpectedValue);
+            Assert.False(actualResult);
         }
 
         [Theory]
@@ -231,9 +233,9 @@ namespace Assignment_3_xUnitTests.Utilities
         {
             List<Product> testProducts = GenerateProducts(10);
 
-            bool expectedResult = ValidationService.ValidateNewProductId(NewId, testProducts);
+            bool actualResult = ValidationService.ValidateNewProductId(NewId, testProducts);
 
-            Assert.True(expectedResult);
+            Assert.True(actualResult);
         }
 
         [Theory]
@@ -247,9 +249,9 @@ namespace Assignment_3_xUnitTests.Utilities
         {
             List<Product> testProducts = GenerateProducts(10);
 
-            bool expectedResult = ValidationService.ValidateNewProductId(NewId, testProducts);
+            bool actualResult = ValidationService.ValidateNewProductId(NewId, testProducts);
 
-            Assert.False(expectedResult);
+            Assert.False(actualResult);
         }
 
         private List<Product> GenerateProducts(int countOfProducts)

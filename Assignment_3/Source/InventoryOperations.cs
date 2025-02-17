@@ -36,7 +36,7 @@
                     maxPrice = UserInputService.GetNumericalValue("Maximum Value");
                 }
 
-                matchingProductIndexes = SearchByProductPrizeRange(products, minPrice, maxPrice);
+                matchingProductIndexes = SearchByProductPriceRange(products, minPrice, maxPrice);
                 break;
             case SearchDialog.Search_By_ExpiryDate:
                 matchingProductIndexes = SearchByExpiryDate(products);
@@ -58,14 +58,15 @@
 
         foreach (Product product in products)
         {
-            if (productName != null && product.ProductName != null && product.ProductName.Contains(productName))
+            if (!string.IsNullOrEmpty(productName) && product.ProductName != null && product.ProductName.Contains(productName))
             {
                 matchingProducts.Add(product);
             }
         }
         return matchingProducts;
     }
-    public static List<Product> SearchByProductPrizeRange(List<Product> products, int minPrice, int maxPrice)
+
+    public static List<Product> SearchByProductPriceRange(List<Product> products, int minPrice, int maxPrice)
     {
         List<Product> matchingProducts = new List<Product>();
 
@@ -93,6 +94,7 @@
 
         return matchingProducts;
     }
+
     public static List<Product> SearchByExpiryDate(List<Product> products)
     {
         List<Product> matchingProducts = new List<Product>();
@@ -161,6 +163,7 @@
 
         return matchingProducts;
     }
+
     public static void PrintProducts(List<Product> productsToPrint)
     {
         if (productsToPrint.Count() == 1)

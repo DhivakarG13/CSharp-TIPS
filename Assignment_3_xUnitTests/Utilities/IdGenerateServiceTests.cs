@@ -19,6 +19,7 @@ namespace Assignment_3_xUnitTests.Utilities
 
             int actualId = IdGenerateService.ProductIdGenerator(testProducts);
 
+            Assert.DoesNotContain(actualId, testProducts.Select(p => p.ProductId));
             Assert.NotEqual(oldId, actualId);
             Assert.InRange(actualId, 1000, 10000);
         }
