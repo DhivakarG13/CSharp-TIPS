@@ -16,7 +16,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
             ConsoleWriter.PrintTransactionId(actionId);
-            DateOnly actionDate = GetUserData.GetActivityTime();
+            DateOnly actionDate = GetUserData.GetActivityDate();
             financeData.Add(new Income(incomeSource.Item1, incomeSource.Item2, amount, actionId, actionDate));
         }
 
@@ -27,7 +27,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
             ConsoleWriter.PrintTransactionId(actionId);
-            DateOnly actionDate = GetUserData.GetActivityTime();
+            DateOnly actionDate = GetUserData.GetActivityDate();
             financeData.Add(new Expense(expenseSource.Item1, expenseSource.Item2, amount, actionId, actionDate));
         }
 
@@ -71,7 +71,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
         }
         private static void EditActivityTime(IFinance actionToEdit)
         {
-            DateOnly actionDate = GetUserData.GetActivityTime();
+            DateOnly actionDate = GetUserData.GetActivityDate();
             actionToEdit.ActionDate = actionDate;
         }
 
@@ -80,7 +80,5 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
             int amount = GetUserData.GetAmount();
             actionToEdit.Amount = amount;
         }
-
-
     }
 }

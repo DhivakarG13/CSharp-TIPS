@@ -22,7 +22,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             {
                 Console.Write("Enter Your Choice : ");
                 Choice = ConsoleReader.GetInput();
-                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                IsValidChoice = ValidationServices.ValidateChoice(Choice, TotalChoices);
                 Console.WriteLine();
             }
             IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
@@ -42,7 +42,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             {
                 Console.Write("Enter Your Index : ");
                 Choice = ConsoleReader.GetInput();
-                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                IsValidChoice = ValidationServices.ValidateChoice(Choice, TotalProducts);
                 Console.WriteLine();
             }
             IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
@@ -111,20 +111,22 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             return ParsedAmount;
         }
 
-        public static DateOnly GetActivityTime()
+    public static DateOnly GetActivityDate()
+    {
+        ConsoleWriter.PrintDialog(new SetDateOptions());
+
+        SetDateOptions UserSetDateChoice = (SetDateOptions)GetDialogChoice(Enum.GetNames(typeof(SetDateOptions)).Length);
+
+        switch (UserSetDateChoice)
         {
-            ConsoleWriter.PrintDialog(new SetTimeOptions());
-            SetTimeOptions UserSetTimeChoice = (SetTimeOptions)GetDialogChoice(Enum.GetNames(typeof(SetTimeOptions)).Length);
-            switch (UserSetTimeChoice)
-            {
-                case SetTimeOptions.Own_Time:
-                    return GetUserTime();
-                case SetTimeOptions.Current_Time:
-                    return DateOnly.FromDateTime(DateTime.Now);
-                default:
-                    return DateOnly.FromDateTime(DateTime.Now);
-            }
+            case SetDateOptions.Own_Date:
+                return GetUserDateInput();
+            case SetDateOptions.Current_Date:
+                return DateOnly.FromDateTime(DateTime.Now);
+            default:
+                return DateOnly.FromDateTime(DateTime.Now);
         }
+    }
 
         public static DateOnly GetUserTime()
         {

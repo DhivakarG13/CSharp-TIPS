@@ -31,6 +31,8 @@
             Add_Expense,
             Search,
             View_All_Actions,
+            Edit_Activity,
+            View_Summary,
             Close_App
         }
 
@@ -59,6 +61,12 @@
         {
             Income = 1,
             Expense
+        }
+        public enum EditOptions
+        {
+            Edit_Source = 1,
+            Edit_Amount,
+            Edit_Time,
         }
     }
 }
