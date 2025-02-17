@@ -1,7 +1,6 @@
 ﻿
 
 using Assignment_4_ExpenseTracker.HelperUtility;
-using Assignment_4_ExpenseTracker.MessageServices;
 using Constants;
 using Constants.Enumerations;
 
@@ -33,8 +32,8 @@ public static class GetUserData
         }
         (IncomeOptions, string) IncomeSource = ((IncomeOptions)IncomeChoice, source);
 
-        return IncomeSource;
-    }
+            return IncomeSource;
+        }
 
     public static (ExpenseOptions, string) GetExpenseSource()
     {
@@ -63,23 +62,23 @@ public static class GetUserData
         return Source ?? "";
     }
 
-    public static int GetAmount()
-    {
-        bool IsValid = false;
-        string? Amount = null;
-
-        while (!IsValid)
+        public static int GetAmount()
         {
-            ConsoleWriter.GetActionInfoWriter(ConstantStrings.amount);
-            Amount = ConsoleReader.GetInput();
-            IsValid = ValidationServices.ValidateAmount(Amount);
+            bool IsValid = false;
+            string? Amount = null;
+
+            while (!IsValid)
+            {
+                ConsoleWriter.GetActionInfoWriter(ConstantStrings.amount);
+                Amount = ConsoleReader.GetInput();
+                IsValid = ValidationServices.ValidateAmount(Amount);
+            }
+
+            int ParsedAmount = default;
+            int.TryParse(Amount, out ParsedAmount);
+
+            return ParsedAmount;
         }
-
-        int ParsedAmount = default;
-        int.TryParse(Amount, out ParsedAmount);
-
-        return ParsedAmount;
-    }
 
     public static DateOnly GetActivityDate()
     {
@@ -103,14 +102,14 @@ public static class GetUserData
         bool IsValidDate = false;
         string? ActionDate = null;
 
-        while (!IsValidDate)
-        {
-            ConsoleWriter.GetActionInfoWriter(ConstantStrings.actionDate);
-            ActionDate = ConsoleReader.GetInput();
-            IsValidDate = ValidationServices.ValidateDateInputs(ActionDate);
-        }
-        DateTime ParsedActionDate = default;
-        DateTime.TryParse(ActionDate, out ParsedActionDate);
+            while (!IsValidDate)
+            {
+                ConsoleWriter.GetActionInfoWriter(ConstantStrings.actionDate);
+                ActionDate = ConsoleReader.GetInput();
+                IsValidDate = ValidationServices.ValidateDateInputs(ActionDate);
+            }
+            DateTime ParsedActionDate = default;
+            DateTime.TryParse(ActionDate, out ParsedActionDate);
 
         return DateOnly.FromDateTime(ParsedActionDate);
     }
