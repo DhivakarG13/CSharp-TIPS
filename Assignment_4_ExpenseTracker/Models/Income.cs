@@ -22,7 +22,7 @@ namespace Assignment_4_ExpenseTracker.Models
             TransactionId = transactionId;
             ActionDate = actionDate;
         }
-        public string? GetSource()
+        public string GetSource()
         {
             if (_incomeType == IncomeOptions.Other)
             {
