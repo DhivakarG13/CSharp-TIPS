@@ -39,11 +39,11 @@ namespace Assignment4ExpenseTracker
                     {
                         List<IFinance> matchingActions = new List<IFinance>();
                         ConsoleWriter.PrintDialog(new SearchOptions());
-                        SearchOptions searchChoice = (SearchOptions)GetUserData.GetChoice(Enum.GetNames(typeof(SearchOptions)).Length);
-                        matchingActions = SearchRepository.GetSearchResults(searchChoice , _repository.FinanceData);
-                        if(matchingActions.Count > 0)
+                        SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
+                        matchingActions = SearchRepository.GetSearchResults(searchChoice, _repository.FinanceData);
+                        if (matchingActions.Count > 0)
                         {
-                            ConsoleWriter.PrintActionData(matchingActions);
+                            ConsoleWriter.PrintListOfActionData(matchingActions);
                             ConsoleWriter.PrintActionComplete(ConstantStrings.SearchSuccessfulMessage);
                         }
                         else
@@ -56,13 +56,39 @@ namespace Assignment4ExpenseTracker
                     {
                         if (_repository.FinanceData.Any())
                         {
-                            ConsoleWriter.PrintActionData(_repository.FinanceData);
+                            ConsoleWriter.PrintListOfActionData(_repository.FinanceData);
                             ConsoleWriter.PrintActionComplete(ConstantStrings.allActionsDisplayedMessage);
                         }
                         else
                         {
                             ConsoleWriter.PrintActionFailed(ConstantStrings.repositoryEmpty);
                         }
+                        break;
+                    }
+                case MainMenu.Edit_Activity:
+                    {
+                        List<IFinance> matchingActions = new List<IFinance>();
+                        ConsoleWriter.PrintDialog(new SearchOptions());
+                        SearchOptions searchChoice = (SearchOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchOptions)).Length);
+                        matchingActions = SearchRepository.GetSearchResults(searchChoice, _repository.FinanceData);
+                        if (matchingActions.Count > 0)
+                        {
+                            ConsoleWriter.PrintListOfActionData(matchingActions);
+                            int indexToEdit = GetUserData.GetChoiceFromList(matchingActions.Count());
+                            UpdateRepository.EditActivity(matchingActions[indexToEdit]);
+                            ConsoleWriter.PrintActionComplete("Action Updated Successfully");
+                        }
+                        else
+                        {
+                            ConsoleWriter.PrintActionFailed(ConstantStrings.SearchFailedMessage);
+                        }
+                        break;
+                    }
+                case MainMenu.View_Summary:
+                    {
+                        (int, int) summary = SearchRepository.GetSummary(_repository.FinanceData);
+                        ConsoleWriter.PrintSummary(summary);
+                        ConsoleWriter.PrintActionComplete(string.Empty);
                         break;
                     }
                 case MainMenu.Close_App:

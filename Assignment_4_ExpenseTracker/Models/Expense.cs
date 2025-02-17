@@ -26,7 +26,7 @@ namespace Assignment_4_ExpenseTracker.Models
         {
             if (_expenseType == ExpenseOptions.Other)
             {
-                return _otherExpenseSource;
+                return _otherExpenseSource ?? string.Empty;
             }
             else
             {
