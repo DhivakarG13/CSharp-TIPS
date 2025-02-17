@@ -22,7 +22,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             {
                 Console.Write("Enter Your Choice : ");
                 Choice = ConsoleReader.GetInput();
-                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                IsValidChoice = ValidationServices.ValidateChoice(Choice, TotalChoices);
                 Console.WriteLine();
             }
             IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
@@ -42,7 +42,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             {
                 Console.Write("Enter Your Index : ");
                 Choice = ConsoleReader.GetInput();
-                IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+                IsValidChoice = ValidationServices.ValidateChoice(Choice, TotalProducts);
                 Console.WriteLine();
             }
             IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
@@ -115,7 +115,7 @@ namespace Assignment_4_ExpenseTracker.MessageServices
     {
         ConsoleWriter.PrintDialog(new SetDateOptions());
 
-        SetDateOptions UserSetDateChoice = (SetDateOptions)GetChoice(Enum.GetNames(typeof(SetDateOptions)).Length);
+        SetDateOptions UserSetDateChoice = (SetDateOptions)GetDialogChoice(Enum.GetNames(typeof(SetDateOptions)).Length);
 
         switch (UserSetDateChoice)
         {

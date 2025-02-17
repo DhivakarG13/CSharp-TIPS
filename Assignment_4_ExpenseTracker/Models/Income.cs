@@ -26,7 +26,7 @@ namespace Assignment_4_ExpenseTracker.Models
         {
             if (_incomeType == IncomeOptions.Other)
             {
-                return _otherIncomeSource;
+                return _otherIncomeSource ?? string.Empty;
             }
             else
             {

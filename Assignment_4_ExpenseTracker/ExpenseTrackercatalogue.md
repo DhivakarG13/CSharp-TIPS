@@ -50,7 +50,7 @@ the user can add his own source too by choosing "other" option and entering the 
 * If the user wants to enter his own date it should be in (DD/MM/YYYY) format.
 * Invalid values will ask you to re enter the value.
 
-### [4] SearchAction 
+### [3] SearchAction 
 * User can search the actions using:
 
 #### [i]Action Source:
@@ -87,5 +87,17 @@ the user can add his own source too by choosing "other" option and entering the 
 * no characters or spaces are allowed in between.
 * The day,month and year must form a proper valid date.
 
-### [3] Close Application
+### [4] View_All_Actions
+* Prints all the cation data in table format.
+
+### [5] Edit_Activity
+* User can edit his actions.
+* First user have to search for his action and choose the one to edit.
+* Now user can edit Source , Action Date , Amount.
+* The rules for each entities is same as the instruction when you initially create them.
+
+### [6] View_Summary
+* Prints the summary of all actions "Total Income","Total Expense" and "Balance".
+
+### [7] Close Application
 * User can close the application
