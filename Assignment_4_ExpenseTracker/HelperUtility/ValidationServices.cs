@@ -5,7 +5,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
 {
     public static class ValidationServices
     {
-        public static bool ValidateChoice(string? Choice, List<int> Range)
+        public static bool ValidateChoice(string? Choice, int TotalChoices)
         {
             if (Choice == null || Choice.Length == 0)
             {
@@ -19,7 +19,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
                 ConsoleWriter.PrintWarning(ConstantStrings.userInputInvalidNumber);
                 return false;
             }
-            if (Range.Contains(ParsedChoice))
+            if (ParsedChoice > 0 && ParsedChoice <= TotalChoices)
             {
                 return true;
             }
@@ -111,7 +111,7 @@ namespace Assignment_4_ExpenseTracker.HelperUtility
 
         public static bool ValidateDateInputs(string? ActionDate)
         {
-            if (DateTime.TryParse(ActionDate, out DateTime userDateTime))
+            if (DateTime.TryParse(ActionDate, out DateTime userDateInput))
             {
                 return true;
             }

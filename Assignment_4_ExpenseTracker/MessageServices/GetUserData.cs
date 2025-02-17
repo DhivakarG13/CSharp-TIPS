@@ -9,19 +9,13 @@ public static class GetUserData
 {
     public static int GetChoice(int TotalProducts)
     {
-        List<int> Range = new List<int>();
-
-        for (int index = 0; index <= TotalProducts; index++)
-        {
-            Range.Add(index);
-        }
         string? Choice = null;
         bool IsValidChoice = false;
         while (!IsValidChoice)
         {
             Console.Write("Enter Your Choice:");
             Choice = ConsoleReader.GetInput();
-            IsValidChoice = ValidationServices.ValidateChoice(Choice, Range);
+            IsValidChoice = ValidationServices.ValidateChoice(Choice, TotalProducts);
             Console.WriteLine();
         }
         IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
@@ -87,24 +81,24 @@ public static class GetUserData
         return ParsedAmount;
     }
 
-    public static DateOnly GetActivityTime()
+    public static DateOnly GetActivityDate()
     {
-        ConsoleWriter.PrintDialog(new SetTimeOptions());
+        ConsoleWriter.PrintDialog(new SetDateOptions());
 
-        SetTimeOptions UserSetTimeChoice = (SetTimeOptions)GetChoice(Enum.GetNames(typeof(SetTimeOptions)).Length);
+        SetDateOptions UserSetDateChoice = (SetDateOptions)GetChoice(Enum.GetNames(typeof(SetDateOptions)).Length);
 
-        switch (UserSetTimeChoice)
+        switch (UserSetDateChoice)
         {
-            case SetTimeOptions.Own_Time:
-                return GetUserTime();
-            case SetTimeOptions.Current_Time:
+            case SetDateOptions.Own_Date:
+                return GetUserDateInput();
+            case SetDateOptions.Current_Date:
                 return DateOnly.FromDateTime(DateTime.Now);
             default:
                 return DateOnly.FromDateTime(DateTime.Now);
         }
     }
 
-    public static DateOnly GetUserTime()
+    public static DateOnly GetUserDateInput()
     {
         bool IsValidDate = false;
         string? ActionDate = null;
