@@ -9,7 +9,7 @@
         [InlineData(2007, 3)]
         [InlineData(2008, 4)]
         [InlineData(2009, 5)]
-        public void GivenProductsAndProductId_WhenSearchByProductId_ThenReturnsListOfMatchingProducts(int productIDToSearch, int matchingIndex)
+        public void ProductsAndProductId_SearchByProductId_ReturnsListOfMatchingProducts(int productIDToSearch, int matchingIndex)
         {
             List<Product> testProducts = GenerateProducts(6);
             List<Product> expectedProducts = new List<Product>();
@@ -28,7 +28,7 @@
         [InlineData(2046)]
         [InlineData(2557)]
         [InlineData(2078)]
-        public void GivenProductsAndProductId_WhenSearchByProductId_ThenReturnsEmptyListIfNoMatchingProducts(int productIDToSearch)
+        public void ProductsAndProductId_SearchByProductId_ReturnsEmptyListIfNoMatchingProducts(int productIDToSearch)
         {
             List<Product> testProducts = GenerateProducts(5);
             List<Product> actualProducts = new List<Product>();
@@ -40,7 +40,7 @@
 
         [Theory]
         [InlineData(200, 201)]
-        public void GivenProductsAndMinAndMaxOfRange_WhenSearchByProductPrizeRange_ThenReturnsListOfProductsInTheRange(int minValue = 200, int maxValue = 400)
+        public void ProductsAndMinAndMaxOfRange_SearchByProductPrizeRange_ReturnsListOfProductsInTheRange(int minValue = 200, int maxValue = 400)
         {
             List<Product> testProducts = GenerateProducts(11);
             List<Product> expectedProducts = new List<Product>();
@@ -57,7 +57,7 @@
         [InlineData(2000, 4000)]
         [InlineData(3000, 4000)]
         [InlineData(9000, 10000)]
-        public void GivenProductsAndMinAndMaxOfRange_WhenSearchByProductPrizeRange_ThenReturnsEmptyListIfNoProductsInTheRange(int minValue = 200, int maxValue = 400)
+        public void ProductsAndMinAndMaxOfRange_SearchByProductPrizeRange_ReturnsEmptyListIfNoProductsInTheRange(int minValue = 200, int maxValue = 400)
         {
             List<Product> testProducts = GenerateProducts(11);
 
@@ -68,7 +68,7 @@
 
         [Theory]
         [InlineData("Product1")]
-        public void GivenProductsAndProductName_WhenSearchByProductName_ThenReturnsListMatchingProducts(string productNameToSearch)
+        public void ProductsAndProductName_SearchByProductName_ReturnsListMatchingProducts(string productNameToSearch)
         {
             List<Product> testProducts = GenerateProducts(11);
 
