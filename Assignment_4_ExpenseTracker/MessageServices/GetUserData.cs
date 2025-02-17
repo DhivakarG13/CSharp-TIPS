@@ -49,45 +49,52 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             return ParsedChoice;
         }
 
-    public static (IncomeOptions, string) GetIncomeSource()
-    {
-        ConsoleWriter.PrintDialog(new IncomeOptions());
-        IncomeOptions IncomeChoice = (IncomeOptions)GetUserData.GetChoice(Enum.GetNames(typeof(IncomeOptions)).Length);
-        string source = "";
-        if (IncomeChoice == IncomeOptions.Other)
+        public static (IncomeOptions, string) GetIncomeSource()
         {
-            source = GetUserData.GetOtherSource(ConstantStrings.income);
-        }
-        (IncomeOptions, string) IncomeSource = ((IncomeOptions)IncomeChoice, source);
+            ConsoleWriter.PrintDialog(new IncomeOptions());
+            IncomeOptions IncomeChoice = (IncomeOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(IncomeOptions)).Length);
+            string source = "";
+            if (IncomeChoice == IncomeOptions.Other)
+            {
+                source = GetUserData.GetOtherSource(ConstantStrings.income);
+            }
+            else
+            {
+                ConsoleWriter.PrintSource(IncomeChoice.ToString());
+            }
+            (IncomeOptions, string) IncomeSource = ((IncomeOptions)IncomeChoice, source);
             return IncomeSource;
         }
 
-    public static (ExpenseOptions, string) GetExpenseSource()
-    {
-        ConsoleWriter.PrintDialog(new ExpenseOptions());
-        ExpenseOptions ExpenseChoice = (ExpenseOptions)GetUserData.GetChoice(Enum.GetNames(typeof(ExpenseOptions)).Length);
-        string source = "";
-        if (ExpenseChoice == ExpenseOptions.Other)
+        public static (ExpenseOptions, string) GetExpenseSource()
         {
-            source = GetUserData.GetOtherSource(ConstantStrings.expense);
+            ConsoleWriter.PrintDialog(new ExpenseOptions());
+            ExpenseOptions ExpenseChoice = (ExpenseOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(ExpenseOptions)).Length);
+            string source = "";
+            if (ExpenseChoice == ExpenseOptions.Other)
+            {
+                source = GetUserData.GetOtherSource(ConstantStrings.expense);
+            }
+            else
+            {
+                ConsoleWriter.PrintSource(ExpenseChoice.ToString());
+            }
+            (ExpenseOptions, string) ExpenseSource = ((ExpenseOptions)ExpenseChoice, source);
+            return ExpenseSource;
         }
-        (ExpenseOptions, string) ExpenseSource = ((ExpenseOptions)ExpenseChoice, source);
-        return ExpenseSource;
-    }
 
-    public static string GetOtherSource(string action)
-    {
-        bool isValidSource = false;
-        string? Source = "";
-
-        while (!isValidSource)
+        public static string GetOtherSource(string action)
         {
-            ConsoleWriter.GetActionInfoWriter(action + ConstantStrings.source);
-            Source = ConsoleReader.GetInput();
-            isValidSource = ValidationServices.ValidateOtherSource(Source);
+            bool isValidSource = false;
+            string? Source = string.Empty;
+            while (!isValidSource)
+            {
+                ConsoleWriter.GetActionInfoWriter(action + ConstantStrings.source);
+                Source = ConsoleReader.GetInput();
+                isValidSource = ValidationServices.ValidateOtherSource(Source);
+            }
+            return Source ?? "";
         }
-        return Source ?? "";
-    }
 
         public static int GetAmount()
         {
@@ -134,54 +141,51 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             }
             DateTime ParsedActionDate = default;
             DateTime.TryParse(ActionDate, out ParsedActionDate);
-
-        return DateOnly.FromDateTime(ParsedActionDate);
-    }
-    public static int GetActionId()
-    {
-        bool IsValidActionId = false;
-        string? ActionId = null;
-
-        while (!IsValidActionId)
-        {
-            ConsoleWriter.GetActionInfoWriter("ActionId :");
-            ActionId = ConsoleReader.GetInput();
-            IsValidActionId = ValidationServices.ValidateNumericalInputs(ActionId);
-        }
-        int ParsedActionId = default;
-        int.TryParse(ActionId, out ParsedActionId);
-
-        return ParsedActionId;
-    }
-
-    public static int GetNumericalValue(string typeOfData)
-    {
-        Console.Write($"Enter Your {typeOfData}:");
-        bool IsNumberValid = false;
-        string? ValidNumber = null;
-        while (!IsNumberValid)
-        {
-            ValidNumber = Console.ReadLine();
-            IsNumberValid = ValidationServices.ValidateNumericalInputs(ValidNumber);
+            return DateOnly.FromDateTime(ParsedActionDate);
         }
 
-        int ParsedValidNumber = default;
-        int.TryParse(ValidNumber, out ParsedValidNumber);
-
-        return ParsedValidNumber;
-    }
-
-    internal static string GetStringValue(string action)
-    {
-        bool IsValidStringValue = false;
-        string? stringValue = "";
-
-        while (!IsValidStringValue)
+        public static int GetActionId()
         {
-            ConsoleWriter.GetActionInfoWriter(action + ConstantStrings.value);
-            stringValue = ConsoleReader.GetInput();
-            IsValidStringValue = ValidationServices.ValidateStringValue(stringValue);
+            bool IsValidActionId = false;
+            string? ActionId = null;
+            while (!IsValidActionId)
+            {
+                ConsoleWriter.GetActionInfoWriter(ConstantStrings.actionId);
+                ActionId = ConsoleReader.GetInput();
+                IsValidActionId = ValidationServices.ValidateNumericalInputs(ActionId);
+            }
+            int ParsedActionId = default;
+            int.TryParse(ActionId, out ParsedActionId);
+            return ParsedActionId;
         }
-        return stringValue ?? "";
+
+        public static int GetNumericalValue(string typeOfData)
+        {
+            Console.Write($"Enter Your {typeOfData}:");
+            bool IsNumberValid = false;
+            string? ValidNumber = null;
+            while (!IsNumberValid)
+            {
+                ValidNumber = Console.ReadLine();
+                IsNumberValid = ValidationServices.ValidateNumericalInputs(ValidNumber);
+            }
+            int ParsedValidNumber = default;
+            int.TryParse(ValidNumber, out ParsedValidNumber);
+            return ParsedValidNumber;
+        }
+
+        internal static string GetStringValue(string action)
+        {
+            bool IsValidStringValue = false;
+            string? stringValue = string.Empty;
+            while (!IsValidStringValue)
+            {
+                ConsoleWriter.GetActionInfoWriter(action + ConstantStrings.value);
+                stringValue = ConsoleReader.GetInput();
+                IsValidStringValue = ValidationServices.ValidateStringValue(stringValue);
+            }
+            return stringValue ?? string.Empty;
+        }
     }
+
 }
