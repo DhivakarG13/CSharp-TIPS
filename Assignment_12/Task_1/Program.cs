@@ -9,6 +9,7 @@
             Console.ReadKey();
         }
     }
+
     public class MemoryEater
     {
         List<int[]> memAlloc = new List<int[]>();
