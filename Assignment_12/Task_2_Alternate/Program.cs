@@ -25,10 +25,11 @@
                     memAlloc.Clear();
                     memAlloc = new List<int[]>();
                     Console.WriteLine("Triggering GC");
-                    GC.WaitForPendingFinalizers();
                     GC.Collect();
+                    GC.WaitForPendingFinalizers();
                     Thread.Sleep(3000);
                     GC.Collect();
+                    GC.WaitForPendingFinalizers();
                     Thread.Sleep(3000);
                 }
                 memAlloc.Add(new int[100000]);

@@ -19,10 +19,15 @@
                     }
                 }
                 me.Allocate(countOfArraysToAdd);
-                Console.WriteLine("Press esc to close the application, press any other key to exit");
+                Console.WriteLine("Press esc to close the application, press any other key to continue");
                 ConsoleKey keyPressed = Console.ReadKey().Key;
                 if(keyPressed == ConsoleKey.Escape)
                 {
+                    me = null;
+                    Console.WriteLine("Triggering GC");
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    Thread.Sleep(10000);
                     break;
                 }
             }
@@ -41,17 +46,18 @@
                 {
                     Console.WriteLine("Your limit is breached, (Limit : 500 Arrays)");
                     memAlloc.Clear();
-                    memAlloc.Add(GC.AllocateUninitializedArray<int>(10000));
+                    memAlloc.Add(GC.AllocateUninitializedArray<int>(100000));
                     Console.WriteLine("Triggering GC");
                     GC.Collect();
                     break;
                 }
-                memAlloc.Add(GC.AllocateUninitializedArray<int>(10000));
+                memAlloc.Add(GC.AllocateUninitializedArray<int>(100000));
                 countOfArraysToAdd--;
                 if (countOfArraysToAdd == 0)
                 {
                     break;
                 }
+                Thread.Sleep(30);
             }
         }
     }
