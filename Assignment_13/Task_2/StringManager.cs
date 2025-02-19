@@ -6,28 +6,26 @@ namespace Task_2
     {
         public class StringManager
         {
-            public static string ReverseString(string stringToReverse)
+            public static string? ReverseString(string stringToReverse)
             {
-                Stack<char> stringContainerStack = new Stack<char>();
-                Console.WriteLine("\n :: Reversing String ::");
-                Console.WriteLine("\n :: Pushing characters in string to a stack ::");
-                foreach (char c in stringToReverse)
+                char[] arrayToReverse = stringToReverse.ToCharArray();
+                ReverseArray(arrayToReverse);
+                return new string(arrayToReverse);
+            }
+            private static void ReverseArray<T>(T[] arrayToReverse)
+            {
+                Stack<T> stringContainerStack = new Stack<T>();
+                foreach (T c in arrayToReverse)
                 {
                     stringContainerStack.Push(c);
                     Console.WriteLine($"Pushed {stringContainerStack.Peek()} into a stack");
                 }
-
-                Console.WriteLine("\n :: Popping characters from stack and appending to string builder::");
-                StringBuilder reversedString = new StringBuilder();
-                int stringToReverseLength = stringToReverse.Length;
-                while (stringToReverseLength != 0)
+                int index = 0;
+                foreach (T c in arrayToReverse)
                 {
-                    Console.WriteLine($"Popping {stringContainerStack.Peek()} from stack and appending it to string builder");
-                    reversedString.Append(stringContainerStack.Pop());
-                    stringToReverseLength--;
+                    arrayToReverse[index] = stringContainerStack.Pop();
+                    ++index;
                 }
-
-                return reversedString.ToString();
             }
         }
     }

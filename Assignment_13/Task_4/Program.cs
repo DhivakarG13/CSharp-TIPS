@@ -4,21 +4,20 @@
     {
         static void Main(string[] args)
         {
-            Student studentDetails = new Student();
-            Console.WriteLine(":: Add operation in Dictionary ::\n");
-            studentDetails.AddStudent("Jack" , 100);
-            studentDetails.AddStudent("Joe" , 200);
-            studentDetails.AddStudent("Julie" , 300);
-            studentDetails.AddStudent("Jack", 500);
-            studentDetails.AddStudent("Jamal" , 400);
-            studentDetails.PrintStudentDetails();
-            Console.WriteLine("\n:: Remove Operations in Dictionary::\n");
-            studentDetails.RemoveStudent("Jamie");
-            studentDetails.RemoveStudent("Jack");
-            studentDetails.PrintStudentDetails();
-            Console.WriteLine("\n::Search Students in Dictionary::\n");
-            studentDetails.SearchStudent("Jamie");
-            studentDetails.SearchStudent("Jamal");
+            QueueManager<string,int> studentDetails = new QueueManager<string,int> ();
+            studentDetails.AddItem("Jack" , 100);
+            studentDetails.AddItem("Joe" , 200);
+            studentDetails.AddItem("Julie" , 300);
+            studentDetails.AddItem("Jamal" , 400);
+            studentDetails.AddItem("Jack", 500);
+            studentDetails.PrintItemDetails();
+            Console.WriteLine(":: Remove Operations ::\n");
+            studentDetails.RemoveItem("Jamie");
+            studentDetails.RemoveItem("Jack");
+            studentDetails.PrintItemDetails();
+            Console.WriteLine("::Search Students::\n");
+            studentDetails.SearchItem("Jamie");
+            studentDetails.SearchItem("Jack");
             Console.ReadLine();
         }
     }

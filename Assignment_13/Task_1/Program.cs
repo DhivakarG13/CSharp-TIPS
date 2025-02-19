@@ -4,20 +4,19 @@
     {
         static void Main(string[] args)
         {
-            Library library = new Library();
-            library.AddBook("Tamil");
-            library.AddBook("Maths");
-            library.AddBook("Science");
-            library.AddBook("English");
-            library.AddBook("Electronics");
-            library.PrintAllBooks();
-            library.RemoveBook("English");
-            library.RemoveBook("fence");
-            library.PrintAllBooks();
+            ListManager<string> library = new ListManager<string>();
+            library.AddItem("Tamil");
+            library.AddItem("Maths");
+            library.AddItem("Science");
+            library.AddItem("English");
+            library.PrintItems();
+            library.RemoveItem("English");
+            library.RemoveItem("fence");
+            library.PrintItems();
             Console.WriteLine(":: Search Operations ::");
-            library.FindBook("Maths");
-            library.FindBook("Tamil");
-            library.FindBook("English");
+            library.FindItem("Maths");
+            library.FindItem("Tamil");
+            library.FindItem("English");
             Console.ReadKey();
         }
     }

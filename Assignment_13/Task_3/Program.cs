@@ -4,17 +4,20 @@
     {
         static void Main(string[] args)
         {
-            PeopleManager peopleManager = new PeopleManager();
-            Console.WriteLine("\n:: Add Operation ::\n");
-            peopleManager.AddPersonToQueue("Jack");
-            peopleManager.AddPersonToQueue("Joe");
-            peopleManager.AddPersonToQueue("Jane");
-            peopleManager.AddPersonToQueue("Jester");
-            peopleManager.AddPersonToQueue("Jamal");
-            peopleManager.PrintPeopleInQueue();
-            Console.WriteLine("\n:: Remove Operation ::\n");
-            peopleManager.RemovePeopleFromQueue(3);
-            peopleManager.PrintPeopleInQueue();
+            QueueManager<string> peopleManager = new QueueManager<string>();
+
+            peopleManager.AddItemToQueue("Jack");
+            peopleManager.AddItemToQueue("Joe");
+            peopleManager.AddItemToQueue("Jane");
+            peopleManager.AddItemToQueue("Jester");
+            peopleManager.AddItemToQueue("Jamal");
+            peopleManager.PrintItemInQueue();
+            Console.WriteLine(":: Remove Operation ::");
+            peopleManager.RemoveItemFromQueue(10);
+            peopleManager.PrintItemInQueue();
+            Console.WriteLine(":: Remove Operation ::");
+            peopleManager.RemoveItemFromQueue(4);
+            peopleManager.PrintItemInQueue();
             Console.ReadKey();
         }
     }
