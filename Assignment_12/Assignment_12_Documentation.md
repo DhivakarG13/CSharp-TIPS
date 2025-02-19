@@ -37,7 +37,7 @@ after the limit is reached the memAlloc is cleared and set for new List<Array>()
 * After calling GC.Collect() GC.WaitForPendingFinalizers() is called to ensure that all finalizers have completed before proceeding.
 
 -------------------------------------------------------
-## Task 3
+## Task_3
 
 ### Memory Profiling
 
@@ -48,3 +48,14 @@ after the limit is reached the memAlloc is cleared and set for new List<Array>()
 #### Task2 Observations
 
 * when the user asks for memory Allocation , The memory will be allocated.
+
+### Task2 alternate Observations
+
+* The control enters an infinite allocation, but after it reaches the limit the memory is cleared and allocation starts from beginning.
+
+------------------------------------------------------
+## Task_4
+
+### Learnings in this assignment:
+
+### Memory Management Best Practices:
