@@ -42,20 +42,25 @@ after the limit is reached the memAlloc is cleared and set for new List<Array>()
 ### Memory Profiling
 
 #### Task1 Observations
-
+![image](https://github.com/user-attachments/assets/2f080133-a54c-42d7-bc4b-e70dd60238dd)
 * The optimised Heap memory increases gradually which reaches a maximum limit of heap memory and throws an error.
 
 #### Task2 Observations
-
+![Task_2_Diognostics](https://github.com/user-attachments/assets/57153953-da0d-46dd-b6fd-7405d042f97b)
 * when the user asks for memory Allocation , The memory will be allocated.
 
 ### Task2 alternate Observations
-
+![image](https://github.com/user-attachments/assets/0f12529c-58dc-4e6a-9a1e-03614a2eebbd)
 * The control enters an infinite allocation, but after it reaches the limit the memory is cleared and allocation starts from beginning.
 
 ------------------------------------------------------
 ## Task_4
 
-### Learnings in this assignment:
-
+## Learnings in this assignment:
 ### Memory Management Best Practices:
+* Calling GC.COllect() frequently costs the application performance.
+* Optimising your code properly so when the gc gets called by it's own clears those unused memory.
+* Allocating a large amount of memory repeatedly in a while loop is not advisible, using thread.Sleep() is better.
+* Large objects enters Gen2 after the first cycle, so when the reference to is made as null, we can call GC.Collect(2) to clear those, as the gen2 is not collected frequently.
+* Calling GC.WaitForPendingFinalizers() is a good practice after calling  GC.Collect() as it waits till all the finalizers of the objects are executed
+
