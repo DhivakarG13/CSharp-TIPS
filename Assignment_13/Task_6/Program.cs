@@ -21,32 +21,32 @@
             DictionaryPrinter(readOnlyDictionary);
             Console.ReadKey();
            
-            int SumOfElements(IEnumerable<int> numbersToAdd)
+        }
+        public static int SumOfElements(IEnumerable<int> numbersToAdd)
+        {
+            int sumOfNumbers = 0;
+            foreach (int number in numbersToAdd)
             {
-                int sumOfNumbers = 0;
-                foreach (int number in numbersToAdd)
-                {
-                    sumOfNumbers += number;
-                }
-                return sumOfNumbers;
+                sumOfNumbers += number;
             }
+            return sumOfNumbers;
+        }
 
-            IReadOnlyDictionary<string, int> GenerateDictionary()
-            {
-                Dictionary<string, int> numberData = new Dictionary<string, int>();
-                numberData.Add("One", 1);
-                numberData.Add("Two", 2);
-                numberData.Add("Three", 3);
+        public static IReadOnlyDictionary<string, int> GenerateDictionary()
+        {
+            Dictionary<string, int> numberData = new Dictionary<string, int>();
+            numberData.Add("One", 1);
+            numberData.Add("Two", 2);
+            numberData.Add("Three", 3);
 
-                return numberData;
-            }
-            
-            void DictionaryPrinter<T1, T2>(IReadOnlyDictionary<T1, T2> DictionaryToPrint)
+            return numberData;
+        }
+
+        public static void DictionaryPrinter<T1, T2>(IReadOnlyDictionary<T1, T2> DictionaryToPrint)
+        {
+            foreach (KeyValuePair<T1, T2> item in DictionaryToPrint)
             {
-                foreach(KeyValuePair<T1, T2> item in DictionaryToPrint)
-                {
-                    Console.WriteLine($"{item.Key} : {item.Value}");
-                }
+                Console.WriteLine($"{item.Key} : {item.Value}");
             }
         }
     }
