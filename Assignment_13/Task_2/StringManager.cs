@@ -4,19 +4,25 @@
     {
         public class StringManager
         {
-            public static string ReverseString(string stringToReverse)
+            public static string? ReverseString(string stringToReverse)
             {
-                Stack<char> stringContainerStack = new Stack<char>();
-                foreach (char c in stringToReverse)
+                char[] arrayToReverse = stringToReverse.ToCharArray();
+                ReverseArray(arrayToReverse);
+                return new string(arrayToReverse);
+            }
+            private static void ReverseArray<T>(T[] arrayToReverse)
+            {
+                Stack<T> stringContainerStack = new Stack<T>();
+                foreach (T c in arrayToReverse)
                 {
                     stringContainerStack.Push(c);
                 }
-                string reversedName = string.Empty;
-                foreach (char c in stringToReverse)
+                int index = 0;
+                foreach (T c in arrayToReverse)
                 {
-                    reversedName += stringContainerStack.Pop();
+                    arrayToReverse[index] = stringContainerStack.Pop();
+                    ++index;
                 }
-                return reversedName;
             }
         }
     }
