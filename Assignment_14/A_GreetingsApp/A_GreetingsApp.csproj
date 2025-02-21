@@ -6,9 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\B_MathApp\B_MathApp.csproj" />
-  </ItemGroup>
-
+	
+	<ItemGroup>
+		<ProjectReference Include="..\B_MathApp1\B_MathApp.csproj" />
+		<ProjectReference Include="..\C_DisplayApp1\C_DisplayApp1.csproj" />
+		<ProjectReference Include="..\D_UtilityApp1\D_UtilityApp.csproj" />
+	</ItemGroup>
 </Project>
