@@ -21,60 +21,25 @@ namespace Assignment_11
             Student newStudent = new Student(2003, "Student Jack");
             Console.WriteLine("\n::::: Before calling Edit Methods Inside the Struct :::::\n");
             newStudent.printDetails();
-            newStudent.InsideStructEditStudent();
-            Console.WriteLine("\n::::: After calling Edit Methods Inside the Struct :::::\n");
+            Console.WriteLine("\n::::: After calling Edit Method 1 Inside the Struct :::::\n");
+            newStudent.InsideStructEditStudent1();
+            newStudent.printDetails();
+            Console.WriteLine("\n::::: After calling Edit Method 2 Inside the Struct :::::\n");
+            newStudent.InsideStructEditStudent2();
             newStudent.printDetails();
             Console.ReadKey();
+        }
 
-            void EditEmployee(Employee employeeToEdit)
-            {
-                employeeToEdit.EmployeeId = 0;
-                employeeToEdit.EmployeeName = "Edited Employee Jack";
-            }
-            void EditStudent(Student studentToEdit)
-            {
-                studentToEdit.StudentId = 0;
-                studentToEdit.StudentName = "Edited Student Jack";
-            }
+        public static void EditEmployee(Employee employeeToEdit)
+        {
+            employeeToEdit.EmployeeId = 0;
+            employeeToEdit.EmployeeName = "Edited Employee Jack";
         }
-    }
 
-    public struct Student
-    {
-        public int StudentId;
-        public string StudentName;
-        public Student(int studentId, string name)
+        public static void EditStudent(Student studentToEdit)
         {
-            StudentId = studentId;
-            StudentName = name;
-        }
-        public void InsideStructEditStudent()
-        {
-            StudentId = 0;
-            StudentName = "Edited Student Jack";
-        }
-        public void printDetails()
-        {
-            Console.WriteLine("-- Student Details (Value Type : struct)--");
-            Console.WriteLine($"StudentId   : {StudentId}");
-            Console.WriteLine($"StudentName : {StudentName}\n");
-        }
-    }
-
-    public class Employee
-    {
-        public int EmployeeId;
-        public string EmployeeName;
-        public Employee(int employeeId, string employeeName)
-        {
-            EmployeeId = employeeId;
-            EmployeeName = employeeName;
-        }
-        public void printDetails()
-        {
-            Console.WriteLine("-- Employee details (Reference type : class)--");
-            Console.WriteLine($"EmployeeId   : {EmployeeId}");
-            Console.WriteLine($"EmployeeName : {EmployeeName}\n");
+            studentToEdit.StudentId = 0;
+            studentToEdit.StudentName = "Edited Student Jack outside struct";
         }
     }
 

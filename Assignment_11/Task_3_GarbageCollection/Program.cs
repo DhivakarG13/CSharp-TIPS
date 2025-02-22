@@ -6,27 +6,32 @@
         {
             Console.WriteLine("Press any key to call CreateAndDestroyObjects method");
             CreateAndDestroyObjects();
-            Console.WriteLine("Press any Key to trigger Garbage collector[2]");
-            Console.ReadKey();
-            GC.Collect();
-            Console.WriteLine("Garbage collector[2] triggered");
             Console.WriteLine("Press any Key to close application");
             Console.ReadKey();
+        }
 
-            void CreateAndDestroyObjects()
+        /// <summary>
+        /// 
+        /// </summary>
+        static void CreateAndDestroyObjects()
+        {
+            Console.WriteLine("Press any key: to create integer array of size 1000000");
+            Console.ReadKey();
+            List<int[]>? ints = new List<int[]>();
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine("Press any key: to create integer array of size 1000000");
-                Console.ReadKey();
-                int[] ints = new int[1000000];
-                Console.WriteLine("Created Integer Array Of size 1000000");
-                Console.WriteLine("Press any Key to trigger Garbage collector[1]");
-                Console.ReadKey();
-                GC.Collect();
-                Console.WriteLine("Garbage collector[1] triggered");
-                Console.WriteLine("Press any Key to continue");
+                ints.Add(new int[100000000]);
                 Console.ReadKey();
             }
 
+            Console.WriteLine("Press any Key to trigger Garbage collector[1]");
+            ints.Clear();
+            ints = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            Console.WriteLine("Garbage collector triggered");
         }
     }
 }

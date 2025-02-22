@@ -16,6 +16,7 @@
 
         public void Dispose()
         {
+            _streamWriter.Flush();
             _streamWriter.Dispose();
         }
     }

@@ -3,22 +3,21 @@
     public class FileReader : IDisposable
     {
         StreamReader _streamReader;
+        string? FilePath;
+        List<string>? fileData;
 
         public FileReader(string filePath)
         {
             _streamReader = new StreamReader(filePath);
-        }       
-        
+            FilePath = filePath;
+            fileData = File.ReadAllLines(FilePath).ToList();
+        }
+
         public string? ReadLineFromFile(int lineNumber)
         {
-            _streamReader.DiscardBufferedData();
-            _streamReader.BaseStream.Seek(0, SeekOrigin.Begin);
-
-            for(int i=0;i<lineNumber; i++)
-            {
-                _streamReader.ReadLine();
-            }
-            return _streamReader.ReadLine();
+            if (fileData.Count() == 0 || lineNumber >= fileData.Count())
+                return null;
+            return fileData[lineNumber];
         }
 
         public void Dispose()
