@@ -19,6 +19,7 @@
             }
             return parsedInput;
         }
+
         public static int GetDialogChoice(int totalOptions)
         {
             bool isValidChoice = false;
