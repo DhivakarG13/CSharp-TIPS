@@ -40,6 +40,16 @@ connectivity & network communication.
 * Defines common rules so that code written in different languages can inter_operate.
 
 #### JIT compiler -> converts CIL to machine code
+##### Types:
+* Standard JIT: Compiles methods as they are called during execution.
+* Pre-JIT: Compiles the entire code at the time of application deployment.
+* Econo-JIT: Compiles code in a way that minimizes memory usage, suitable for resource-constrained environments2.
+
+##### Tiered Compilation:
+ Compiling code in multiple stages or "tiers" to optimize both the speed of initial execution and the overall performance of the application.
+* Quick JIT: Generates code quickly or loads pre-compiled code.
+* Optimizing JIT: Generates optimized code in the background, improving performance over time3.
+
 
 #### FCL -> Framework Class Library
 * Contains predefined classes
@@ -189,7 +199,23 @@ use the app in his own language and the dates and currencies can be set to his r
 
 ## 8) Explain the role of the Common Intermediate Language (CIL) and Just-In-Time (JIT) compilation in the .NET framework. 
 
-* CIL -> Applications developed using C# or F# or other languages that supports .
-NET is first compiled into a intermediate stage called CIL.
+### CIL -> 
+Applications developed using C# or F# or other languages that supports .NET is first compiled into a intermediate stage called CIL.
 * CIL is the same for all languages. this provides interoperability between the codes.
-* The just in time compiler compiles the CIL to Machine code . The process is called just in time compilation.
+* It can run on any environment that supports the .NET runtime.
+* Along with CIL , metadata is generated, which contains information such as type definitions, signatures, and runtime information.
+* The CIL is full of OpCodes (operation codes).
+
+### JIT ->
+* The just in time compiler compiles the CIL to Machine code .
+* The process is called just in time compilation.
+
+##### Types:
+* Standard JIT: Compiles methods as they are called during execution.
+* Pre-JIT: Compiles the entire code at the time of application deployment.
+* Econo-JIT: Compiles code in a way that minimizes memory usage, suitable for resource-constrained environments2.
+
+##### Tiered Compilation:
+ Compiling code in multiple stages or "tiers" to optimize both the speed of initial execution and the overall performance of the application.
+* Quick JIT: Generates code quickly or loads pre-compiled code.
+* Optimizing JIT: Generates optimized code in the background, improving performance over time3.
