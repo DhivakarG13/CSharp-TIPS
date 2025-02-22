@@ -1,6 +1,6 @@
 ﻿namespace B_MathApp
 {
-    public static class MathematicalOperations
+    public class MathematicalOperations
     {
         public static int Add(int x, int y) => x + y;
 
