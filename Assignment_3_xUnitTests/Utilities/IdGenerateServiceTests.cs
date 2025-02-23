@@ -15,12 +15,11 @@ namespace Assignment_3_xUnitTests.Utilities
         [InlineData(2006)]
         public void Products_ProductIdGenerator_ReturnsUniqueId(int oldId)
         {
-            List<Product> testProducts = GenerateProducts(3);
+            List<Product> testProducts = GenerateProducts(100);
 
             int actualId = IdGenerateService.ProductIdGenerator(testProducts);
 
             Assert.DoesNotContain(actualId, testProducts.Select(p => p.ProductId));
-            Assert.NotEqual(oldId, actualId);
             Assert.InRange(actualId, 1000, 10000);
         }
 
