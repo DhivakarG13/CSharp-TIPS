@@ -1,29 +1,19 @@
 ﻿public class Product
 {
-    public string? ProductName { get; private set; }
-    public int ProductId { get; private set; }
-    public decimal? ProductPrice { get; private set; }
-    public int Quantity { get; private set; } = 0;
-    public DateOnly ExpiryDate { get; private set; }
+    public string? ProductName { get; set; }
+    public int ProductId { get; set; }
+    public decimal? ProductPrice { get; set; }
+    public int Quantity { get; set; } = 0;
+    public DateOnly ExpiryDate { get; set; }
 
     public Product(string? productName, int productQuantity,
               decimal productPrice ,int productId, DateOnly expiryDate)
     {
-        SetProductName(productName);
-        SetProductPrice(productPrice);
-        SetProductQuantity(productQuantity);
-        SetProductId(productId);
-        SetProductExpiryDate(expiryDate);
-    }
-
-    public void SetProductName(string? productName)
-    {
         ProductName = productName;
-    }
-
-    public void SetProductPrice(decimal productPrice)
-    {
         ProductPrice = productPrice;
+        Quantity = productQuantity;
+        ProductId = productId;
+        ExpiryDate = expiryDate;
     }
 
     public void SetProductQuantity(int productQuantity)
