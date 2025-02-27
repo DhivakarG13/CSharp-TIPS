@@ -1,4 +1,5 @@
-﻿using Assignment_4_ExpenseTracker.Models;
+﻿using Assignment_4_ExpenseTracker.MessageServices;
+using Assignment_4_ExpenseTracker.Models;
 using System;
 using Models;
 using Assignment_4_ExpenseTracker.HelperUtility;
@@ -10,15 +11,16 @@ namespace Assignment_4_ExpenseTracker.RepositoryManage
     {
         public static void AddIncome(List<IFinance> financeData)
         {
-            (IncomeOptions, string?) incomeSource = GetUserData.GetIncomeSource();
+            (IncomeOptions, string) incomeSource = GetUserData.GetIncomeSource();
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
             DateOnly actionDate = GetUserData.GetActivityDate();
             financeData.Add(new Income(incomeSource.Item1, incomeSource.Item2, amount, actionId, actionDate));
         }
+
         public static void AddExpense(List<IFinance> financeData)
         {
-            (ExpenseOptions, string?) expenseSource = GetUserData.GetExpenseSource();
+            (ExpenseOptions, string) expenseSource = GetUserData.GetExpenseSource();
             int amount = GetUserData.GetAmount();
             int actionId = IdGenerator.TransactionIdGenerator(financeData);
             DateOnly actionDate = GetUserData.GetActivityDate();
