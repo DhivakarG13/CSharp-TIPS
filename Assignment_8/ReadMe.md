@@ -83,9 +83,13 @@
 
 ### AppDomain:
 - An AppDomain is a lightweight process that runs within a process.
+- ![image](https://github.com/user-attachments/assets/7c633fa7-fa07-43cb-89c7-e54fbfa251a6)
+
 - It is an Isolated container inside which .Net code runs, ,Net dlls and ,Net Objects execute.
 - We can create several AppDomains in a single process.
 - We can create a secured AppDomain load it by providing specific permissions to it and run untrusted code.
+- ![image](https://github.com/user-attachments/assets/4c3ffa6e-d01f-4c4c-aa60-16d1360a0f7e)
+
 
 ### AppDomain's UnhandledException event:
 - The AppDomain class has an event called UnhandledException.
