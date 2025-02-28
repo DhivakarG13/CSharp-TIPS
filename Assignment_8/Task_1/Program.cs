@@ -1,30 +1,31 @@
-﻿namespace Error_Handling
+﻿using CalculatorUtility;
 
+namespace Error_Handling
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             while (true)
             {
-                Console.WriteLine("Enter Number1 as 1 to throw Out of range exception");
-                Console.Write("Enter Number1 :");
-                decimal number1;
-                while (decimal.TryParse(Console.ReadLine(), out number1) == false)
+                Console.WriteLine("|| Enter First Number as 1 to throw Out of range exception ||");
+                Console.Write("Enter First Number :");
+                decimal firstNumber;
+                while (decimal.TryParse(Console.ReadLine(), out firstNumber) == false)
                 {
                     Console.Write("Invalid Try Again :");
                 }
-                Console.Write("Enter Number2 :");
-                decimal number2;
-                while (decimal.TryParse(Console.ReadLine(), out number2) == false)
+                Console.Write("Enter Second Number :");
+                decimal secondNumber;
+                while (decimal.TryParse(Console.ReadLine(), out secondNumber) == false)
                 {
                     Console.Write("Invalid Try Again :");
                 }
                 try
                 {
-                    Console.WriteLine(MathematicalOperations.Division(number1, number2));
+                    Console.WriteLine(MathematicalOperations.DivideNumbers(firstNumber, secondNumber));
                 }
-                catch( DivideByZeroException ex)
+                catch (DivideByZeroException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -41,17 +42,6 @@
                     Console.Clear();
                 }
             }
-        }
-    }
-    public class MathematicalOperations
-    {
-        public static decimal Division(decimal number1 , decimal number2)
-        {
-            if (number1 == 1)
-            {
-                throw new ArgumentOutOfRangeException("Argument out of range exception");
-            }
-            return number1 / number2;
         }
     }
 }

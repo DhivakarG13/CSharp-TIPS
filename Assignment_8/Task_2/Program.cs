@@ -26,7 +26,7 @@
                 Console.WriteLine("::::::: In IndexOutOfRangeException Block :::::::");
                 Console.WriteLine(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("::::::: In Global Block :::::::");
                 Console.WriteLine($"An unexpected error occurred: {ex.Message}");

@@ -1,8 +1,9 @@
-﻿namespace Task3_CustomException
+﻿namespace CustomException
 {
     public class InvalidUserInputException : Exception
     {
         public int StatusCode { get; }
+
         public InvalidUserInputException(string message, int statusCode)
             : base(message)
         {
@@ -24,6 +25,7 @@
             : this(message, 400)
         {
         }
+
         public InvalidUserInputException(string message, Exception innerException)
             : this(message, 400, innerException)
         {

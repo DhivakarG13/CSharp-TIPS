@@ -12,7 +12,10 @@
             {
                 Console.WriteLine("Enter a valid number:");
             }
-            Console.WriteLine(SimpleCalculator.Divide10ByInput(numericalInput));
+            using (SimpleCalculator simpleCalculator = new SimpleCalculator())
+            {
+                Console.WriteLine(simpleCalculator.Divide10ByInput(numericalInput));
+            }
             Console.ReadLine();
         }
 
