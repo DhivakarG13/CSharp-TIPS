@@ -14,17 +14,13 @@ namespace Assignment_4_ExpenseTracker.Models
 
         public DateOnly ActionDate { get; set; }
 
-        public Income(IncomeOptions incomeOption,string? otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
+        public Income(IncomeOptions incomeOption, string? otherIncomeSource, int amount, int transactionId, DateOnly actionDate)
         {
             _incomeType = incomeOption;
             _otherIncomeSource = otherIncomeSource;
             Amount = amount;
             TransactionId = transactionId;
             ActionDate = actionDate;
-        }
-        new public string GetType()
-        {
-            return "Income";
         }
         public string GetSource()
         {
@@ -34,7 +30,7 @@ namespace Assignment_4_ExpenseTracker.Models
             }
             else
             {
-                return _incomeType.ToString();
+                return _incomeType.ToString() ?? string.Empty;
             }
         }
 

@@ -12,14 +12,14 @@ namespace Assignment4ExpenseTracker
         static void Main(string[] args)
         {
             FinanceRepository repository = new FinanceRepository();
-            ExpenseTracker expenseTrackerApp = new ExpenseTracker(repository.GetFinanceData());
+            ExpenseTracker expenseTrackerApp = new ExpenseTracker(repository.FinanceData);
             bool closeAppFlag = false;
             const int totalActionsToPrintInMainDialog = 2;
 
             while (!closeAppFlag)
             {
                 ConsoleWriter.ActionTitleWriter("EXPENSE TRACKER APP");
-                ConsoleWriter.PrintRecentlyAddedActions(totalActionsToPrintInMainDialog, repository.GetFinanceData());
+                ConsoleWriter.PrintRecentlyAddedActions(totalActionsToPrintInMainDialog, repository.FinanceData);
                 ConsoleWriter.PrintDialog(new MainMenu());
                 MainMenu mainMenuChoice = (MainMenu)GetUserData.GetDialogChoice(Enum.GetNames(typeof(MainMenu)).Length);
                 Console.Clear();

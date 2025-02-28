@@ -1,7 +1,5 @@
 ﻿using Assignment_4_ExpenseTracker.MessageServices;
 using Assignment_4_ExpenseTracker.RepositoryManager;
-using Assignment_4_ExpenseTracker.Models;
-using Assignment_4_ExpenseTracker.RepositoryManage;
 using Constants;
 using Constants.Enumerations;
 using Models;

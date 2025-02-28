@@ -1,5 +1,4 @@
-﻿using System;
-using ConsoleTables;
+﻿using ConsoleTables;
 using Constants;
 using Models;
 
