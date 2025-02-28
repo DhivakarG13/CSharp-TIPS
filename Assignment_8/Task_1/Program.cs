@@ -31,7 +31,7 @@
                 catch (Exception ex)
                 {
                     Console.WriteLine("::::::: In Global Block :::::::");
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine($"An unexpected error occurred: {ex.Message}");
                 }
                 finally
                 {

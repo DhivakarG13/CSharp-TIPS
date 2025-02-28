@@ -4,27 +4,33 @@
     {
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
+
+            Console.WriteLine("|| Enter zero to throw error ||");
+            Console.Write("Enter a number: ");
             int numericalInput = default;
-            int numberToPrint = default;
+
+            while (!int.TryParse(Console.ReadLine(), out numericalInput))
+            {
+                Console.WriteLine("Enter a valid number:");
+            }
+
             try
             {
-                numericalInput = UserDataFetchUtility.GetUserInput();
-                numberToPrint = Calculator.MathematicalOperation(numericalInput);
+                Console.WriteLine(Calculator.MathematicalOperation(numericalInput));
             }
             catch (Exception ex)
             {
-                Console.WriteLine("::: In Global Block :::");
-                Console.WriteLine(ex);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("::: Stack Trace :::");
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
+                throw;
             }
-            finally
-            {
-                Console.WriteLine("::: In Finally Block :::");
-                Console.WriteLine("Your Output :" + numberToPrint);
-                Console.ReadKey();
-            }
+
+            Console.ReadLine();
+        }
+        static void GlobalExceptionHandler(object sender, UnhandledExceptionEventArgs e)
+        {
+            Console.WriteLine("::Inside GlobalExceptionHandler::");
+            Console.WriteLine(e.ExceptionObject.ToString());
         }
     }
 }

@@ -23,7 +23,7 @@
 
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"An unexpected error occurred: {ex.Message}");
                 numericalInput = 0;
             }
 

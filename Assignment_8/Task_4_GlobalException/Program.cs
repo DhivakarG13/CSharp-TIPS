@@ -4,25 +4,21 @@
     {
         static void Main(string[] args)
         {
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledExceptionHandler);
+            AppDomain.CurrentDomain.UnhandledException += GlobalExceptionHandler;
+            Console.WriteLine("|| Enter zero to throw error ||");
             Console.Write("Enter a number :");
             int numericalInput = default;
-            while (int.TryParse(Console.ReadLine(), out numericalInput) == false)
+            while (!int.TryParse(Console.ReadLine(), out numericalInput))
             {
-                throw new InvalidUserInputException("Your value is Invalid");
+                Console.WriteLine("Enter a valid number:");
             }
-            if (numericalInput == 0)
-            {
-                throw new DivideByZeroException("Dividing by Zero is not allowed");
-            }
-            Console.WriteLine($"10 / {numericalInput} = " + 10 / numericalInput);
-            Console.WriteLine("\n -- Finally Block --");
-            Console.WriteLine($"Your Input : {numericalInput}");
-            Console.ReadKey();
+            Console.WriteLine(SimpleCalculator.Divide10ByInput(numericalInput));
+            Console.ReadLine();
         }
-        static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)
+
+        static void GlobalExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
-            Console.WriteLine($"Unhandled exception: {((Exception)e.ExceptionObject).Message}");
+            Console.WriteLine("An Unexpected error occurred");
         }
     }
 }
