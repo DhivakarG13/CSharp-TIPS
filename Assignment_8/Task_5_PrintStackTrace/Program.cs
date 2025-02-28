@@ -14,7 +14,6 @@
             {
                 Console.WriteLine("Enter a valid number:");
             }
-
             try
             {
                 Console.WriteLine(Calculator.MathematicalOperation(numericalInput));
