@@ -39,5 +39,6 @@ namespace Assignment_4_ExpenseTracker.Models
             _incomeType = (IncomeOptions)value.Item1;
             _otherIncomeSource = value.Item2;
         }
+
     }
 }

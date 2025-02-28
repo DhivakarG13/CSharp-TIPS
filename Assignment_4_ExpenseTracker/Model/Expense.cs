@@ -40,5 +40,6 @@ namespace Assignment_4_ExpenseTracker.Models
             _expenseType = (ExpenseOptions)value.Item1;
             _otherExpenseSource = value.Item2;
         }
+
     }
 }

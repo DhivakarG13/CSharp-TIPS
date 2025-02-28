@@ -86,10 +86,9 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             int amount = GetUserData.GetAmount();
             actionToEdit.Amount = amount;
         }
-
-        public static void DeleteAction(List<IFinance> financeData, IFinance finance)
+        internal static void DeleteAction(List<IFinance> FinanceData, IFinance finance)
         {
-            financeData.Remove(finance);
+            FinanceData.Remove(finance);
         }
     }
 }
