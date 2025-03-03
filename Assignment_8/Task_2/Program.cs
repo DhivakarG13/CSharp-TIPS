@@ -19,12 +19,16 @@
             }
             try
             {
-                Console.WriteLine($"number in index{indexToPrint} is : {listOfIntegers[indexToPrint]}");
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                Console.WriteLine("::::::: In IndexOutOfRangeException Block :::::::");
-                Console.WriteLine(ex.Message);
+                try
+                {
+                    Console.WriteLine($"number in index{indexToPrint} is : {listOfIntegers[indexToPrint]}");
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine("::::::: In IndexOutOfRangeException Block :::::::");
+                    Console.WriteLine(ex.Message);
+                    throw new Exception("Custom error message: " + ex.Message);
+                }
             }
             catch (Exception ex)
             {

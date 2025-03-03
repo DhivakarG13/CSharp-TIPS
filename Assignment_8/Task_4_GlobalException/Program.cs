@@ -22,6 +22,7 @@
         static void GlobalExceptionHandler(object sender, UnhandledExceptionEventArgs e)
         {
             Console.WriteLine("An Unexpected error occurred");
+            Console.WriteLine("\nStack Trace : \n" + e.ExceptionObject.ToString());
         }
     }
 }
