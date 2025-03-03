@@ -49,5 +49,16 @@ namespace MainApp.Helpers
             string? methodName = Console.ReadLine();
             return methodName;
         }
+
+        public static string GetStringInput(string typeOfData)
+        {
+            string? userInput= string.Empty;
+            Console.Write($"Enter {typeOfData}: ");
+            while(string.IsNullOrEmpty(userInput))
+            {
+                userInput = Console.ReadLine();
+            }
+            return userInput;
+        }
     }
 }

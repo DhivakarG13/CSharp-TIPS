@@ -12,6 +12,7 @@
     <ProjectReference Include="..\ClassProvider\ClassProvider.csproj" />
     <ProjectReference Include="..\DynamicMethodInvoker\DynamicMethodInvoker.csproj" />
     <ProjectReference Include="..\DynamicObjectInspector\DynamicObjectInspector.csproj" />
+    <ProjectReference Include="..\DynamicTypeBuilder\DynamicTypeBuilder.csproj" />
   </ItemGroup>
 
 </Project>
