@@ -62,7 +62,7 @@
 
 * A new 1 GB file is created using a method CreateOrWriteFile, which gets the file path and creates a 1 GB File.
 * A file read operation is performed using ReadFileUsingFileStream method. Which gets the file path and reads using File Stream and Stream reader.
-* A file read operation is performed using ReadFileUsingFileStream method. Which gets the file path and reads using File Stream, which is wrapped by Buffered Stream and Stream reader.
+* A file read operation is performed using ReadFileUsingBufferedStream method. Which gets the file path and reads using File Stream, which is wrapped by Buffered Stream and Stream reader.
 * ProcessFileData is a method which gets the path of old and new file, then it reads the data using Stream reader, then converts it to Upper case letters and appends it to memory stream.
 * Then the data in memory stream is written to the new File.
 ---
