@@ -34,7 +34,7 @@ namespace MainApp.Controllers
                     break;
                 case MainMenu.ManipulateObject:
                     {
-                        ObjectPropertyEditor objectPropertyEditor = new ObjectPropertyEditor();
+                        ObjectPropertyHandler objectPropertyEditor = new ObjectPropertyHandler();
                         objectPropertyEditor.ManipulateObject(student);
                         student.PrintDetails();
                         break;

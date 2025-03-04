@@ -3,7 +3,7 @@ using DynamicObjectInspector.Helpers;
 
 namespace DynamicObjectInspector
 {
-    public class ObjectPropertyEditor
+    public class ObjectPropertyHandler
     {
         public void ManipulateObject(object objectToManipulate)
         {
@@ -18,7 +18,6 @@ namespace DynamicObjectInspector
                     dynamic newValue = UserInteraction.GetNewValue(property.PropertyType);
                     property.SetValue(objectToManipulate, newValue);
             }
-
         }
     }
 }

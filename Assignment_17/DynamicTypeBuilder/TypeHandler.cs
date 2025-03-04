@@ -7,8 +7,6 @@ namespace DynamicTypeBuilder
     {
         public void TypeBuilder()
         {
-
-
             AssemblyName newAssemblyName = new AssemblyName("NewDynamicAssembly");
             AssemblyBuilder assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(newAssemblyName, AssemblyBuilderAccess.Run);
             ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule("NewDynamicModule");

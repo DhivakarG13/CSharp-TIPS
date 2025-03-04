@@ -6,13 +6,13 @@
         {
             Console.Write($"Enter New value to change (Expected type {typeOfInput.Name}): ");
             bool isValidInput = false;
-            string? input = string.Empty;
+            string? userInput = string.Empty;
             while (!isValidInput)
             {
-                input = Console.ReadLine();
-                isValidInput = ValidationUtility.ValidateInput(input, typeOfInput);
+                userInput = Console.ReadLine();
+                isValidInput = ValidationUtility.ValidateInput(userInput, typeOfInput);
             }
-            return Convert.ChangeType(input, typeOfInput);
+            return Convert.ChangeType(userInput, typeOfInput);
         }
     }
 }

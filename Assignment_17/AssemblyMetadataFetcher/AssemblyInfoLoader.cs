@@ -11,12 +11,7 @@ namespace AssemblyMetadataFetcher
             {
                 Console.WriteLine(type.FullName);
             }
-            Console.WriteLine("Modules: ");
-            foreach (var module in assemblyToLoad.GetModules())
-            {
-                Console.WriteLine(module.FullyQualifiedName);
-            }
-            Console.WriteLine("Properties: ");
+            Console.WriteLine("\n\nProperties: ");
             foreach (var type in assemblyToLoad.GetTypes())
             {
                 Console.WriteLine(type.Name);
@@ -25,7 +20,7 @@ namespace AssemblyMetadataFetcher
                     Console.WriteLine(property.Name);
                 }
             }
-            Console.WriteLine("Fields: ");
+            Console.WriteLine("\n\nFields: ");
             foreach (var type in assemblyToLoad.GetTypes())
             {
                 Console.WriteLine(type.FullName);
@@ -34,22 +29,22 @@ namespace AssemblyMetadataFetcher
                     Console.WriteLine(field.Name);
                 }
             }
-            Console.WriteLine("Methods: ");
-            foreach (var type in assemblyToLoad.GetTypes())
-            {
-                Console.WriteLine(type.FullName);
-                foreach (var method in type.GetMethods())
-                {
-                    Console.WriteLine(method.Name);
-                }
-            }
-            Console.WriteLine("Events: ");
+            Console.WriteLine("\n\nEvents: ");
             foreach (var type in assemblyToLoad.GetTypes())
             {
                 Console.WriteLine(type.FullName);
                 foreach (var eventToPrint in type.GetEvents())
                 {
                     Console.WriteLine(eventToPrint.Name);
+                }
+            }
+            Console.WriteLine("\n\nMethods: ");
+            foreach (var type in assemblyToLoad.GetTypes())
+            {
+                Console.WriteLine(type.FullName);
+                foreach (var method in type.GetMethods())
+                {
+                    Console.WriteLine(method.Name);
                 }
             }
         }

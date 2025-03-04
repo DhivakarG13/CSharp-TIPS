@@ -4,8 +4,11 @@ namespace ClassProvider
     public class Student
     {
         public string Name { get; set; }
+
         public int Age { get; set; }
+
         public double GPA { get; set; }
+
         public Student(string name, int age, double gPA)
         {
             Name = name;

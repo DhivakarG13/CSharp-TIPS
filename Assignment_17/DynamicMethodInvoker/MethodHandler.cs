@@ -16,8 +16,8 @@ namespace DynamicMethodInvoker
             object[] newParameters = new object[method.GetParameters().Length];
             for (int i = 0; i < parameters.Length; i++)
             {
-                Console.WriteLine($"labalaba{parameters[i]}");
-                newParameters[i] = UserInteraction.GetNewValue(parameters[i].ParameterType);
+                Console.WriteLine($"{parameters[i]}");
+                newParameters[i] = UserInteraction.GetNewValue(parameters[i].GetType());//parameters[i].ParameterType
             }
             method.Invoke(objectToInvoke, newParameters);
         }

@@ -2,11 +2,11 @@
 {
     public class ValidationUtility
     {
-        public static bool ValidateInput(string input, Type typeOfInput)
+        public static bool ValidateInput(string userInput, Type typeOfInput)
         {
             if (typeOfInput == typeof(int))
             {
-                if (int.TryParse(input, out _))
+                if (int.TryParse(userInput, out _))
                 {
                     return true;
                 }
@@ -18,7 +18,7 @@
             }
             else if (typeOfInput == typeof(double))
             {
-                if (double.TryParse(input, out _))
+                if (double.TryParse(userInput, out _))
                 {
                     return true;
                 }
@@ -30,7 +30,7 @@
             }
             else if (typeOfInput == typeof(float))
             {
-                if (float.TryParse(input, out _))
+                if (float.TryParse(userInput, out _))
                 {
                     return true;
                 }
