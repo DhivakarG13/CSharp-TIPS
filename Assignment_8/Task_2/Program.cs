@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            int[] listOfIntegers = { 1, 2, 3, 4, 5, 6 };
+            try
+            {
+                int[] listOfIntegers = { 1, 2, 3, 4, 5, 6 };
             Console.Write(" Available List of Integers : ");
             foreach (int number in listOfIntegers)
             {
@@ -17,8 +19,6 @@
             {
                 Console.Write("Invalid Try Again :");
             }
-            try
-            {
                 try
                 {
                     Console.WriteLine($"number in index{indexToPrint} is : {listOfIntegers[indexToPrint]}");
