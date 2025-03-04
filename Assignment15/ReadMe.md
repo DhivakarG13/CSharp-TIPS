@@ -4,6 +4,7 @@
 
 ### Streams:
 * Stream is a sequence of bytes that we can use to read from and write to a backing store.
+* ![image](https://github.com/user-attachments/assets/c7756510-c17c-40ee-897d-a54692f0be51)
 * Streams are used to read and write data to and from different sources like files, memory, network connections, etc.
 * Streams are used to read and write data in a sequential manner.
 * Stream is a abstract base class in C#. It is defined in the System.IO namespace.
@@ -40,7 +41,7 @@
 * BufferedStream class is derived from the Stream class.
 * Used to read and write data to and from a buffer.
 * Backing store -> BufferedStream.
-* //Image
+* ![image](https://github.com/user-attachments/assets/63572913-4efe-4c52-b720-1a3bc2c335bd)
 * Can be used to improve the performance of reading and writing data to and from a stream.
 * It wraps around another stream and stores data in a buffer.
 * It uses an internal buffer to temporarily store data before writing it to or reading it from the underlying stream. 
@@ -140,43 +141,4 @@
 * A time difference is observed.
 * Logging into respective files is quicker than logging error of multiple user into a same file.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-FileStream 
-BufferedStream 
-MemoryStream 
----
-asynchronous methods of the FileStream, MemoryStream, sand BufferedStream classes. 
-process multiple files concurrently.
-asynchronous version
-process multiple files concurrently without blocking
----------
-fix the memory issues
-how you identified and fixed the issues.
-----
-multiple users are simultaneously logging errors to a single file simultaneously using MemoryStreams
-performance issues and potential problems with file access concurrency.
-identify potential performance and concurrency issues
-----
-
-Subtask 1: Identifying Issues 
-Subtask 2: Improving File Writing 
-Subtask 3: Thread-Safe Logging 
-Subtask 4: Independent Error Files 
-Subtask 5: Performance Testing 
 ---
