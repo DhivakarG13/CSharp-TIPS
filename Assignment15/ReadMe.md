@@ -113,7 +113,7 @@
 * Within the file stream using , a Stream Writer is used first to write all the data to the stream.
 * The stream writer s flushed to make sure all data is written to the  Stream.
 * Another File Stream is opened to read data.
-* A stream reader is used and stream reader.ReaadLine() is called till all the data is printed to the console.
+* A stream reader is used and stream reader.ReadLine() is called till all the data is printed to the console.
 
 
 ## Task 4: Analyze and Resolve Performance Issues with Logging System for Multiple Users.
