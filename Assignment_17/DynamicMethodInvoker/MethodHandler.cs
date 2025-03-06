@@ -8,7 +8,7 @@ namespace DynamicMethodInvoker
         public void InvokeMethod(object objectToInvoke, string methodName)
         {
             MethodInfo? method = objectToInvoke.GetType().GetMethod(methodName);
-            if(method == null)
+            if (method == null)
             {
                 return;
             }
@@ -17,7 +17,7 @@ namespace DynamicMethodInvoker
             for (int i = 0; i < parameters.Length; i++)
             {
                 Console.WriteLine($"{parameters[i]}");
-                newParameters[i] = UserInteraction.GetNewValue(parameters[i].GetType());//parameters[i].ParameterType
+                newParameters[i] = UserInteraction.GetNewValue(parameters[i].GetType());
             }
             method.Invoke(objectToInvoke, newParameters);
         }

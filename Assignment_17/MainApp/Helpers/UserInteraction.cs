@@ -52,9 +52,9 @@ namespace MainApp.Helpers
 
         public static string GetStringInput(string typeOfData)
         {
-            string? userInput= string.Empty;
+            string? userInput = string.Empty;
             Console.Write($"Enter {typeOfData}: ");
-            while(string.IsNullOrEmpty(userInput))
+            while (string.IsNullOrEmpty(userInput))
             {
                 userInput = Console.ReadLine();
             }

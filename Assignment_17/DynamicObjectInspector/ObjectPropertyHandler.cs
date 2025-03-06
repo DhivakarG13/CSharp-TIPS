@@ -12,11 +12,11 @@ namespace DynamicObjectInspector
             foreach (PropertyInfo property in properties)
             {
                 object? propertyValue = property.GetValue(objectToManipulate);
-               
-                    Console.WriteLine($"Property name: {property}");
-                    Console.WriteLine($"Property value: {propertyValue}");
-                    dynamic newValue = UserInteraction.GetNewValue(property.PropertyType);
-                    property.SetValue(objectToManipulate, newValue);
+
+                Console.WriteLine($"Property name: {property}");
+                Console.WriteLine($"Property value: {propertyValue}");
+                dynamic newValue = UserInteraction.GetNewValue(property.PropertyType);
+                property.SetValue(objectToManipulate, newValue);
             }
         }
     }
