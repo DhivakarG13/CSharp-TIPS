@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_1_AsyncAwait", "Task_1_AsyncAwait.csproj", "{1E6F48C5-738C-481E-9D79-FFC80FFFC418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_2_TPL", "..\Task_2_TPL\Task_2_TPL.csproj", "{91C80C7A-DE36-404C-8A09-37B8368278B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_3_MultiThreading", "..\Task_3_MultiThreading\Task_3_MultiThreading.csproj", "{6030713E-E137-444B-8E0E-036C4F224BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_4_MultiLayered_Async_Await", "..\MultiLayered_Async_Await\Task_4_MultiLayered_Async_Await.csproj", "{BF6F8FF7-68AF-459A-ABD8-9609AB2BA007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_5_FixDeadLock", "..\Task_5_FixDeadLock\Task_5_FixDeadLock.csproj", "{F71ECD14-666E-4418-802C-C1D311BE9D23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_6_ConfigureAwait_Practice", "..\Task_6_ConfigureAwait_Practice\Task_6_ConfigureAwait_Practice.csproj", "{8AAD8B11-F91A-445A-82F3-BCD764B4D463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_7_Async_ErrorHandling", "..\Async_ErrorHandling\Task_7_Async_ErrorHandling.csproj", "{637BEBD9-06C2-4600-B78D-3012E5D54F73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E6F48C5-738C-481E-9D79-FFC80FFFC418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E6F48C5-738C-481E-9D79-FFC80FFFC418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E6F48C5-738C-481E-9D79-FFC80FFFC418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E6F48C5-738C-481E-9D79-FFC80FFFC418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C80C7A-DE36-404C-8A09-37B8368278B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C80C7A-DE36-404C-8A09-37B8368278B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C80C7A-DE36-404C-8A09-37B8368278B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C80C7A-DE36-404C-8A09-37B8368278B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6030713E-E137-444B-8E0E-036C4F224BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6030713E-E137-444B-8E0E-036C4F224BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6030713E-E137-444B-8E0E-036C4F224BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6030713E-E137-444B-8E0E-036C4F224BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6F8FF7-68AF-459A-ABD8-9609AB2BA007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6F8FF7-68AF-459A-ABD8-9609AB2BA007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6F8FF7-68AF-459A-ABD8-9609AB2BA007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6F8FF7-68AF-459A-ABD8-9609AB2BA007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71ECD14-666E-4418-802C-C1D311BE9D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71ECD14-666E-4418-802C-C1D311BE9D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71ECD14-666E-4418-802C-C1D311BE9D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71ECD14-666E-4418-802C-C1D311BE9D23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AAD8B11-F91A-445A-82F3-BCD764B4D463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AAD8B11-F91A-445A-82F3-BCD764B4D463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AAD8B11-F91A-445A-82F3-BCD764B4D463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AAD8B11-F91A-445A-82F3-BCD764B4D463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{637BEBD9-06C2-4600-B78D-3012E5D54F73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637BEBD9-06C2-4600-B78D-3012E5D54F73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637BEBD9-06C2-4600-B78D-3012E5D54F73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637BEBD9-06C2-4600-B78D-3012E5D54F73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
