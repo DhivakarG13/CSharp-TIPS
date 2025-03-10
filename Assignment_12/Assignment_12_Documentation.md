@@ -1,4 +1,6 @@
 ﻿# Assignment_12_Memory Optimization
+#### Task Sheet:
+https://solitontech.sharepoint.com/:w:/s/SolitonKnowledgeBase/Ed_dimWYGqJKhJP7rWh1proBJmMC_Ruh0PRMOdgNz9ZvwA?e=cP8niS
 
 ## Task 1: Detecting and Diagnosing Memory Issues
 
@@ -63,4 +65,16 @@ after the limit is reached the memAlloc is cleared and set for new List<Array>()
 * Allocating a large amount of memory repeatedly in a while loop is not advisible, using thread.Sleep() is better.
 * Large objects enters Gen2 after the first cycle, so when the reference to is made as null, we can call GC.Collect(2) to clear those, as the gen2 is not collected frequently.
 * Calling GC.WaitForPendingFinalizers() is a good practice after calling  GC.Collect() as it waits till all the finalizers of the objects are executed
+-------------------------------------------------------
+## Observation Videos
+
+### Task1 Observations:
+[Task1Observation.webm](https://github.com/user-attachments/assets/a5298f0c-67c0-4907-8190-30dcc4683c66)
+
+
+### Task2 Observations:
+[Task2Observation.webm](https://github.com/user-attachments/assets/e965fb66-aab8-4ba7-95c7-e6d50fef35fe)
+
+### Tas2 Alternative Observations:
+[Recording-20250310_094846.webm](https://github.com/user-attachments/assets/ecc48cb1-2ea2-49c4-ad36-bc0c0234bcca)
 
