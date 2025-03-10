@@ -17,9 +17,16 @@ namespace Task_2_TPL
             {
                 Console.WriteLine(number*number);
             }
+            foreach(int number in numbers)
+            {
+                Console.WriteLine(number*number);
+            }
             sw.Stop();
             Stopwatch sw1 = new Stopwatch();
             sw1.Start();
+            Parallel.ForEach(numbers, (item) => {
+                Console.WriteLine(item*item);
+            });
             Parallel.ForEach(numbers, (item) => {
                 Console.WriteLine(item*item);
             });
