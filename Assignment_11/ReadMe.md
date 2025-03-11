@@ -40,3 +40,9 @@ In the second GC.Collect some more memory in the heap is cleared.
 * The dispose method calls the dispose method of stream reader and stream writer respectively.
 * The instances of file reader and writer classes are created and the operations are done inside a using statement.
 * This ensures that the file is closed after the Using block is closed.
+
+### Observation Videos:
+### Task 2:
+[Recording-20250311_084554.webm](https://github.com/user-attachments/assets/c6123e75-56db-4876-86b4-efff72e3eb39)
+### Task 3:
+[Recording-20250311_085244.webm](https://github.com/user-attachments/assets/68d92716-c3bf-4dbb-8b51-287d4373c378)
