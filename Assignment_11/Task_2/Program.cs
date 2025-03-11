@@ -42,14 +42,14 @@ namespace Task_2
         /// <returns>sum of integers in the array</returns>
         static int SumOfAllIntegersInArray()
         {
-            Console.WriteLine("\ncreating 10000000 LocalVariables ");
+            Console.WriteLine("\ncreating integer array of size 10000000 ");
             int[] integerArray = new int[10000000];
 
             for (int i = 0; i < 10000000; i++)
             {
                 integerArray[i] = i + 1;
             }
-            Console.WriteLine("Created 10000000 Local Variables, Press Any key to close");
+            Console.WriteLine("Created integer array of size 10000000");
             Console.ReadKey();
 
             int sumOfIntegers = 0;

@@ -4,7 +4,6 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Press any key to call CreateAndDestroyObjects method");
             CreateAndDestroyObjects();
             Console.WriteLine("Press any Key to close application");
             Console.ReadKey();
