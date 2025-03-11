@@ -7,15 +7,15 @@
             string? userInput = null;
             int parsedInput = default;
             bool isValidNumber = false;
-            while (!isValidNumber)
+            do
             {
                 Console.Write($"Enter {dataToFetch} : ");
                 userInput = Console.ReadLine();
                 isValidNumber = int.TryParse(userInput, out parsedInput);
-                if (!isValidNumber)
-                {
+            }
+            while (!isValidNumber);
+            {
                     Console.WriteLine("Numerical value expected");
-                }
             }
             return parsedInput;
         }

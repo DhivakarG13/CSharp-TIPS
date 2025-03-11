@@ -6,8 +6,8 @@ namespace Simple_Calculator
     {
         static void Main(string[] args)
         {
-            int number1 = UserDataFetchUtility.GetNumberToCalculate("Number");
-            int number2 = UserDataFetchUtility.GetNumberToCalculate("Number");
+            int number1 = UserDataFetchUtility.GetNumberToCalculate("First Number");
+            int number2 = UserDataFetchUtility.GetNumberToCalculate("Second Number");
             Console.WriteLine();
             Console.WriteLine("[1]Add [2]Subtract [3]Divide [4]Multiply");
             int choice = UserDataFetchUtility.GetDialogChoice(4);
@@ -27,7 +27,7 @@ namespace Simple_Calculator
                     }
                     catch (DivideByZeroException ex)
                     {
-                        Console.WriteLine("Second Number cannot be zero to divide");
+                        Console.WriteLine("A number cannot divide by zero");
                     }
                     break;
                 case 4:
