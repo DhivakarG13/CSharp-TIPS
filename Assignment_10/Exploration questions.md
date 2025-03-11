@@ -57,15 +57,27 @@ connectivity & network communication.
 	* include the classes for using the file system, the classes to handle the network features, 
 	the classes to handle I/O for console applications
 * Contains namespaces like System.Net,System.Linq etc.
-* Includes: WPF, ASP.NET, Windows Forms, WF (Work flow foundation), LINQ, WCF,
+* Includes: WPF, ASP.NET, Windows Forms, WF (Windows Forms), LINQ, WCF,
 data access, data base connectivity & network communication.
 
 
-#### ASP.NET
-#### WPF
+#### ASP.NET:
+* ASP.NET is a part of the .NET framework, providing a robust platform for building dynamic web applications and services.
+* It supports various development models like Web Forms, MVC (Model-View-Controller), and Razor Pages, giving developers flexibility in how they build their applications.
+* we can develop applications that run on Windows, macOS, and Linux.
+
 #### WF
-
-
+* Windows Forms (WF) is a graphical user interface (GUI) framework within the .NET framework for building desktop applications. It provides a set of managed libraries for creating interactive user interfaces.
+* It is particularly useful for applications that need to run on Windows operating systems and require direct interaction with the user.
+* With a drag-and-drop designer in Visual Studio, developers can quickly create and design forms, reducing the amount of manual coding.
+* Rich Controls: It offers a wide range of built-in controls (like buttons, text boxes, and grids) that can be easily customized.
+* Integrates with other .NET components and libraries, allowing for flexible application development.
+* 
+#### WPF
+* WPF is a vector graphics based UI presentation layer, being vector based, it allows the presentation layer to smoothly scale UI elements to any size without distortion.
+* WPF is used to create applications with advanced graphics, animations, and media integration. It is particularly suitable for applications that require a modern, flexible, and visually appealing user interface.
+* Data Binding: It offers powerful data binding capabilities, making it easier to connect UI elements to data sources and manage data flow within the application.
+* 
 ### Services:
 - Memory management
 - Type safety
