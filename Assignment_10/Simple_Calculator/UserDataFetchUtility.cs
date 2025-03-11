@@ -12,11 +12,13 @@
                 Console.Write($"Enter {dataToFetch} : ");
                 userInput = Console.ReadLine();
                 isValidNumber = int.TryParse(userInput, out parsedInput);
+                if(!isValidNumber)
+                {
+                    Console.WriteLine("Numerical value expected");
+                }
             }
             while (!isValidNumber);
-            {
-                    Console.WriteLine("Numerical value expected");
-            }
+            
             return parsedInput;
         }
 
