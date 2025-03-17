@@ -88,7 +88,7 @@ the user can add his own source too by choosing "other" option and entering the 
 * The day,month and year must form a proper valid date.
 
 ### [4] View_All_Actions
-* Prints all the cation data in table format.
+* Prints all the action data in table format.
 
 ### [5] Edit_Activity
 * User can edit his actions.

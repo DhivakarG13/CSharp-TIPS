@@ -22,6 +22,7 @@ namespace Assignment_4_ExpenseTracker.Models
             TransactionId = transactionId;
             ActionDate = actionDate;
         }
+
         public string GetSource()
         {
             if (_expenseType == ExpenseOptions.Other)
@@ -30,7 +31,7 @@ namespace Assignment_4_ExpenseTracker.Models
             }
             else
             {
-                return _expenseType.ToString();
+                return _expenseType.ToString() ?? string.Empty;
             }
         }
 
@@ -39,5 +40,6 @@ namespace Assignment_4_ExpenseTracker.Models
             _expenseType = (ExpenseOptions)value.Item1;
             _otherExpenseSource = value.Item2;
         }
+
     }
 }

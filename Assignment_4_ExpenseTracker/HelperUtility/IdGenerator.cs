@@ -1,7 +1,7 @@
 ﻿using Models;
 namespace Assignment_4_ExpenseTracker.HelperUtility
 {
-    internal static class IdGenerator
+    public static class IdGenerator
     {
         public static int TransactionIdGenerator(List<IFinance> FinancialRecord)
         {

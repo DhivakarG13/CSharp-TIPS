@@ -33,6 +33,7 @@
             View_All_Actions,
             Edit_Activity,
             View_Summary,
+            Delete_Activity,
             Close_App
         }
 
@@ -67,6 +68,11 @@
             Edit_Source = 1,
             Edit_Amount,
             Edit_Time,
+        }
+        public enum SetTimeOptions
+        {
+            Current_Time = 1,
+            Own_Time
         }
     }
 }

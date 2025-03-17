@@ -5,7 +5,7 @@ using Assignment_4_ExpenseTracker.Models;
 
 namespace Assignment_4_ExpenseTracker.RepositoryManager
 {
-    public static class SearchRepository
+    public static class SearchRepositoryServices
     {
         public static List<IFinance> GetSearchResults(SearchOptions searchChoice, List<IFinance> financialRecord)
         {
@@ -23,6 +23,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
                 case SearchOptions.Action:
                     {
                         Console.Clear();
+                        ConsoleWriter.ActionTitleWriter("-- Searching by Action --");
                         ConsoleWriter.PrintDialog(new Actions());
                         Actions searchByActionChoice = (Actions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(Actions)).Length);
                         Console.Clear();
@@ -31,6 +32,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
                     }
                 case SearchOptions.ActionId:
                     {
+                        ConsoleWriter.ActionTitleWriter("-- Searching by Action ID --");
                         int transactionId = GetUserData.GetActionId();
                         Console.Clear();
                         matchingActions.AddRange(SearchByTransactionId(transactionId, financialRecord));
@@ -39,6 +41,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
                 case SearchOptions.ActionDate:
                     {
                         Console.Clear();
+                        ConsoleWriter.ActionTitleWriter("-- Searching by Action Date --");
                         ConsoleWriter.PrintDialog(new SearchByActionDateOptions());
                         SearchByActionDateOptions SearchByActionDateChoice = (SearchByActionDateOptions)GetUserData.GetDialogChoice(Enum.GetNames(typeof(SearchByActionDateOptions)).Length);
                         Console.Clear();
@@ -51,7 +54,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
 
         private static List<IFinance> SearchByActionDate(SearchByActionDateOptions SearchByActionDateChoice, List<IFinance> FinancialRecord)
         {
-
+            ConsoleWriter.ActionTitleWriter("-- Searching by Action Date --");
             List<IFinance> matchingProducts = new List<IFinance>();
 
             switch (SearchByActionDateChoice)
@@ -105,7 +108,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchBySource(string Source, List<IFinance> FinancialRecord)
+        public static List<IFinance> SearchBySource(string Source, List<IFinance> FinancialRecord)
         {
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
@@ -118,7 +121,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchByTransactionId(int transactionId, List<IFinance> FinancialRecord)
+        public static List<IFinance> SearchByTransactionId(int transactionId, List<IFinance> FinancialRecord)
         {
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
@@ -131,7 +134,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        private static List<IFinance> SearchByAction(string searchByActionChoice, List<IFinance> FinancialRecord)
+        public static List<IFinance> SearchByAction(string searchByActionChoice, List<IFinance> FinancialRecord)
         {
             List<IFinance> matchingProducts = new List<IFinance>();
             foreach (IFinance action in FinancialRecord)
@@ -144,7 +147,7 @@ namespace Assignment_4_ExpenseTracker.RepositoryManager
             return matchingProducts;
         }
 
-        internal static (int, int) GetSummary(List<IFinance> financeData)
+        public static (int, int) GetSummary(List<IFinance> financeData)
         {
             int income = 0;
             int expense = 0;

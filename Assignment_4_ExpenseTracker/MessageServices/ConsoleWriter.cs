@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ConsoleTables;
 using Constants;
 using Models;
 
@@ -17,44 +17,68 @@ namespace Assignment_4_ExpenseTracker.MessageServices
             }
             Console.WriteLine("\n\n");
         }
+
+        public static void ActionTitleWriter(string actionTitle)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"-- {actionTitle} --");
+            Console.ResetColor();
+        }
+
+        public static void ActionDescriptionWriter(string description)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"-- {description} --");
+            Console.ResetColor();
+        }
+
         public static void GetActionInfoWriter(string? TypeOfData)
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write($"{TypeOfData}");
             Console.ResetColor();
         }
+
         public static void PrintListOfActionData(List<IFinance> actionsToPrint)
         {
-            int actionIndex = 0;
-            foreach (IFinance action in actionsToPrint)
+            ConsoleTable table = new ConsoleTable("Index", "Action Type", "Action Source", "Transaction Id", "Amount", "Transaction Date}");
+
+            for (int actionIndex = 0; actionIndex < actionsToPrint.Count; actionIndex++)
             {
-                PrintActionData(actionIndex, action);
-                actionIndex++;
+                table.AddRow($"{actionIndex}", actionsToPrint[actionIndex].GetType(), actionsToPrint[actionIndex].GetSource(),
+                    actionsToPrint[actionIndex].TransactionId, actionsToPrint[actionIndex].Amount, actionsToPrint[actionIndex].ActionDate);
+
             }
+            table.Write();
         }
+
+        public static void PrintActionData(int actionIndex, IFinance actionToPrint)
+        {
+            ConsoleTable table = new ConsoleTable("Index", "Action Type", "Action Source", "Transaction Id", "Amount", "Transaction Date}");
+
+            table.AddRow($"{actionIndex}", actionToPrint.GetType(), actionToPrint.GetSource(),
+                actionToPrint.TransactionId, actionToPrint.Amount, actionToPrint.ActionDate);
+
+            table.Write();
+        }
+
         public static void PrintSource(string source)
         {
             Console.WriteLine($"Source                : {source}");
         }
+
         public static void PrintTransactionId(int transactionId)
         {
             Console.WriteLine($"Your Transaction Id   : {transactionId}");
         }
-        public static void PrintActionData(int actionIndex, IFinance actionToPrint)
-        {
-            Console.WriteLine(ConstantStrings.enclosureLines);
-            Console.WriteLine($"Index[{actionIndex}]");
-            Console.WriteLine($"Action Source    : {actionToPrint.GetSource()}");
-            Console.WriteLine($"Amount           : {actionToPrint.Amount}");
-            Console.WriteLine($"Transaction Id   : {actionToPrint.TransactionId}");
-            Console.WriteLine($"Transaction Date : {actionToPrint.ActionDate}\n");
-        }
+
         public static void PrintWarning(string? WarningMessage)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"{WarningMessage}");
             Console.ResetColor();
         }
+
         public static void PrintActionComplete(string? Message)
         {
             Console.WriteLine(ConstantStrings.enclosureLines);
@@ -93,6 +117,26 @@ namespace Assignment_4_ExpenseTracker.MessageServices
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Available Balance : {Balance}");
                 Console.ResetColor();
+            }
+        }
+
+        internal static void PrintRecentlyAddedActions(int totalActionsToPrintInMainDialog, List<IFinance> finances)
+        {
+
+            List<IFinance> recentlyAddedActions = new List<IFinance>();
+
+            if (finances.Count() > 0)
+            {
+                Console.WriteLine("\n::: Recently added Actions :::\n");
+                for (int index = 0; index < totalActionsToPrintInMainDialog && index < finances.Count(); index++)
+                {
+                    recentlyAddedActions.Add(finances[finances.Count() - index - 1]);
+                }
+                PrintListOfActionData(recentlyAddedActions);
+            }
+            else
+            {
+                Console.WriteLine("\n::: Add actions to Display Recently added actions here :::\n");
             }
         }
     }
