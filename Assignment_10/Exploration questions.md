@@ -61,8 +61,8 @@ connectivity & network communication.
 data access, data base connectivity & network communication.
 
 
-#### ASP.NET:
-* ASP.NET is a part of the .NET framework, providing a robust platform for building dynamic web applications and services.
+#### ASP.NET Core:
+* ASP.NET core is a part of the .NET framework, providing a robust platform for building dynamic web applications and services.
 * It supports various development models like Web Forms, MVC (Model-View-Controller), and Razor Pages, giving developers flexibility in how they build their applications.
 * we can develop applications that run on Windows, macOS, and Linux.
 
@@ -77,7 +77,8 @@ data access, data base connectivity & network communication.
 * WPF is a vector graphics based UI presentation layer, being vector based, it allows the presentation layer to smoothly scale UI elements to any size without distortion.
 * WPF is used to create applications with advanced graphics, animations, and media integration. It is particularly suitable for applications that require a modern, flexible, and visually appealing user interface.
 * Data Binding: It offers powerful data binding capabilities, making it easier to connect UI elements to data sources and manage data flow within the application.
-* 
+* WPF uses XAML (Extensible Application Markup Language) to define UI elements declaratively, making it easier to separate UI design from application logic.
+
 ### Services:
 - Memory management
 - Type safety
