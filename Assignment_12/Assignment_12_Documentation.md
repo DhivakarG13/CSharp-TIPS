@@ -71,10 +71,9 @@ after the limit is reached the memAlloc is cleared and set for new List<Array>()
 ### Task1 Observations:
 [Task1Observation.webm](https://github.com/user-attachments/assets/a5298f0c-67c0-4907-8190-30dcc4683c66)
 
-
 ### Task2 Observations:
 [Task2Observation.webm](https://github.com/user-attachments/assets/e965fb66-aab8-4ba7-95c7-e6d50fef35fe)
 
-### Tas2 Alternative Observations:
+### Task2 Alternative Observations:
 [Recording-20250310_094846.webm](https://github.com/user-attachments/assets/ecc48cb1-2ea2-49c4-ad36-bc0c0234bcca)
 
