@@ -5,8 +5,9 @@
         static void Main(string[] args)
         {
             string name = "Dhivakar";
+            Console.WriteLine("\nString to reverse: " + name);
             name = StringManager.ReverseString(name);
-            Console.WriteLine(name);
+            Console.WriteLine("\nReversed String: " + name);
             Console.ReadLine();
         }
     }

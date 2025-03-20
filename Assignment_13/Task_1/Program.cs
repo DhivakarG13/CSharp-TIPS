@@ -1,6 +1,6 @@
 ﻿namespace Task_1
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -9,14 +9,15 @@
             library.AddBook("Maths");
             library.AddBook("Science");
             library.AddBook("English");
-            library.PrintBooks();
+            library.AddBook("Electronics");
+            library.PrintAllBooks();
             library.RemoveBook("English");
             library.RemoveBook("fence");
-            library.PrintBooks();
+            library.PrintAllBooks();
             Console.WriteLine(":: Search Operations ::");
-            library.FindBooks("Maths");
-            library.FindBooks("Tamil");
-            library.FindBooks("English");
+            library.FindBook("Maths");
+            library.FindBook("Tamil");
+            library.FindBook("English");
             Console.ReadKey();
         }
     }

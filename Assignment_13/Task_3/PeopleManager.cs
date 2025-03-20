@@ -9,35 +9,49 @@
             PeopleQueue = new Queue<string>();
         }
 
-        public void AddPersonToQueue(string PersonName)
+        /// <summary>
+        /// Gets the person name and adds it to the PeopleQueue.
+        /// </summary>
+        /// <param name="personName"></param>
+        public void AddPersonToQueue(string personName)
         {
-            PeopleQueue.Enqueue(PersonName);
+            PeopleQueue.Enqueue(personName);
+            Console.WriteLine($"Enqueued {PeopleQueue.Last()}");
         }
 
-        public void RemovePersonFromQueue(int numberOfPeopleToRemove)
+        /// <summary>
+        /// Gets the number of people to remove from PeopleQueue and removes.
+        /// </summary>
+        /// <param name="numberOfPeopleToRemove"></param>
+        public void RemovePeopleFromQueue(int numberOfPeopleToRemove)
         {
-            if (PeopleQueue.Count >= numberOfPeopleToRemove)
+            Console.WriteLine($"Requested People to remove {numberOfPeopleToRemove}\n");
+            if (PeopleQueue.Count < numberOfPeopleToRemove)
             {
-                while (numberOfPeopleToRemove-- != 0)
-                {
-                    PeopleQueue.Dequeue();
-                }
+                numberOfPeopleToRemove = PeopleQueue.Count;
             }
-            else
+
+            while (numberOfPeopleToRemove != 0)
             {
-                Console.WriteLine($"There are only {PeopleQueue.Count} people in the Queue");
-                Console.WriteLine("Enter a valid count to remove from list\n");
+                PeopleQueue.TryDequeue(out string? removedPersonName);
+                Console.WriteLine($"{removedPersonName} is DeQueued.");
+                numberOfPeopleToRemove--;
             }
         }
 
+        /// <summary>
+        /// Prints the name of all person in the queue.
+        /// </summary>
         public void PrintPeopleInQueue()
         {
-            Console.WriteLine("People In Queue :");
+            Console.WriteLine("\nPeople In Queue :");
+
             if (PeopleQueue.Count == 0)
             {
-                Console.WriteLine("Queue Is Empty");
+                Console.WriteLine("\nQueue Is Empty");
             }
-            foreach (var person in PeopleQueue)
+
+            foreach (string person in PeopleQueue)
             {
                 Console.Write(person + " ");
             }
