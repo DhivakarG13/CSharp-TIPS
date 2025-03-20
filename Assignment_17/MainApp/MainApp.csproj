@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AssemblyMetadataFetcher\AssemblyMetadataFetcher.csproj" />
+    <ProjectReference Include="..\ClassProvider\ClassProvider.csproj" />
+    <ProjectReference Include="..\DynamicMethodInvoker\DynamicMethodInvoker.csproj" />
+    <ProjectReference Include="..\DynamicObjectInspector\DynamicObjectInspector.csproj" />
+    <ProjectReference Include="..\DynamicTypeBuilder\DynamicTypeBuilder.csproj" />
+    <ProjectReference Include="..\Plug_In_App\Plug_In_App.csproj" />
+    <ProjectReference Include="..\SerializeAPI\SerializeAPI.csproj" />
+  </ItemGroup>
+
+</Project>
