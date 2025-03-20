@@ -1,7 +1,6 @@
 ﻿namespace Task_1
 {
     public class ListManager<T>
-
     {
         private List<T> _listOfItems;
 
@@ -10,41 +9,64 @@
             _listOfItems = new List<T>();
         }
 
+        /// <summary>
+        /// Gets an item of type T and adds to the List.
+        /// </summary>
+        /// <param name="itemToAdd"></param>
         public void AddItem(T itemToAdd)
         {
             _listOfItems.Add(itemToAdd);
         }
 
-        public bool RemoveItem(T itemToDelete)
+        /// <summary>
+        /// Gets an item of type T and removes from the List.
+        /// </summary>
+        /// <param name="itemToDelete"></param>
+        /// <returns></returns>
+        public void RemoveItem(T itemToDelete)
         {
-            if(FindItem(itemToDelete))
+            if (_listOfItems.Remove(itemToDelete))
             {
-                _listOfItems.Remove(itemToDelete);
-                Console.WriteLine($"{itemToDelete} is removed \n");
-                return true;
+                Console.WriteLine($"{itemToDelete} is removed ");
             }
-            return false;
+            else
+            {
+                Console.WriteLine($"\n{itemToDelete} is not in List Of Items\n");
+            }
         }
 
-        public bool FindItem(T itemToFind)
+        /// <summary>
+        /// Gets the item to find and searches for the book in Library Books
+        /// </summary>
+        /// <param name="itemToFind"></param>
+        public void FindItem(T itemToFind)
         {
             if (_listOfItems.Contains(itemToFind))
             {
                 Console.WriteLine($"{itemToFind} is in list\n");
-                return true;
             }
-            Console.WriteLine($"{itemToFind} is not in list\n");
-            return false;
+            else
+            {
+                Console.WriteLine($"{itemToFind} is not in list\n");
+            }
         }
 
+        /// <summary>
+        /// Prints all the items in the list of items.
+        /// </summary>
         public void PrintItems()
         {
-            Console.WriteLine("items In List :");
-            foreach (var item in _listOfItems)
+            if(!_listOfItems.Any())
+            {
+                Console.WriteLine("\nThe List is Empty.\n");
+                return;
+            }
+
+            Console.WriteLine("\nitems In List :");
+            foreach (T? item in _listOfItems)
             {
                 Console.WriteLine(item + " ");
             }
-            Console.WriteLine();
         }
     }   
 }

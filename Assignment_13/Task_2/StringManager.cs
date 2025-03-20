@@ -1,31 +1,37 @@
-﻿using System.Text;
-
-namespace Task_2
+﻿namespace Task_2
 {
     internal partial class Program
     {
-        public class StringManager
+        public class StringManager 
         {
             public static string? ReverseString(string stringToReverse)
             {
-                char[] arrayToReverse = stringToReverse.ToCharArray();
-                ReverseArray(arrayToReverse);
-                return new string(arrayToReverse);
+                List<char> listToReverse = stringToReverse.ToCharArray().ToList();
+                listToReverse = ReverseArray<char>(listToReverse);
+                return new string(listToReverse.ToArray());
             }
-            private static void ReverseArray<T>(T[] arrayToReverse)
+
+            private static List<T> ReverseArray<T>(List<T> listToReverse) 
             {
-                Stack<T> stringContainerStack = new Stack<T>();
-                foreach (T c in arrayToReverse)
+                Console.WriteLine("\n :: Reversing Using Stack ::\n");
+                Stack<T> containerStack = new Stack<T>();
+
+                foreach (T item in listToReverse)
                 {
-                    stringContainerStack.Push(c);
-                    Console.WriteLine($"Pushed {stringContainerStack.Peek()} into a stack");
+                    containerStack.Push(item);
+                    Console.WriteLine($"Pushed {containerStack.Peek()} into a stack");
                 }
-                int index = 0;
-                foreach (T c in arrayToReverse)
+
+                List<T> reversedList = new List<T>();
+                int stringToReverseLength = containerStack.Count;
+                while (stringToReverseLength != 0)
                 {
-                    arrayToReverse[index] = stringContainerStack.Pop();
-                    ++index;
+                    Console.WriteLine($"Popping {containerStack.Peek()} from stack and adding it to a temporary list.");
+                    reversedList.Add(containerStack.Pop());
+                    stringToReverseLength--;
                 }
+
+                return reversedList;
             }
         }
     }

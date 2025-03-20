@@ -9,6 +9,7 @@
             library.AddItem("Maths");
             library.AddItem("Science");
             library.AddItem("English");
+            library.AddItem("Electrical");
             library.PrintItems();
             library.RemoveItem("English");
             library.RemoveItem("fence");

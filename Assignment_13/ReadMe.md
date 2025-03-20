@@ -1,6 +1,6 @@
 ### Task-1 Lists:
 * A class named "Library" with a property of type List of String is created.
-* Add Operation: In the list a new string is added/appended using .Add() method.
+* Add Operation: In the list a new string is added/appended using .Add(String to add) method. Using .Insert(position to add, String to add) can be used to add in specific position but improper position throws an IndexOutOfRange Exception.
 * Remove Operation: Using .Remove() the given string is removed from the list of string. Alternate: get index and use .RemoveAt(indexToRemove);
 * Search Operation: Using .Contains(stringToSearch) search operation is performed.
 * Iterated through the existing list to print all strings.

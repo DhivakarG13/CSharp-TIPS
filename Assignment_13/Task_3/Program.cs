@@ -13,10 +13,7 @@
             peopleManager.AddItemToQueue("Jamal");
             peopleManager.PrintItemInQueue();
             Console.WriteLine(":: Remove Operation ::");
-            peopleManager.RemoveItemFromQueue(10);
-            peopleManager.PrintItemInQueue();
-            Console.WriteLine(":: Remove Operation ::");
-            peopleManager.RemoveItemFromQueue(4);
+            peopleManager.RemoveItemsFromQueue(4);
             peopleManager.PrintItemInQueue();
             Console.ReadKey();
         }
