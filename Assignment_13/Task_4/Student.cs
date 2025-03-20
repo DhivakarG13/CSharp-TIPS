@@ -36,13 +36,13 @@
         {
             if (StudentLog.ContainsKey(studentToRemove))
             {
-                StudentLog.Remove(studentToRemove);
                 Console.WriteLine($"Removed {studentToRemove} from StudentLog\n");
             }
             else
             {
                 Console.WriteLine($"{studentToRemove} is not in the StudentLog\n");
             }
+                StudentLog.Remove(studentToRemove);
         }
 
         /// <summary>
