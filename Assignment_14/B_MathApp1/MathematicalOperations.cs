@@ -2,20 +2,20 @@
 {
     public class MathematicalOperations
     {
-        public static int Add(int x, int y) => x + y;
+        public static int Add(int firstNumber, int secondNumber) => firstNumber + secondNumber;
 
-        public static int Subtract(int x, int y) => x - y;
+        public static int Subtract(int firstNumber, int secondNumber) => firstNumber - secondNumber;
 
-        public static int Multiply(int x, int y) => x * y;
+        public static int Multiply(int firstNumber, int secondNumber) => firstNumber * secondNumber;
 
-        public static int Divide(int x, int y)
+        public static int Divide(int firstNumber, int secondNumber)
         {
-            if (y == 0)
+            if (secondNumber == 0)
             { 
                 throw new DivideByZeroException("Divisor cannot be zero");
             }
 
-            return x / y;
+            return firstNumber / secondNumber;
         }
     }
 }
