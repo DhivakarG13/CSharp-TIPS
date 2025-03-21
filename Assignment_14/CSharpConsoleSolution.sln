@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_GreetingsApp", "A_GreetingsApp\A_GreetingsApp.csproj", "{03D8F004-F35A-4667-BB1D-287341FB0757}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_GreetingsApplication", "A_GreetingsApp\A_GreetingsApplication.csproj", "{03D8F004-F35A-4667-BB1D-287341FB0757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_ValidateApp", "E_ValidateApp\E_ValidateApp.csproj", "{D13CDD7A-B883-4238-88CE-414A7F3F9ECC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_ValidateApplication", "E_ValidateApp\E_ValidateApplication.csproj", "{D13CDD7A-B883-4238-88CE-414A7F3F9ECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D_UtilityApp", "D_UtilityApp1\D_UtilityApp.csproj", "{AC437CA7-400F-4DB9-979B-0F8BEC03C619}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D_UtilityApplication", "D_UtilityApp1\D_UtilityApplication.csproj", "{AC437CA7-400F-4DB9-979B-0F8BEC03C619}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_DisplayApp1", "C_DisplayApp1\C_DisplayApp1.csproj", "{2506EA3B-39AE-4352-9018-E506FE7EF8B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_DisplayApplication", "C_DisplayApp1\C_DisplayApplication.csproj", "{2506EA3B-39AE-4352-9018-E506FE7EF8B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B_MathApp", "B_MathApp1\B_MathApp.csproj", "{E8B70CD1-6470-44F5-8C5B-A578C4C87A3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B_MathApplication", "B_MathApp1\B_MathApplication.csproj", "{E8B70CD1-6470-44F5-8C5B-A578C4C87A3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4548495-7B9B-4825-A004-B0E7F52E7911}"
 	ProjectSection(SolutionItems) = preProject

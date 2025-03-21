@@ -9,10 +9,10 @@
 
 ###  Importance of proper project organization, solution management, and build order in C# development:
 - Inside a solution we will be having projects and class libraries.
-- when we run the app the the control flow should be like greeting , then getting user input, evaluating and displaying the result.
-- The class libraries must be build in the order such that the the class library on which most of the other projects are dependent should be build first.
+- when we run the application the control flow should be like greeting , then getting user input, evaluating and displaying the result.
+- The class libraries must be build in the order such that the class library on which most of the other projects are dependent should be build first.
 - In visual studio we can only edit the build order by editing the dependencies of the project.
 - And if visual studio detects that we're adding dependencies to a project which may end up in circular dependency while building , it'll not allow us to add that dependency to that project.
 - So if dependency order is like A <- B <- C <- D <- E.
 - The build order will be like E, D, C, B, A.
-- Designing the app in such a way that there will be no circular dependency is important.
+- Designing the application in such a way that there will be no circular dependency is important.

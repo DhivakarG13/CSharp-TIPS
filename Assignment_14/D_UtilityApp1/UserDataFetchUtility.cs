@@ -1,38 +1,43 @@
-﻿using C_DisplayApp;
-using E_ValidateApp;
+﻿using C_DisplayApplication;
+using E_ValidateApplication;
 
-namespace D_UtilityApp
+namespace D_UtilityApplication
 {
     public static class UserDataFetchUtility
-    { 
+    {
         public static int GetNumericalInput(string inputTitle)
         {
-            string? UserInput = string.Empty;
-            while (true)
+            string? userInput;
+            bool isValidNumericalInput;
+
+            do
             {
                 DisplayUtility.PrintInputTitle(inputTitle);
-                UserInput = Console.ReadLine();
-                if (ValidationUtility.NumericalInputValidate(UserInput))
-                {
-                    break;
-                }
+                userInput = Console.ReadLine();
+                isValidNumericalInput = ValidationUtility.ValidateNumericalInput(userInput);
             }
-            return int.Parse(UserInput);
+            while (!isValidNumericalInput);
+
+            int.TryParse(userInput, out int parsedChoice);
+            return parsedChoice;
         }
 
         public static int GetChoice(int totalChoices)
         {
-            string? Choice = null;
-            bool IsValidChoice = false;
-            while (!IsValidChoice)
+            string? choice;
+            bool isValidChoice;
+
+            do
             {
                 Console.Write("Enter Your Choice:");
-                Choice = Console.ReadLine();
-                IsValidChoice = ValidationUtility.ValidateChoice(Choice, totalChoices);
+                choice = Console.ReadLine();
+                isValidChoice = ValidationUtility.ValidateChoice(choice, totalChoices);
                 Console.WriteLine();
             }
-            IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
-            return ParsedChoice;
+            while (!isValidChoice);
+
+            int.TryParse(choice, out int parsedChoice);
+            return parsedChoice;
         }
     }
 }

@@ -8,8 +8,8 @@
   </PropertyGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\B_MathApp1\B_MathApp.csproj" />
-		<ProjectReference Include="..\C_DisplayApp1\C_DisplayApp1.csproj" />
-		<ProjectReference Include="..\D_UtilityApp1\D_UtilityApp.csproj" />
+		<ProjectReference Include="..\B_MathApp1\B_MathApplication.csproj" />
+		<ProjectReference Include="..\C_DisplayApp1\C_DisplayApplication.csproj" />
+		<ProjectReference Include="..\D_UtilityApp1\D_UtilityApplication.csproj" />
 	</ItemGroup>
 </Project>

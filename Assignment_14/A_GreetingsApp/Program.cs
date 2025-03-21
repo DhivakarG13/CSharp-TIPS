@@ -1,49 +1,47 @@
-﻿using B_MathApp;
-using C_DisplayApp;
-using D_UtilityApp;
+﻿using B_MathApplication;
+using C_DisplayApplication;
+using D_UtilityApplication;
 
-namespace A_GreetingsApp
+namespace A_GreetingsApplication
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, User!");
-            int number1 = UserDataFetchUtility.GetNumericalInput("Number 1");
-            int number2 = UserDataFetchUtility.GetNumericalInput("Number 2");
+            int firstNumber = UserDataFetchUtility.GetNumericalInput("First Number");
+            int secondNumber = UserDataFetchUtility.GetNumericalInput("Second Number");
             Console.Clear();
-            DisplayUtility.PrintDialog(new MathOptions());
+            MathOptions mathOptions = new MathOptions();
+            DisplayUtility.PrintDialog(mathOptions);
             MathOptions userChoice = (MathOptions)UserDataFetchUtility.GetChoice(Enum.GetNames(typeof(MathOptions)).Length);
+
             try
             {
                 switch (userChoice)
                 {
                     case MathOptions.Add:
-                        {
-                            DisplayUtility.PrintData(MathematicalOperations.Add(number1, number2));
+                            DisplayUtility.PrintData(MathematicalOperations.Add(firstNumber, secondNumber));
                             break;
-                        }
+
                     case MathOptions.Subtract:
-                        {
-                            DisplayUtility.PrintData(MathematicalOperations.Subtract(number1, number2));
+                            DisplayUtility.PrintData(MathematicalOperations.Subtract(firstNumber, secondNumber));
                             break;
-                        }
+
                     case MathOptions.Multiply:
-                        {
-                            DisplayUtility.PrintData(MathematicalOperations.Multiply(number1, number2));
+                            DisplayUtility.PrintData(MathematicalOperations.Multiply(firstNumber, secondNumber));
                             break;
-                        }
+
                     case MathOptions.Divide:
-                        {
-                            DisplayUtility.PrintData(MathematicalOperations.Divide(number1, number2));
+                            DisplayUtility.PrintData(MathematicalOperations.Divide(firstNumber, secondNumber));
                             break;
-                        }
                 }
             }
             catch (Exception ex)
             {
                 DisplayUtility.PrintError(ex.Message);
             }
+
             Console.WriteLine("Press Any Key to close");
             Console.ReadKey();
         }

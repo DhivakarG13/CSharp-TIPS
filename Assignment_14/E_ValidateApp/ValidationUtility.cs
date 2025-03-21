@@ -1,40 +1,41 @@
-﻿using C_DisplayApp;
+﻿using C_DisplayApplication;
 
-namespace E_ValidateApp
+namespace E_ValidateApplication
 {
     public static class ValidationUtility
     {
-        public static bool NumericalInputValidate(string userInput)
+        public static bool ValidateNumericalInput(string? userInput)
         {
-            if(string.IsNullOrEmpty(userInput))
+            if (string.IsNullOrEmpty(userInput))
             {
                 DisplayUtility.PrintError("Enter a value to continue");
                 return false;
             }
-            int parsedUserInput = default;
-            if(int.TryParse(userInput, out parsedUserInput) == false)
+
+            if (!int.TryParse(userInput, out _))
             {
                 DisplayUtility.PrintError("Expected input -> Number");
                 return false;
             }
+
             return true;
         }
 
-        public static bool ValidateChoice(string? Choice, int TotalChoices)
+        public static bool ValidateChoice(string? userChoice, int totalChoices)
         {
-            if (Choice == null || Choice.Length == 0)
+            if (userChoice == null || userChoice.Length == 0)
             {
                 DisplayUtility.PrintError("Enter a value to continue");
                 return false;
             }
-            bool IsValidChoice = false;
-            IsValidChoice = int.TryParse(Choice, out int ParsedChoice);
-            if (!IsValidChoice)
+
+            if (!int.TryParse(userChoice, out int parsedChoice))
             {
                 DisplayUtility.PrintError("Expected input -> Number");
                 return false;
             }
-            if (ParsedChoice > 0 && ParsedChoice <= TotalChoices)
+
+            if (parsedChoice > 0 && parsedChoice <= totalChoices)
             {
                 return true;
             }
@@ -43,7 +44,6 @@ namespace E_ValidateApp
                 DisplayUtility.PrintError("Choice Out Of Range");
                 return false;
             }
-
         }
     }
 }

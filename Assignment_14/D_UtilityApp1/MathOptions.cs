@@ -1,4 +1,4 @@
-﻿namespace D_UtilityApp
+﻿namespace D_UtilityApplication
 {
     public enum MathOptions
     {

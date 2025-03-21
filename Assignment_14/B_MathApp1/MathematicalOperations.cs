@@ -1,4 +1,4 @@
-﻿namespace B_MathApp
+﻿namespace B_MathApplication
 {
     public class MathematicalOperations
     {
@@ -12,8 +12,9 @@
         {
             if (y == 0)
             { 
-                throw new DivideByZeroException("Second Number cannot be zero");
+                throw new DivideByZeroException("Divisor cannot be zero");
             }
+
             return x / y;
         }
     }
