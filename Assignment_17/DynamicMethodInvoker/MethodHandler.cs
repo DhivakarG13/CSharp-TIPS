@@ -5,13 +5,14 @@ namespace DynamicMethodInvoker
 {
     public class MethodHandler
     {
-        public void InvokeMethod(object objectToInvoke, string methodName)
+        public void InvokeMethod(object instance, string methodName) // instance -> object of the class having the method
         {
-            MethodInfo? method = objectToInvoke.GetType().GetMethod(methodName);
+            MethodInfo? method = instance.GetType().GetMethod(methodName);
             if (method == null)
             {
                 return;
             }
+
             ParameterInfo[] parameters = method.GetParameters();
             object[] newParameters = new object[method.GetParameters().Length];
             for (int i = 0; i < parameters.Length; i++)
@@ -19,7 +20,8 @@ namespace DynamicMethodInvoker
                 Console.WriteLine($"{parameters[i]}");
                 newParameters[i] = UserInteraction.GetNewValue(parameters[i].GetType());
             }
-            method.Invoke(objectToInvoke, newParameters);
+
+            method.Invoke(instance, newParameters);
         }
     }
 }

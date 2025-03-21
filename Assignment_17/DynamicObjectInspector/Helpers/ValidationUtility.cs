@@ -2,7 +2,7 @@
 {
     public class ValidationUtility
     {
-        public static bool ValidateInput(string userInput, Type typeOfInput)
+        public static bool ValidateInput(string? userInput, Type typeOfInput)
         {
             if (typeOfInput == typeof(int))
             {

@@ -12,8 +12,8 @@ namespace DynamicTypeBuilder
             ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule(aName.Name ?? "DynamicAssembly");
             TypeBuilder typeBuilder = moduleBuilder.DefineType("SimpleCalculator", TypeAttributes.Public);
             FieldBuilder fieldBuilderNumber = typeBuilder.DefineField("_number", typeof(int), FieldAttributes.Private);
-
             Type[] parameterTypes = { typeof(int) };
+
             ConstructorBuilder constructor1 = typeBuilder.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, parameterTypes);
             ILGenerator constructor1IL = constructor1.GetILGenerator();
             constructor1IL.Emit(OpCodes.Ldarg_0);
@@ -52,7 +52,6 @@ namespace DynamicTypeBuilder
             propertyBuilderNumber.SetSetMethod(mbNumberSetAccessor);
 
             MethodBuilder addByMethodBuilder = typeBuilder.DefineMethod("AddBy", MethodAttributes.Public, typeof(int), new Type[] { typeof(int) });
-
             ILGenerator addByMethodBuilderIL = addByMethodBuilder.GetILGenerator();
             addByMethodBuilderIL.Emit(OpCodes.Ldarg_0);
             addByMethodBuilderIL.Emit(OpCodes.Ldfld, fieldBuilderNumber);
@@ -61,18 +60,18 @@ namespace DynamicTypeBuilder
             addByMethodBuilderIL.Emit(OpCodes.Ret);
 
             Type? newType = typeBuilder.CreateType();
-
             MethodInfo? methodInfo = newType?.GetMethod("AddBy");
             PropertyInfo? propertyInfo = newType?.GetProperty("Number");
-
             object? simpleCalculator = null;
+
             if (newType is not null)
+            {
                 simpleCalculator = Activator.CreateInstance(newType);
+            }
 
             Console.WriteLine($"simpleCalculator.Number: {propertyInfo?.GetValue(simpleCalculator, null)}");
             propertyInfo?.SetValue(simpleCalculator, 100, null);
             Console.WriteLine($"simpleCalculator.Number: {propertyInfo?.GetValue(simpleCalculator, null)}");
-
             object[] arguments = { 22 };
             Console.WriteLine("simpleCalculator.AddBy(22): {0}", methodInfo?.Invoke(simpleCalculator, arguments));
         }

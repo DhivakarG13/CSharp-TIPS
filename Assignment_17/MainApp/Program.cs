@@ -1,16 +1,15 @@
-﻿using System.Reflection.Emit;
-using System.Reflection;
-using Constants;
-using MainApp.Controllers;
-using MainApp.Helpers;
+﻿using Constants;
+using MainApplication.Controllers;
+using MainApplication.Helpers;
 
-namespace MainApp
+namespace MainApplication
 {
     public class Program
     {
         static void Main(string[] args)
         {
             Controller controller = new Controller();
+
             while (true)
             {
                 UserInteraction.PrintDialog(new MainMenu());
@@ -19,7 +18,8 @@ namespace MainApp
                 {
                     break;
                 }
-                controller.RunMainApp(userChoice);
+
+                controller.RunMainApplication(userChoice);
             }
         }
     }

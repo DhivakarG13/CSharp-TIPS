@@ -4,14 +4,17 @@
     {
         public static dynamic GetNewValue(Type typeOfInput)
         {
-            Console.Write($"Enter New value to change (Expected type {typeOfInput.Name}): ");
-            bool isValidInput = false;
-            string? userInput = string.Empty;
-            while (!isValidInput)
+            bool isValidInput;
+            string? userInput;
+
+            do
             {
+                Console.Write($"Enter New value to change (Expected type {typeOfInput.Name}): ");
                 userInput = Console.ReadLine();
                 isValidInput = ValidationUtility.ValidateInput(userInput, typeOfInput);
             }
+            while (!isValidInput);
+
             return Convert.ChangeType(userInput, typeOfInput);
         }
     }

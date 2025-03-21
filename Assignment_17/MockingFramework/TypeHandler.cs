@@ -7,6 +7,7 @@ namespace MockingFramework
     {
         public int Add(int x, int y);
     }
+
     public class TypeHandler
     {
         public Type CreateType()
@@ -17,6 +18,7 @@ namespace MockingFramework
             TypeBuilder typeBuilder = moduleBuilder.DefineType("Calculator", TypeAttributes.Public);
             typeBuilder.AddInterfaceImplementation(typeof(IMaths));
             MethodInfo[] methodsInInterface = typeof(IMaths).GetMethods();
+
             foreach (MethodInfo method in methodsInInterface)
             {
                 Type[] parameterList = method.GetParameters().Select(p => p.ParameterType).ToArray();
@@ -32,8 +34,10 @@ namespace MockingFramework
                 {
                     methodBuilderIL.Emit(OpCodes.Ldnull);
                 }
+
                 methodBuilderIL.Emit(OpCodes.Ret);
             }
+
             Type newType = typeBuilder.CreateType();
             return newType;
         }

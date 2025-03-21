@@ -13,7 +13,7 @@ namespace MathTest
         }
 
         [Fact]
-        public void CreateType_ReturnsATypeWithMethodThareturnDefaultValueWhenCalled()
+        public void CreateType_ReturnsATypeWithMethodThatReturnsDefaultValueWhenCalled()
         {
             TypeHandler typeHandler = new TypeHandler();
             Type? newType = typeHandler.CreateType();

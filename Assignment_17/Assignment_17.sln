@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApp", "MainApp\MainApp.csproj", "{0ECE0DEE-5462-4213-B57C-4234094B4673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApplication", "MainApp\MainApplication.csproj", "{0ECE0DEE-5462-4213-B57C-4234094B4673}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyMetadataFetcher", "AssemblyMetadataFetcher\AssemblyMetadataFetcher.csproj", "{81CE3EFC-699D-43F6-AAA0-CED5BAF5DEBF}"
 EndProject

@@ -1,5 +1,4 @@
-﻿
-namespace ClassProvider
+﻿namespace ClassProvider
 {
     public class Student
     {
