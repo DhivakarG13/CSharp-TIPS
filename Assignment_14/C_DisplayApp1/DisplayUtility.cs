@@ -12,7 +12,7 @@
             int index = 1;
             foreach (string value in Enum.GetNames(dialogType.GetType()))
             {
-                Console.Write($"[{index}]");
+                Console.Write($"[{index++}]");
                 foreach(char character in value)
                 {
                     if(char.IsUpper(character))
@@ -21,7 +21,7 @@
                     }
                     Console.Write(character);
                 }
-                index++;
+                Console.WriteLine();
             }
             Console.WriteLine("\n\n");
         }
