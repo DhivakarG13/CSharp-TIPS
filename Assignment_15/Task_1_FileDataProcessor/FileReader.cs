@@ -2,10 +2,13 @@
 {
     public class FileReader
     {
-
+        /// <summary>
+        /// Gets the file name and reads the file completely using FileStream.
+        /// </summary>
+        /// <param name="fileName"></param>
         public void ReadFileUsingFileStream(string fileName)
         {
-            using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (FileStream fileStream = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Read))
             {
                 using (StreamReader streamReader = new StreamReader(fileStream))
                 {
@@ -15,9 +18,13 @@
             }
         }
 
+        /// <summary>
+        /// Gets the file name and reads the file completely using BufferedStream.
+        /// </summary>
+        /// <param name="fileName"></param>
         public void ReadFileUsingBufferedStream(string fileName)
         {
-            using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            using (FileStream fileStream = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Read))
             {
                 using (BufferedStream bufferedStream = new BufferedStream(fileStream))
                 {

@@ -6,6 +6,7 @@
         {
             string filePath = "newFile.txt";
             string dataToWrite = "This is some test data";
+
             using (FileStream fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 using (StreamWriter streamWriter = new StreamWriter(fileStream))
@@ -15,6 +16,7 @@
                     fileStream.Flush();
                 }
             }
+
             using (FileStream fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read))
             {
                 using (StreamReader streamReader = new StreamReader(fileStream))

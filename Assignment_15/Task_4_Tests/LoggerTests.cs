@@ -7,7 +7,7 @@ namespace Task_4_Tests
         [Fact]
         public void ErrorMessage_LogErrorAsync_LogsTheErrorInUsersFile()
         {
-            Logger testLogger = new Logger("TestUser","001");
+            Logger testLogger = new Logger("TestUser", "001");
             string expectedFileName = "TestUser001.txt";
 
             testLogger.LogErrorAsync("An error occurred");
@@ -23,13 +23,13 @@ namespace Task_4_Tests
             Logger testLogger = new Logger("TestUser", "002");
             string expectedFileName = "TestUser002.txt";
 
-            Task t1 = Task.Run(() => testLogger.LogErrorAsync("An error occurred 1"));
-            Task t2 = Task.Run(() => testLogger.LogErrorAsync("An error occurred 2"));
-            Task t3 = Task.Run(() => testLogger.LogErrorAsync("An error occurred 3"));
-            Task t4 = Task.Run(() => testLogger.LogErrorAsync("An error occurred 4"));
+            Task t1 = testLogger.LogErrorAsync("An error occurred 1");
+            Task t2 = testLogger.LogErrorAsync("An error occurred 2");
+            Task t3 = testLogger.LogErrorAsync("An error occurred 3");
+            Task t4 = testLogger.LogErrorAsync("An error occurred 4");
             string fileData = File.ReadAllText(expectedFileName);
 
-            Task.WaitAll(t1,t2, t3, t4);
+            Task.WaitAll(t1, t2, t3, t4);
 
             Assert.True(File.Exists($"C:\\Users\\Dhivakar.gopi\\Desktop\\Assignment15\\Task_4_Tests\\bin\\Debug\\net8.0\\{expectedFileName}"));
             Assert.Contains("An error occurred 1", fileData);
@@ -50,11 +50,12 @@ namespace Task_4_Tests
             string expectedFileName3 = "TestUser005.txt";
             string expectedFileName4 = "TestUser006.txt";
 
-            Task t1 = Task.Run(() => testLogger1.LogErrorAsync("An error occurred 1"));
-            Task t2 = Task.Run(() => testLogger2.LogErrorAsync("An error occurred 2"));
-            Task t3 = Task.Run(() => testLogger3.LogErrorAsync("An error occurred 3"));
-            Task t4 = Task.Run(() => testLogger4.LogErrorAsync("An error occurred 4"));
+            Task t1 = testLogger1.LogErrorAsync("An error occurred 1");
+            Task t2 = testLogger2.LogErrorAsync("An error occurred 2");
+            Task t3 = testLogger3.LogErrorAsync("An error occurred 3");
+            Task t4 = testLogger4.LogErrorAsync("An error occurred 4");
             Task.WaitAll(t1, t2, t3, t4);
+
             string fileData1 = File.ReadAllText(expectedFileName1);
             string fileData2 = File.ReadAllText(expectedFileName2);
             string fileData3 = File.ReadAllText(expectedFileName3);
