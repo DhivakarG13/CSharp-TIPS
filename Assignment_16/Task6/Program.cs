@@ -1,7 +1,4 @@
-﻿using System.Buffers.Text;
-using System;
-
-namespace Task6
+﻿namespace Task6
 {
     public class Program
     {
