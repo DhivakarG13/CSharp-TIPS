@@ -1,6 +1,6 @@
 ﻿namespace Task3
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -8,8 +8,6 @@
 
             Array.Sort(numbers, (int number1, int number2) =>
                 {
-                    Console.WriteLine("Hello");
-                    //Internal logic of compare to method
                 if (number1 < number2) return -1;
                 if (number1 > number2) return 1;
                 return 0;
@@ -19,6 +17,7 @@
             {
                 Console.WriteLine(number);
             }
+
             Console.ReadKey();
         }
     }

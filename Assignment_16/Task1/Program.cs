@@ -10,12 +10,16 @@
             notifier.NotifyUser("Hello World");
             Console.ReadLine();
         }
+
         public static void ConsoleWriter(string message)
         {
             Console.WriteLine(message);
         }
+
     }
+
     public delegate void Notify(string message);
+
     public class Notifier
     {
         public event Notify OnAction;
